@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Prof. Dr. D.Sc. Abebe Geletu | Academic Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+*{box-sizing:border-box}
+body{font-family:'Inter',sans-serif;margin:0;background:linear-gradient(180deg,#f7f9fc,#eef2f7);color:#1f2937;line-height:1.7;overflow-x:hidden}
+header{background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;padding:2rem 1rem;position:relative;overflow:hidden}
+header::after{content:'';position:absolute;inset:-50%;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.1),transparent 40%);animation:float 14s linear infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(50px)}100%{transform:translateY(0)}}
+header h1{font-size:1.8rem;animation:fadeDown 1s ease;margin:0.5rem 0}
+header p{font-size:0.95rem;margin:0.3rem 0;animation:fadeUp 1.2s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+nav{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:20;overflow-x:auto}
+nav ul{list-style:none;display:flex;gap:0.8rem;padding:0.8rem 1rem;margin:0;flex-wrap:wrap}
+nav a{position:relative;font-weight:600;color:#0f2a44;text-decoration:none;font-size:0.9rem;white-space:nowrap}
+nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#0f2a44;transition:.4s}
+nav a:hover::after{width:100%}
+.container{max-width:1100px;margin:auto;padding:2rem 1rem}
+section{margin-bottom:3rem;opacity:0;transform:translateY(50px);transition:1s ease}
+section.show{opacity:1;transform:none}
+section:hover{transform:translateY(-6px)}
+section h2{font-size:1.8rem;margin-bottom:1.5rem}
+section h3{font-size:1.3rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:3rem 0}
+.stat{background:#fff;border-radius:16px;padding:1.5rem 1rem;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.08);transition:.4s}
+.stat:hover{transform:translateY(-10px) scale(1.03)}
+.stat h3{font-size:2rem;color:#0f2a44;margin:0}
+.stat p{margin:0.5rem 0 0 0;font-size:0.9rem}
+.tag{display:inline-block;background:linear-gradient(135deg,#e5eef7,#dbeafe);padding:0.4rem 0.8rem;border-radius:999px;margin:0.4rem;font-size:0.85rem;transition:.4s}
+.tag:hover{transform:translateY(-6px) scale(1.1);box-shadow:0 15px 25px rgba(0,0,0,.1)}
+footer{background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;padding:2rem 1rem;text-align:center}
+footer p{margin:0.5rem 0;font-size:0.9rem}
+.hero{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center}
+.hero-text h1{margin-bottom:1rem}
+.hero-photo{text-align:center}
+.hero-photo img{width:200px;height:200px;object-fit:cover;border-radius:50%;box-shadow:0 30px 60px rgba(0,0,0,.25);transition:.6s}
+.hero-photo img:hover{transform:rotateY(12deg) rotateX(6deg) scale(1.05)}
+.news-grid,.blog-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2rem}
+.news-card,.blog-card{background:#fff;padding:1.5rem;border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.08);transition:.5s}
+.news-card h3,.blog-card h3{font-size:1.2rem;margin-top:0}
+.news-card:hover,.blog-card:hover{transform:translateY(-12px) scale(1.03)}
+.news-card span{font-size:.85rem;color:#6b7280}
+.blog-card a{font-weight:600;color:#0f2a44;text-decoration:none}
+.blog-card a:hover{text-decoration:underline}
+section ul{padding-left:1.5rem;font-size:0.95rem}
+section ul li{margin-bottom:0.8rem}
+
+/* Tablet and larger (640px+) */
+@media (min-width:640px){
+header{padding:3rem 1rem}
+header h1{font-size:2.2rem}
+header p{font-size:1rem}
+nav ul{gap:1.2rem}
+nav a{font-size:1rem}
+section{margin-bottom:3.5rem}
+section h2{font-size:2rem}
+section h3{font-size:1.4rem}
+.container{padding:2.5rem 1.5rem}
+.hero{grid-template-columns:1.2fr 0.8fr}
+.hero-photo img{width:220px;height:220px}
+.stat{padding:1.5rem}
+.stat h3{font-size:2.2rem}
+.news-grid,.blog-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.tag{padding:0.4rem 0.9rem;font-size:0.9rem;margin:0.3rem}
+}
+
+/* Desktop (1024px+) */
+@media (min-width:1024px){
+header{padding:4rem 1rem}
+header h1{font-size:2.7rem}
+header p{font-size:1.05rem}
+nav ul{gap:1.5rem}
+.container{padding:3rem 1rem}
+.hero{grid-template-columns:1.2fr 0.8fr;gap:2.5rem}
+.hero-photo img{width:260px;height:260px}
+section h2{font-size:2.2rem}
+section h3{font-size:1.5rem}
+.stats{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.stat{padding:2rem}
+.stat h3{font-size:2.5rem}
+.news-grid,.blog-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+}
+
+/* Large desktop (1280px+) */
+@media (min-width:1280px){
+header h1{font-size:3rem}
+header p{font-size:1.1rem}
+}
+
+/* Small mobile optimization (under 400px) */
+@media (max-width:399px){
+header{padding:1.5rem 0.75rem}
+header h1{font-size:1.5rem}
+header p{font-size:0.85rem}
+nav ul{gap:0.5rem;padding:0.6rem 0.75rem}
+nav a{font-size:0.8rem}
+.container{padding:1.5rem 0.75rem}
+section h2{font-size:1.5rem}
+section h3{font-size:1.1rem}
+.hero-photo img{width:160px;height:160px}
+.stat h3{font-size:1.8rem}
+.stat p{font-size:0.85rem}
+.news-card,.blog-card{padding:1rem}
+.tag{padding:0.3rem 0.7rem;font-size:0.8rem}
+section ul{padding-left:1rem;font-size:0.9rem}
+}
+
+/* Events Section */
+.events-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:2rem}
+.event-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.08);transition:.5s;display:flex;flex-direction:column}
+.event-card:hover{transform:translateY(-12px);box-shadow:0 30px 60px rgba(0,0,0,.15)}
+.event-image{position:relative;overflow:hidden;height:220px}
+.event-image img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.event-card:hover .event-image img{transform:scale(1.08)}
+.event-badge{position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;padding:0.5rem 1rem;border-radius:999px;font-size:0.8rem;font-weight:600}
+.event-content{padding:2rem;flex:1;display:flex;flex-direction:column}
+.event-meta{display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;color:#6b7280;margin-bottom:1rem}
+.event-meta span{display:flex;align-items:center;gap:0.5rem}
+.event-card h3{font-size:1.4rem;margin:0.5rem 0;color:#0f2a44}
+.event-card p{color:#4b5563;line-height:1.6;flex:1}
+.event-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1rem 0}
+.event-tag{display:inline-block;background:#f0f4f8;color:#0f2a44;padding:0.3rem 0.8rem;border-radius:999px;font-size:0.8rem;font-weight:600}
+.btn-details{background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;border:none;padding:0.8rem 1.5rem;border-radius:8px;cursor:pointer;font-weight:600;transition:.4s;margin-top:auto}
+.btn-details:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(15,42,68,.2)}
+
+/* Event Modal */
+.event-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:1000;overflow-y:auto;padding:2rem 1rem}
+.event-modal.show{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-content{background:#fff;border-radius:18px;max-width:900px;margin:2rem auto;padding:3rem;position:relative;box-shadow:0 50px 100px rgba(0,0,0,.3)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;color:#6b7280;cursor:pointer;transition:.3s}
+.modal-close:hover{color:#0f2a44;transform:scale(1.2)}
+.modal-header{margin-bottom:2rem;border-bottom:2px solid #e5e7eb;padding-bottom:1.5rem}
+.modal-header h2{margin:0 0 1rem 0;color:#0f2a44}
+.event-meta-large{display:flex;flex-direction:column;gap:0.8rem;font-size:1rem;color:#6b7280}
+.event-meta-large span{display:flex;align-items:center;gap:0.5rem}
+.modal-gallery{margin:2rem 0;border-radius:12px;overflow:hidden;max-height:500px}
+.modal-gallery img{width:100%;height:auto;display:block}
+.modal-section{margin:2rem 0;padding:1.5rem;background:#f9fafb;border-radius:12px}
+.modal-section h3{color:#0f2a44;margin-top:0}
+.modal-section ul{padding-left:1.5rem}
+.modal-section ul li{margin-bottom:0.8rem;color:#4b5563}
+.modal-section a{color:#0f2a44;font-weight:600;text-decoration:none}
+.modal-section a:hover{text-decoration:underline}
+.video-container{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1rem 0}
+.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.topic-box{background:linear-gradient(135deg,#e5eef7,#dbeafe);padding:1rem;border-radius:8px;text-align:center;font-weight:600;color:#0f2a44}
+.btn-register{display:inline-block;background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;padding:0.8rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:1rem;transition:.4s}
+.btn-register:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(15,42,68,.2)}
+
+/* Responsive Events */
+@media (min-width:640px){
+.events-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.event-image{height:250px}
+.modal-content{padding:2.5rem}
+}
+
+@media (min-width:1024px){
+.events-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.event-image{height:280px}
+.event-card h3{font-size:1.5rem}
+.modal-content{padding:3rem;max-width:1000px}
+}
+
+@media (max-width:399px){
+.event-image{height:180px}
+.event-content{padding:1.5rem}
+.event-card h3{font-size:1.1rem}
+.event-meta{font-size:0.85rem}
+.btn-details{padding:0.7rem 1.2rem}
+.modal-content{padding:1.5rem}
+.modal-header{padding-bottom:1rem}
+.modal-section{padding:1rem}
+}
+
+/* Professional Gallery Styles */
+.gallery-section{margin:2rem 0;padding:1.5rem;background:#f9fafb;border-radius:12px}
+.gallery-section h3{margin-top:0;color:#0f2a44}
+.gallery-main{position:relative;width:100%;margin:1rem 0;border-radius:12px;overflow:hidden;background:#f0f4f8}
+.gallery-main img{width:100%;height:auto;display:block;cursor:pointer;transition:.4s}
+.gallery-main img:hover{transform:scale(1.02)}
+.gallery-counter{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.6);color:#fff;padding:0.5rem 1rem;border-radius:999px;font-weight:600;font-size:0.9rem}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);color:#fff;border:none;font-size:1.5rem;padding:1rem 1.2rem;cursor:pointer;transition:.3s;z-index:10}
+.gallery-nav:hover{background:rgba(0,0,0,.8)}
+.gallery-nav.prev{left:1rem}
+.gallery-nav.next{right:1rem}
+.gallery-thumbnails{display:flex;gap:0.8rem;margin:1rem 0;overflow-x:auto;padding:0.5rem 0}
+.gallery-thumbnails .thumb{width:80px;height:80px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:.3s;flex-shrink:0}
+.gallery-thumbnails .thumb:hover{border-color:#0f2a44;transform:scale(1.05)}
+.gallery-thumbnails .thumb.active{border-color:#0f2a44;box-shadow:0 0 0 2px #e5eef7}
+.gallery-caption{margin:1rem 0 0 0;font-size:0.95rem;color:#6b7280;font-style:italic;padding:0.8rem;background:#fff;border-left:4px solid #0f2a44;border-radius:4px}
+
+/* Video Section Styles */
+.video-section .video-wrapper{display:grid;gap:2rem;margin:1rem 0}
+.video-container{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-info{background:#fff;padding:1.5rem;border-radius:12px;border-left:4px solid #0f2a44}
+.video-info h4{margin:0 0 0.5rem 0;color:#0f2a44;font-size:1.2rem}
+.video-meta{margin:0 0 1rem 0;font-size:0.9rem;color:#6b7280}
+.video-description{margin:0.8rem 0;color:#4b5563;line-height:1.6}
+.video-timestamps{margin:1rem 0;padding:1rem;background:#f9fafb;border-radius:8px}
+.video-timestamps strong{color:#0f2a44;display:block;margin-bottom:0.8rem}
+.video-timestamps ul{padding-left:1.5rem;margin:0}
+.video-timestamps li{margin:0.5rem 0;font-size:0.95rem;color:#4b5563}
+
+/* Curriculum Styles */
+.curriculum-box{display:grid;gap:1.5rem;margin:1rem 0}
+.curriculum-day{background:#fff;padding:1rem;border-radius:8px;border-left:4px solid #0f2a44}
+.curriculum-day strong{display:block;color:#0f2a44;margin-bottom:0.8rem}
+.curriculum-day ul{padding-left:1.5rem;margin:0}
+.curriculum-day li{margin:0.4rem 0;font-size:0.95rem;color:#4b5563}
+
+/* Focus Areas Styles */
+.focus-areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1rem 0}
+.focus-item{background:#fff;padding:1.2rem;border-radius:8px;border-top:3px solid #0f2a44}
+.focus-item strong{color:#0f2a44;display:block;margin-bottom:0.5rem}
+.focus-item p{margin:0;font-size:0.9rem;color:#4b5563;line-height:1.5}
+
+/* Lightbox Styles */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center}
+.lightbox.show{display:flex;animation:fadeIn .3s ease}
+.lightbox-close{position:absolute;top:2rem;right:2rem;background:none;border:none;color:#fff;font-size:2.5rem;cursor:pointer;transition:.3s;z-index:2001}
+.lightbox-close:hover{transform:scale(1.2)}
+.lightbox-content{position:relative;max-width:90vw;max-height:90vh;display:flex;align-items:center;justify-content:center}
+.lightbox-content img{max-width:100%;max-height:100%;object-fit:contain}
+
+/* Responsive Gallery */
+@media (min-width:640px){
+.video-wrapper{grid-template-columns:1.2fr 0.8fr}
+.gallery-thumbnails{gap:1rem}
+.gallery-thumbnails .thumb{width:100px;height:100px}
+.focus-areas{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (min-width:1024px){
+.focus-areas{grid-template-columns:repeat(2,1fr)}
+.curriculum-box{grid-template-columns:repeat(3,1fr)}
+}
+
+@media (max-width:399px){
+.gallery-main{min-height:200px}
+.gallery-nav{padding:0.7rem 0.9rem;font-size:1.2rem}
+.gallery-thumbnails .thumb{width:60px;height:60px}
+.video-info{padding:1rem}
+.curriculum-box{grid-template-columns:1fr}
+.focus-areas{grid-template-columns:1fr}
+}
+
+/* Create Post Button */
+.nav-create-btn {
+  background: linear-gradient(135deg, #0f2a44, #123a5c) !important;
+  color: #fff !important;
+  padding: 0.6rem 1rem !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  transition: .4s !important;
+  margin-left: auto !important;
+}
+
+.nav-create-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 20px rgba(15, 42, 68, 0.2) !important;
+}
+
+@media (max-width: 640px) {
+  .nav-create-btn {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Prof. Dr. D.Sc. Abebe Geletu</h1>
+      <p>German Research Chair</p>
+      <p><strong>African Institute for Mathematical Sciences Research & Inovation Center (AIMS–RIC)</strong></p>
+      <p>Autonomous Systems, Optimization, AI & Intelligent Control</p>
+    </div>
+    <div class="hero-photo">
+      <img src="asset/photos/cover.jpg" alt="Professor Profile Photo">
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul class="container">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#students">Supervision</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="create-post.html" class="nav-create-btn">✎ Create Post</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<section id="news">
+  <h2>Latest News & Announcements</h2>
+  <div class="news-grid">
+    <article class="news-card">
+      <h3>Keynote Speaker at International AI Conference 2025</h3>
+      <p>Invited keynote addressing advances in trustworthy AI and cyber-physical systems.</p>
+      <span>Jan 2025</span>
+    </article>
+    <article class="news-card">
+      <h3>New Research Grant Awarded</h3>
+      <p>Funded project on AI-based intrusion detection for IoT environments.</p>
+      <span>Dec 2024</span>
+    </article>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Research Notes & Insights</h2>
+  <p style="max-width:800px">This section highlights concise research-oriented discussions on methods, datasets, algorithms, and theoretical insights arising from ongoing and published work. The aim is to communicate rigorously while remaining accessible to graduate students and fellow researchers.</p>
+  <div class="blog-grid">
+    <article class="blog-card">
+      <h3>Hybrid AI Models for Network Intrusion Detection</h3>
+      <p>A methodological discussion on combining CNNs, transformers, and feature-selection techniques for robust intrusion detection using modern datasets.</p>
+      <a href="#">Read research note →</a>
+    </article>
+    <article class="blog-card">
+      <h3>On the Role of Updated Datasets in AI-Based Security Research</h3>
+      <p>An analytical comparison of legacy intrusion datasets versus recent IoT and real-world traffic datasets, with implications for model generalization.</p>
+      <a href="#">Read research note →</a>
+    </article>
+    <article class="blog-card">
+      <h3>Optimization Perspectives in Model Predictive Control</h3>
+      <p>Insights into numerical optimization challenges and solution strategies in nonlinear MPC for energy and cyber-physical systems.</p>
+      <a href="#">Read research note →</a>
+    </article>
+  </div>
+</section>
+
+<!-- ADD THIS SECTION - Events Section with Cards -->
+<section id="events">
+  <h2>Events & Workshops</h2>
+  <p style="max-width:800px">Participate in our latest academic events, workshops, and seminars featuring cutting-edge research in AI, optimization, and sustainable systems.</p>
+  
+  <div class="events-grid" id="events-grid">
+    <!-- Events will be loaded dynamically from events/ folder -->
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><h3 data-count="25">0</h3><p>Years Research</p></div>
+  <div class="stat"><h3 data-count="120">0</h3><p>Publications</p></div>
+  <div class="stat"><h3 data-count="30">0</h3><p>PhD & MSc Supervised</p></div>
+</div>
+
+<section id="about">
+  <h2>About</h2>
+  <p><strong>Prof. Dr. D.Sc. Abebe Geletu</strong> is the German Research Chair at <strong>AIMS Rwanda</strong>, based in Kigali, Rwanda, and a senior academic leader within the <strong>AIMS Research & Innovation Center (RIC)</strong>, contributing to research on <strong>Autonomous and Intelligent Systems</strong>.</p>
+  <p>His current research focuses on systems optimization for sustainable resource utilization in Africa, multidisciplinary research and development for addressing complex engineering problems, and AI- and data-driven approaches for large-scale, uncertain, and real-world systems.</p>
+  <p>Prior to joining AIMS in September 2021, he served as academic staff and senior research scientist in applied mathematics, numerical optimization, stochastic optimization, control engineering, data-driven optimization, machine learning, image processing, and computer vision, with engineering applications at the <strong>Technical University of Ilmenau, Germany</strong>.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li><strong>B.Sc. Mathematics</strong> – Addis Ababa University, Ethiopia</li>
+    <li><strong>M.Sc. Applied Mathematics</strong> – Addis Ababa University, Ethiopia</li>
+    <li><strong>Ph.D. Numerical Optimization</strong> – Technical University of Ilmenau, Faculty of Mathematics and Natural Sciences, Germany</li>
+    <li><strong>D.Sc. (Habilitation) Systems Optimization</strong> – Technical University of Ilmenau, Faculty of Computer Science and Automation, Germany</li>
+  </ul>
+</section>
+
+<section id="research">
+  <h2>Research Interests</h2>
+  <div>
+    <span class="tag">Mathematical Optimization</span>
+    <span class="tag">Model Predictive Control</span>
+    <span class="tag">Machine Learning</span>
+    <span class="tag">AI for Sustainability</span>
+    <span class="tag">Renewable Energy</span>
+    <span class="tag">Computer Vision</span>
+  </div>
+</section>
+
+<section id="students">
+  <h2>Ph.D., Postdoctoral & M.Sc. Supervision</h2>
+  <h3>Addis Ababa University, Ethiopia</h3>
+  <ul>
+    <li><strong>Mr. Muhammad Sani</strong> – Stochastic optimization of elliptic PDE systems under chance constraints (PhD, in progress)</li>
+    <li><strong>Mr. Agegnehu Tesfaye Janka</strong> – Chance-constrained nonlinear mixed-integer optimization and applications (PhD, in progress)</li>
+    <li><strong>Mr. Daniel Tadesse</strong> – Data-driven optimization for sustainable energy systems (M.Sc., completed 2023)</li>
+    <li><strong>Ms. Eyerusalem Teshome</strong> – Deep learning for medical image analysis (M.Sc., completed 2022)</li> 
+  </ul>
+
+  <h3>AIMS Rwanda (PhD & Postdoctoral)</h3>
+  <ul>
+    <li><strong>Miss Marcy Audrey Demafo Nangmo</strong> – Real-time MPC of microgrid-based sustainable energy systems (PhD, since 2022)</li>
+    <li><strong>Mr. Michel Murwanashyaka</strong> – Intelligent predictive control for water distribution networks (PhD, since 2022)</li>
+    <li><strong>Mr. Mugenga Ineza Remy</strong> – Distributed MPC for coordinated multi-microgrid operation (PhD, since 2022)</li>
+    <li><strong>Dr. Peguy Kameni Nteuste</strong> – Systems optimization for sustainable resource utilization (Postdoc, since 2022)</li>
+  </ul>
+
+  <h3>AIMS Rwanda (M.Sc.)</h3>
+  <ul>
+    <li>Tensor decomposition for hyperspectral image analysis</li>
+    <li>Deep learning for traffic speed estimation and vehicle detection</li>
+    <li>Deep learning for text-to-speech in Ethiopian Geez language</li>
+    <li>Deep learning for weather prediction</li>
+    <li>Deep learning for medical facial image analysis</li>
+  </ul>
+  <h3>AIMS-RIC</h3>
+  <ul>
+    <li>Autonomous Systems</li>
+    <li><strong>Mr. Kibremoges Fenta</strong> Intellegent MPC for Autonomous System Self-Driving Vehicle</li>
+    <li>Deep learning for weather prediction</li>
+    <li>Deep learning for medical facial image analysis</li>
+  </ul>
+</section>
+
+<section id="publications">
+  <h2>Selected Publications</h2>
+  <ul>
+    <li>SIAM Journal on Optimization, 2017</li>
+    <li>ESAIM: COCV, 2020</li>
+    <li>European Journal of Operational Research, 2004</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>AIMS Rwanda, Kigali</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Prof. Dr. D.Sc. Abebe Geletu</p>
+    <p>AIMS RIC – African Institute for Mathematical Sciences Research and Inovation Center</p>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+const sections = document.querySelectorAll('section');
+function reveal(){
+  sections.forEach(s=>{
+    const r=s.getBoundingClientRect();
+    if(r.top < window.innerHeight - 80) s.classList.add('show');
+  });
+}
+window.addEventListener('scroll', reveal);
+reveal();
+
+// counters
+const counters = document.querySelectorAll('[data-count]');
+counters.forEach(c=>{
+  let n = 0;
+  const t = +c.dataset.count;
+  const i = setInterval(()=>{
+    n++;
+    c.textContent = n;
+    if(n >= t) clearInterval(i);
+  }, 20);
+});
+
+// DYNAMIC GALLERY DATA - Will be populated from actual image counts
+let galleryData = {
+  event1: [],
+  event2: [],
+  event3: []
+};
+
+let galleryIndex = { event1: 0, event2: 0, event3: 0 };
+
+// Function to detect how many images exist in a folder
+async function detectAndLoadGalleryImages() {
+  const eventFolders = [
+    { id: 'event1', folder: 'AI_confrence' },
+    { id: 'event2', folder: 'AI_workshop' },
+    { id: 'event3', folder: 'Lab-Demo1' }
+  ];
+  
+  for (const event of eventFolders) {
+    // Try to find images by attempting to load them sequentially
+    let imageCount = 0;
+    let foundImages = [];
+    
+    // Check for images 1-10 (common range)
+    for (let i = 1; i <= 10; i++) {
+      // Try both .jpg and .JPG extensions
+      const jpgPath = `asset/events/${event.folder}/${i}.jpg`;
+      const JPGPath = `asset/events/${event.folder}/${i}.JPG`;
+      
+      let imagePath = null;
+      
+      // Check if jpg exists
+      try {
+        const response = await fetch(jpgPath, { method: 'HEAD' });
+        if (response.ok) {
+          imagePath = jpgPath;
+        }
+      } catch (e) {}
+      
+      // If jpg doesn't exist, try JPG
+      if (!imagePath) {
+        try {
+          const response = await fetch(JPGPath, { method: 'HEAD' });
+          if (response.ok) {
+            imagePath = JPGPath;
+          }
+        } catch (e) {}
+      }
+      
+      // If found, add to images
+      if (imagePath) {
+        foundImages.push({
+          type: 'image',
+          src: imagePath,
+          caption: `Event image ${i}`
+        });
+      } else {
+        // Stop searching if we find a gap
+        if (foundImages.length > 0) break;
+      }
+    }
+    
+    // Store found images in galleryData
+    if (foundImages.length > 0) {
+      galleryData[event.id] = foundImages;
+      console.log(`Found ${foundImages.length} images for ${event.id}`);
+    } else {
+      console.warn(`No images found for ${event.id} in asset/events/${event.folder}/`);
+    }
+  }
+}
+
+// DYNAMIC GALLERY DATA - Maps to actual event folders
+const galleryDataOld = {
+  event1: [
+    { type: 'image', src: 'asset/events/AI_confrence/1.jpg', caption: 'Opening keynote session with international speakers' },
+    { type: 'image', src: 'asset/events/AI_confrence/2.jpg', caption: 'Prof. Geletu presenting keynote address' },
+    { type: 'image', src: 'asset/events/AI_confrence/3.jpg', caption: 'Panel discussion on trustworthy AI systems' },
+    { type: 'image', src: 'asset/events/AI_confrence/4.jpg', caption: 'International audience attending the conference' }
+  ],
+  event2: [
+    { type: 'image', src: 'asset/events/AI_workshop/1.JPG', caption: 'Workshop introduction and course overview' },
+    { type: 'image', src: 'asset/events/AI_workshop/2.JPG', caption: 'Hands-on programming session in the lab' },
+    { type: 'image', src: 'asset/events/AI_workshop/3.JPG', caption: 'Lecture on Model Predictive Control theory' },
+    { type: 'image', src: 'asset/events/AI_workshop/4.JPG', caption: 'Group work and collaborative problem solving' }
+  ],
+  event3: [
+    { type: 'image', src: 'asset/events/Lab-Demo1/1.jpg', caption: 'Opening ceremony - Sustainable AI Conference' },
+    { type: 'image', src: 'asset/events/Lab-Demo1/2.jpg', caption: 'Panel discussion on renewable energy optimization' },
+    { type: 'image', src: 'asset/events/Lab-Demo1/3.jpg', caption: 'Live demonstration of AI energy systems' },
+    { type: 'image', src: 'asset/events/Lab-Demo1/4.jpg', caption: 'Networking session with international experts' }
+  ]
+};
+
+let galleryIndexOld = { event1: 0, event2: 0, event3: 0 };
+
+// AUTO-DETECT EVENT FILES AND LOAD EVERYTHING FROM THEM
+async function autoDetectAndLoadEvents() {
+  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo1'];
+  let eventIndex = 1;
+  
+  for (const folderName of eventFiles) {
+    const eventFile = `events/${folderName}.html`;
+    
+    try {
+      const response = await fetch(eventFile);
+      if (!response.ok) {
+        console.warn(`Event file not found: ${eventFile}`);
+        continue;
+      }
+      
+      const html = await response.text();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      
+      // Extract all metadata from the HTML file
+      const previewDiv = tempDiv.querySelector('.event-preview');
+      const modalHeader = tempDiv.querySelector('.modal-header');
+      
+      if (!previewDiv || !modalHeader) {
+        console.warn(`Invalid structure in ${eventFile}`);
+        continue;
+      }
+      
+      // Get preview text
+      const previewText = previewDiv.querySelector('p').textContent;
+      
+      // Get title from modal-header h2
+      const title = modalHeader.querySelector('h2').textContent.trim();
+      
+      // Get date and location from event-meta-large
+      const metaSpans = modalHeader.querySelectorAll('.event-meta-large span');
+      const date = metaSpans[0]?.textContent.trim() || 'Date TBA';
+      const location = metaSpans[1]?.textContent.trim() || 'Location TBA';
+      
+      // Create event card
+      const eventId = `event${eventIndex}`;
+      createEventCard({
+        id: eventId,
+        folder: folderName,
+        title: title,
+        date: date,
+        location: location,
+        preview: previewText,
+        imageFile: eventFile  // Store reference to HTML file
+      });
+      
+      eventIndex++;
+      
+    } catch (error) {
+      console.warn(`Error loading ${eventFile}:`, error);
+    }
+  }
+}
+
+// Create event card dynamically
+function createEventCard(event) {
+  const eventsGrid = document.getElementById('events-grid');
+  
+  const eventCard = document.createElement('article');
+  eventCard.className = 'event-card';
+  eventCard.setAttribute('data-event-id', event.id);
+  
+  eventCard.innerHTML = `
+    <div class="event-image">
+      <img src="asset/events/${event.folder}/1.jpg" alt="${event.title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22300%22/%3E%3C/svg%3E'">
+      <span class="event-badge">Event</span>
+    </div>
+    <div class="event-content">
+      <div class="event-meta">
+        <span class="event-date">📅 ${event.date}</span>
+        <span class="event-location">📍 ${event.location}</span>
+      </div>
+      <h3>${event.title}</h3>
+      <p class="event-description">${event.preview}</p>
+      <div class="event-tags"></div>
+      <button class="btn-details" onclick="openEventModal('${event.id}')">View Details</button>
+    </div>
+  `;
+  
+  eventsGrid.appendChild(eventCard);
+}
+
+// Load full event content from events/ files
+async function loadEventContent(eventId) {
+  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo1'];
+  const fileIndex = parseInt(eventId.replace('event', '')) - 1;
+  
+  if (fileIndex < 0 || fileIndex >= eventFiles.length) return;
+  
+  const folderName = eventFiles[fileIndex];
+  const eventFile = `events/${folderName}.html`;
+  
+  try {
+    const response = await fetch(eventFile);
+    if (!response.ok) throw new Error('Failed to load: ' + eventFile);
+    
+    const html = await response.text();
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    
+    // Remove preview div from full content
+    const preview = tempDiv.querySelector('.event-preview');
+    if (preview) preview.remove();
+    
+    // Get remaining content
+    const content = tempDiv.innerHTML;
+    
+    const contentContainer = document.getElementById(eventId + '-content');
+    if (contentContainer) {
+      contentContainer.innerHTML = content;
+    }
+  } catch (error) {
+    console.error('Error loading event content:', error);
+    const contentContainer = document.getElementById(eventId + '-content');
+    if (contentContainer) {
+      contentContainer.innerHTML = '<p style="color: red;">Error loading content. Check console.</p>';
+    }
+  }
+}
+
+function initializeGalleries() {
+  Object.keys(galleryData).forEach(eventId => {
+    const items = galleryData[eventId];
+    if (items.length > 0) {
+      const mainImg = document.getElementById(eventId + '-main-img');
+      const caption = document.getElementById(eventId + '-caption');
+      const counter = document.getElementById(eventId + '-img-total');
+      
+      if (mainImg) {
+        mainImg.src = items[0].src;
+        mainImg.onerror = function() {
+          console.warn('Image not found: ' + items[0].src);
+          this.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2224%22%3EImage not found%3C/text%3E%3C/svg%3E';
+        };
+      }
+      if (caption) caption.textContent = items[0].caption;
+      if (counter) counter.textContent = items.length; // Now shows actual count!
+      updateThumbnailGallery(eventId);
+    }
+  });
+}
+
+function updateThumbnailGallery(eventId) {
+  const modal = document.getElementById(eventId + '-modal');
+  const thumbnailContainer = modal.querySelector('.gallery-thumbnails');
+  
+  thumbnailContainer.innerHTML = '';
+  
+  galleryData[eventId].forEach((item, index) => {
+    const thumb = document.createElement('img');
+    thumb.src = item.src;
+    thumb.alt = 'Thumbnail ' + (index + 1);
+    thumb.className = 'thumb' + (index === 0 ? ' active' : '');
+    thumb.onclick = () => showGalleryImage(eventId, index);
+    thumb.onerror = function() {
+      this.style.backgroundColor = '#ddd';
+    };
+    thumbnailContainer.appendChild(thumb);
+  });
+}
+
+function showGalleryImage(eventId, index) {
+  const items = galleryData[eventId];
+  if (index < 0 || index >= items.length) return;
+  
+  galleryIndex[eventId] = index;
+  const item = items[index];
+  
+  const mainImg = document.getElementById(eventId + '-main-img');
+  const caption = document.getElementById(eventId + '-caption');
+  const current = document.getElementById(eventId + '-img-current');
+  
+  mainImg.src = item.src;
+  mainImg.onerror = function() {
+    this.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23ddd%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2224%22%3EImage not found%3C/text%3E%3C/svg%3E';
+  };
+  
+  if (caption) caption.textContent = item.caption;
+  if (current) current.textContent = index + 1;
+  
+  updateThumbnailActive(eventId);
+}
+
+function galleryNext(eventId) {
+  const items = galleryData[eventId];
+  const newIndex = (galleryIndex[eventId] + 1) % items.length;
+  showGalleryImage(eventId, newIndex);
+}
+
+function galleryPrev(eventId) {
+  const items = galleryData[eventId];
+  const newIndex = (galleryIndex[eventId] - 1 + items.length) % items.length;
+  showGalleryImage(eventId, newIndex);
+}
+
+function updateThumbnailActive(eventId) {
+  const modal = document.getElementById(eventId + '-modal');
+  const thumbs = modal.querySelectorAll('.thumb');
+  thumbs.forEach((t, i) => {
+    if (i === galleryIndex[eventId]) {
+      t.classList.add('active');
+    } else {
+      t.classList.remove('active');
+    }
+  });
+}
+
+// Lightbox Function
+function openLightbox(imgSrc) {
+  const lightbox = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = imgSrc;
+  lightbox.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('show');
+  document.body.style.overflow = 'auto';
+}
+
+// Event Modal Functions
+function openEventModal(eventId) {
+  const modal = document.getElementById(eventId + '-modal');
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  loadEventContent(eventId);
+}
+
+function closeEventModal(eventId) {
+  document.getElementById(eventId + '-modal').classList.remove('show');
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('event-modal')) {
+    e.target.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+});
+
+// Auto-generate modals for detected events
+document.addEventListener('DOMContentLoaded', function() {
+  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo1'];
+  const container = document.body;
+  
+  eventFiles.forEach((file, index) => {
+    const eventId = `event${index + 1}`;
+    const modal = document.createElement('div');
+    modal.id = eventId + '-modal';
+    modal.className = 'event-modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeEventModal('${eventId}')">&times;</button>
+        
+        <div class="gallery-section">
+          <h3>Event Gallery</h3>
+          <div class="gallery-main">
+            <img id="${eventId}-main-img" src="" alt="Event image">
+            <div class="gallery-counter"><span id="${eventId}-img-current">1</span>/<span id="${eventId}-img-total">?</span></div>
+            <button class="gallery-nav prev" onclick="galleryPrev('${eventId}')">❮</button>
+            <button class="gallery-nav next" onclick="galleryNext('${eventId}')">❯</button>
+          </div>
+          <div class="gallery-thumbnails"></div>
+          <p class="gallery-caption" id="${eventId}-caption"></p>
+        </div>
+
+        <div id="${eventId}-content"></div>
+      </div>
+    `;
+    container.appendChild(modal);
+  });
+});
+
+// Initialize everything when page loads
+window.addEventListener('load', async function() {
+  await detectAndLoadGalleryImages();  // Auto-detect actual image count
+  await autoDetectAndLoadEvents();     // Auto-detect and load all events
+  initializeGalleries();               // Initialize gallery with real counts
+});
+</script>
+
+<!-- Image Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Full size image">
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. D.Sc. Abebe Geletu | Academic Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0; background: linear-gradient(180deg,#f7f9fc,#eef2f7); color: #1f2937; line-height: 1.7; overflow-x:hidden; }
+    header { background: linear-gradient(135deg,#0f2a44,#123a5c); color: #fff; padding: 4rem 1rem; position: relative; overflow:hidden; }
+    header::after{content:''; position:absolute; inset:-50%; background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.08),transparent 40%); animation:float 12s linear infinite;}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(40px)}100%{transform:translateY(0)}}
+    header h1 { margin: 0; font-size: 2.5rem; animation: fadeDown 1s ease; }
+    header p { margin-top: .6rem; font-size: 1.1rem; opacity: .95; animation: fadeUp 1.2s ease; }
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    nav { background: rgba(255,255,255,.9); backdrop-filter: blur(8px); border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 20; }
+    nav ul { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: .7rem 1rem; gap: 1.5rem; }
+    nav a { text-decoration: none; color: #0f2a44; font-weight: 600; position:relative; }
+    nav a::after{content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#0f2a44; transition:.3s}
+    nav a:hover::after{width:100%}
+    .container { max-width: 1100px; margin: auto; padding: 2.5rem 1rem; }
+    section { margin-bottom: 3.5rem; opacity:0; transform:translateY(40px); transition:1s ease; }
+    section.show{opacity:1; transform:none}
+    section h2 { border-left: 4px solid #0f2a44; padding-left: .75rem; margin-bottom: 1.2rem; }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: .6rem; }
+    .tag { display: inline-block; background: linear-gradient(135deg,#e5eef7,#dbeafe); color: #0f2a44; padding: .3rem .8rem; border-radius: 999px; font-size: .85rem; margin: .25rem; transition:.3s }
+    .tag:hover{transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,.08)}
+    footer { background: linear-gradient(135deg,#0f2a44,#123a5c); color: #fff; padding: 2.5rem 1rem; }
+    footer p { margin: .4rem 0; font-size: .9rem; opacity:.9 }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Dr. D.Sc. Abebe Geletu</h1>
+    <p>German Research Chair, AIMS Rwanda | Systems Optimization, AI & Control</p>
+    <p>Kigali, Rwanda</p>
+  </div>
+</header>
+
+<nav>
+  <ul class="container">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#students">Supervision</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<section id="about">
+  <h2>About</h2>
+  <p>Dr. D.Sc. Abebe Geletu is the German Research Chair at AIMS Rwanda. His research focuses on systems optimization for sustainable resource utilization in Africa, multidisciplinary engineering research, and AI- and data-driven approaches for complex real-world problems.</p>
+  <p>Prior to joining AIMS Rwanda in September 2021, he served as academic staff and senior research scientist at the Technical University of Ilmenau, Germany, with extensive experience in applied mathematics, numerical optimization, stochastic optimization, control engineering, machine learning, image processing, and computer vision.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>B.Sc. in Mathematics – Addis Ababa University, Ethiopia</li>
+    <li>M.Sc. in Applied Mathematics – Addis Ababa University, Ethiopia</li>
+    <li>Ph.D. in Numerical Optimization – TU Ilmenau, Germany</li>
+    <li>D.Sc. (Habilitation) in Systems Optimization – TU Ilmenau, Germany</li>
+  </ul>
+</section>
+
+<section id="research">
+  <h2>Research Interests</h2>
+  <div>
+    <span class="tag">Mathematical Optimization</span>
+    <span class="tag">Model Predictive Control</span>
+    <span class="tag">Machine Learning</span>
+    <span class="tag">AI for Sustainability</span>
+    <span class="tag">Smart Water Networks</span>
+    <span class="tag">Renewable Energy Systems</span>
+    <span class="tag">Computer Vision</span>
+    <span class="tag">Agrifood Systems</span>
+  </div>
+</section>
+
+<section id="students">
+  <h2>Current PhD, Postdoc & MSc Supervision</h2>
+  <ul>
+    <li><strong>AIMS Rwanda:</strong> Research on microgrids, water networks, chance-constrained MPC, AI for sustainability</li>
+    <li><strong>Addis Ababa University:</strong> Stochastic and nonlinear optimization under uncertainty</li>
+    <li><strong>TU Ilmenau:</strong> Optimization of PDE systems and multi-agent systems</li>
+  </ul>
+  <p><em>Full supervision details available in the complete CV.</em></p>
+</section>
+
+<section id="publications">
+  <h2>Selected Publications</h2>
+  <ul>
+    <li>Geletu et al., <em>SIAM Journal on Optimization</em>, 2017</li>
+    <li>Geletu et al., <em>ESAIM: COCV</em>, 2020</li>
+    <li>Geletu & Hoffmann, <em>European Journal of Operational Research</em>, 2004</li>
+    <li>Geletu et al., <em>Journal of Engineering Optimization</em>, 2015</li>
+  </ul>
+  <p><em>For a full list, please refer to the detailed CV.</em></p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p><strong>Institution:</strong> African Institute for Mathematical Sciences (AIMS), Rwanda</p>
+  <p><strong>Location:</strong> Remera, KN3, Kigali, Rwanda</p>
+  <p><strong>Email:</strong> (available upon request)</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Dr. D.Sc. Abebe Geletu</p>
+    <p>AIMS Rwanda – African Institute for Mathematical Sciences</p>
+  </div>
+</footer>
+
+<script>
+  const sections=document.querySelectorAll('section');
+  const reveal=()=>{sections.forEach(s=>{const r=s.getBoundingClientRect(); if(r.top<window.innerHeight-80)s.classList.add('show');});};
+  window.addEventListener('scroll',reveal); reveal();
+</script>
+</body>
+</html>

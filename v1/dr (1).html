@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. D.Sc. Abebe Geletu | Academic Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+body{font-family:'Inter',sans-serif;margin:0;background:linear-gradient(180deg,#f7f9fc,#eef2f7);color:#1f2937;line-height:1.7;overflow-x:hidden}
+header{background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;padding:5rem 1rem;position:relative;overflow:hidden}
+header::after{content:'';position:absolute;inset:-50%;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.1),transparent 40%);animation:float 14s linear infinite}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(50px)}100%{transform:translateY(0)}}
+header h1{font-size:2.7rem;animation:fadeDown 1s ease}
+header p{animation:fadeUp 1.2s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+nav{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:20}
+nav ul{list-style:none;display:flex;gap:1.5rem;padding:.8rem 1rem;margin:0}
+nav a{position:relative;font-weight:600;color:#0f2a44;text-decoration:none}
+nav a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#0f2a44;transition:.4s}
+nav a:hover::after{width:100%}
+.container{max-width:1100px;margin:auto;padding:3rem 1rem}
+section{margin-bottom:4rem;opacity:0;transform:translateY(50px);transition:1s ease}
+section.show{opacity:1;transform:none}
+section:hover{transform:translateY(-6px)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:3rem 0}
+.stat{background:#fff;border-radius:16px;padding:2rem;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.08);transition:.4s}
+.stat:hover{transform:translateY(-10px) scale(1.03)}
+.stat h3{font-size:2.5rem;color:#0f2a44;margin:0}
+.tag{display:inline-block;background:linear-gradient(135deg,#e5eef7,#dbeafe);padding:.4rem .9rem;border-radius:999px;margin:.3rem;transition:.4s}
+.tag:hover{transform:translateY(-6px) scale(1.1);box-shadow:0 15px 25px rgba(0,0,0,.1)}
+footer{background:linear-gradient(135deg,#0f2a44,#123a5c);color:#fff;padding:3rem 1rem}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+.hero-photo img{width:260px;height:260px;object-fit:cover;border-radius:50%;box-shadow:0 30px 60px rgba(0,0,0,.25);transition:.6s}
+.hero-photo img:hover{transform:rotateY(12deg) rotateX(6deg) scale(1.05)}
+.news-grid,.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:2rem}
+.news-card,.blog-card{background:#fff;padding:2rem;border-radius:18px;box-shadow:0 20px 40px rgba(0,0,0,.08);transition:.5s}
+.news-card:hover,.blog-card:hover{transform:translateY(-12px) scale(1.03)}
+.news-card span{font-size:.9rem;color:#6b7280}
+.blog-card a{font-weight:600;color:#0f2a44;text-decoration:none}
+.blog-card a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Prof. [Full Name]</h1>
+      <p>Professor of Computer Science & Artificial Intelligence</p>
+      <p>Researcher in AI, Robotics, Cybersecurity & Intelligent Systems</p>
+    </div>
+    <div class="hero-photo">
+      <img src="images/profile.jpg" alt="Professor Profile Photo">
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul class="container">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#students">Supervision</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<section id="news">
+  <h2>Latest News & Announcements</h2>
+  <div class="news-grid">
+    <article class="news-card">
+      <h3>Keynote Speaker at International AI Conference 2025</h3>
+      <p>Invited keynote addressing advances in trustworthy AI and cyber-physical systems.</p>
+      <span>Jan 2025</span>
+    </article>
+    <article class="news-card">
+      <h3>New Research Grant Awarded</h3>
+      <p>Funded project on AI-based intrusion detection for IoT environments.</p>
+      <span>Dec 2024</span>
+    </article>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Research Blog</h2>
+  <div class="blog-grid">
+    <article class="blog-card">
+      <h3>The Future of Hybrid AI Models in Cybersecurity</h3>
+      <p>Exploring how hybrid ML and DL systems are reshaping intrusion detection.</p>
+      <a href="#">Read more →</a>
+    </article>
+    <article class="blog-card">
+      <h3>Why Updated Datasets Matter in AI Research</h3>
+      <p>Legacy datasets vs modern real-world data in security research.</p>
+      <a href="#">Read more →</a>
+    </article>
+  </div>
+</section>
+
+
+<div class="stats">
+  <div class="stat"><h3 data-count="25">0</h3><p>Years Research</p></div>
+  <div class="stat"><h3 data-count="120">0</h3><p>Publications</p></div>
+  <div class="stat"><h3 data-count="30">0</h3><p>PhD & MSc Supervised</p></div>
+</div>
+
+<section id="about">
+  <h2>About</h2>
+  <p>Dr. D.Sc. Abebe Geletu is the German Research Chair at AIMS Rwanda. His research focuses on systems optimization for sustainable resource utilization in Africa, multidisciplinary engineering research, and AI- and data-driven approaches for complex real-world problems.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>B.Sc. Mathematics – Addis Ababa University</li>
+    <li>M.Sc. Applied Mathematics – Addis Ababa University</li>
+    <li>Ph.D. Numerical Optimization – TU Ilmenau</li>
+    <li>D.Sc. Systems Optimization – TU Ilmenau</li>
+  </ul>
+</section>
+
+<section id="research">
+  <h2>Research Interests</h2>
+  <div>
+    <span class="tag">Mathematical Optimization</span>
+    <span class="tag">Model Predictive Control</span>
+    <span class="tag">Machine Learning</span>
+    <span class="tag">AI for Sustainability</span>
+    <span class="tag">Renewable Energy</span>
+    <span class="tag">Computer Vision</span>
+  </div>
+</section>
+
+<section id="students">
+  <h2>Supervision</h2>
+  <p>PhD, Postdoc and MSc supervision across AIMS Rwanda, Addis Ababa University, and TU Ilmenau.</p>
+</section>
+
+<section id="publications">
+  <h2>Selected Publications</h2>
+  <ul>
+    <li>SIAM Journal on Optimization, 2017</li>
+    <li>ESAIM: COCV, 2020</li>
+    <li>European Journal of Operational Research, 2004</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>AIMS Rwanda, Kigali</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Dr. D.Sc. Abebe Geletu</p>
+    <p>AIMS Rwanda – African Institute for Mathematical Sciences</p>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+const sections = document.querySelectorAll('section');
+function reveal(){
+  sections.forEach(s=>{
+    const r=s.getBoundingClientRect();
+    if(r.top < window.innerHeight - 80) s.classList.add('show');
+  });
+}
+window.addEventListener('scroll', reveal);
+reveal();
+
+// counters
+const counters = document.querySelectorAll('[data-count]');
+counters.forEach(c=>{
+  let n = 0;
+  const t = +c.dataset.count;
+  const i = setInterval(()=>{
+    n++;
+    c.textContent = n;
+    if(n >= t) clearInterval(i);
+  }, 20);
+});
+</script>
+
+</body>
+</html>
