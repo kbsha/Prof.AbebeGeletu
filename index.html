@@ -852,82 +852,121 @@ let blogPosts = [];
 let currentBlogIndex = 0;
 let blogAutoplayInterval = null;
 
-// AUTO-DETECT ALL BLOG POSTS FROM _posts/ FOLDER
-async function loadBlogPosts() {
-  // Try to fetch all possible posts by checking common naming patterns
-  // We'll check the last 100 days for posts
-  
-  const postsToCheck = [];
+/* Replace the previous loadBlogPosts() with the following */
+async function scanPostCandidates(days = 60) {
+  const candidates = new Set();
   const today = new Date();
-  
-  // Generate potential post filenames for the last 100 days
-  for (let i = 0; i < 100; i++) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    const dateStr = date.toISOString().split('T')[0]; // YYYY-MM-DD format
-    
-    // Common post naming patterns
-    postsToCheck.push(`${dateStr}-post`);
-    postsToCheck.push(`${dateStr}-blog`);
-    postsToCheck.push(`${dateStr}-article`);
-    postsToCheck.push(`${dateStr}-research`);
-    postsToCheck.push(`${dateStr}-note`);
-    postsToCheck.push(`${dateStr}-tutorial`);
-    postsToCheck.push(`${dateStr}-guide`);
-    postsToCheck.push(`${dateStr}-insight`);
+  for (let i = 0; i < days; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const dateStr = d.toISOString().split('T')[0];
+    const patterns = [
+      `${dateStr}-build-portfolio-website`,
+      `${dateStr}-post`,
+      `${dateStr}-blog`,
+      `${dateStr}-article`,
+      `${dateStr}-research`,
+      `${dateStr}-note`,
+      `${dateStr}-tutorial`,
+      `${dateStr}-guide`,
+      `${dateStr}-insight`
+    ];
+    patterns.forEach(p => candidates.add(p));
   }
-  
-  // Also add some specific filenames
-  const specificPosts = [
-    '2025-12-28-build-portfolio-website',
-    '2025-12-27-research-insights',
-    '2025-12-26-ai-optimization',
-    '2025-12-25-machine-learning-basics',
-    'latest-post',
-    'first-post'
-  ];
-  
-  postsToCheck.push(...specificPosts);
-  
-  console.log(`Checking ${postsToCheck.length} potential post files...`);
-  
-  for (const postName of postsToCheck) {
-    const postFile = `_posts/${postName}.md`;
-    
+  // Add known specific names
+  ['latest-post','first-post','2025-12-28-build-portfolio-website','2025-12-27-research-insights','2025-12-26-machine-learning-guide','2025-12-25-sustainable-ai'].forEach(p=>candidates.add(p));
+  const found = [];
+  for (const name of candidates) {
     try {
-      const response = await fetch(postFile);
-      
-      if (response.ok) {
-        const markdown = await response.text();
-        const post = parseMarkdownPost(markdown);
-        
-        if (post) {
-          // Check if post already exists (avoid duplicates)
-          const exists = blogPosts.some(p => p.title === post.title);
-          if (!exists) {
-            console.log(`✓ Loaded: ${post.title}`);
-            blogPosts.push(post);
-          }
-        }
-      }
-    } catch (error) {
-      // Silently continue - file doesn't exist
-    }
+      const resp = await fetch(`_posts/${name}.md`);
+      if (resp.ok) found.push(name);
+    } catch(e){}
   }
-  
-  // Sort posts by date (newest first)
-  blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-  
-  console.log(`Total unique posts found: ${blogPosts.length}`);
-  
-  if (blogPosts.length > 0) {
-    displayBlogCarousel();
-    startBlogAutoplay();
-  } else {
-    const carousel = document.getElementById('blog-carousel');
-    if (carousel) {
-      carousel.innerHTML = '<div class="blog-card" style="flex: 0 0 100%;"><h3>No posts available yet</h3><p>Check back soon for new research insights and articles.</p></div>';
+  return found;
+}
+
+// Try to read a directory listing from the server (if enabled). Returns array of filenames (including .md)
+async function fetchPostsFromDirListing() {
+  try {
+    const resp = await fetch('_posts/');
+    if (!resp.ok) {
+      console.warn('Directory listing not available (_posts/ returned ' + resp.status + ')');
+      return [];
     }
+    const text = await resp.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/html');
+    const links = Array.from(doc.querySelectorAll('a'))
+      .map(a => a.getAttribute('href'))
+      .filter(h => h && /\.md$/i.test(h))
+      .map(h => {
+        // keep just filename
+        const parts = h.split('/');
+        return decodeURIComponent(parts[parts.length - 1]);
+      });
+    // Deduplicate
+    return Array.from(new Set(links));
+  } catch (e) {
+    console.warn('Error fetching directory listing for _posts/:', e);
+    return [];
+  }
+}
+
+async function loadBlogPosts() {
+  blogPosts = [];
+  try {
+    let files = [];
+    const idxResp = await fetch('_posts/index.json');
+    if (idxResp.ok) {
+      files = await idxResp.json(); // expects array of basenames (no .md)
+      console.log('Loaded posts index.json:', files);
+    } else {
+      console.warn('index.json not found, scanning _posts/ by pattern...');
+      files = await scanPostCandidates(60);
+    }
+
+    // ALSO try directory listing and include any .md files found there (supports filenames with spaces)
+    const dirFiles = await fetchPostsFromDirListing();
+    if (dirFiles && dirFiles.length) {
+      console.log('Found posts via directory listing:', dirFiles);
+      // Merge into files (normalize to basenames without .md)
+      const set = new Set(files.map(f => f.replace(/\.md$/i, '')));
+      dirFiles.forEach(f => set.add(f.replace(/\.md$/i, '')));
+      files = Array.from(set);
+    }
+
+    for (const name of files) {
+      const fname = name.endsWith('.md') ? name : `${name}.md`;
+      try {
+        // encode to handle spaces and special characters
+        const resp = await fetch(`_posts/${encodeURIComponent(fname)}`);
+        if (!resp.ok) {
+          console.warn('Failed to load post', fname, resp.status);
+          continue;
+        }
+        const md = await resp.text();
+        const post = parseMarkdownPost(md);
+        if (post && !blogPosts.some(p => p.title === post.title)) {
+          post._file = fname; // store source file for on-demand fetch
+          blogPosts.push(post);
+        }
+      } catch (e) {
+        console.warn('Error fetching', fname, e);
+      }
+    }
+
+    blogPosts.sort((a,b)=> new Date(b.date) - new Date(a.date));
+    console.log(`Total posts loaded: ${blogPosts.length}`);
+
+    if (blogPosts.length > 0) {
+      displayBlogCarousel();
+      startBlogAutoplay();
+    } else {
+      const carousel = document.getElementById('blog-carousel');
+      if (carousel) carousel.innerHTML = '<div class="blog-card" style="flex: 0 0 100%;"><h3>No posts available yet</h3><p>Check back soon for new research insights and articles.</p></div>';
+    }
+  } catch (error) {
+    console.error('Error in loadBlogPosts:', error);
   }
 }
 
@@ -974,21 +1013,57 @@ function parseMarkdownPost(markdown) {
   }
 }
 
+// Basic markdown to HTML converter (supports headings, lists, bold, italic, inline code)
+function markdownToHtml(markdown) {
+  if (!markdown) return '';
+  let html = String(markdown);
+
+  // Headings
+  html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+  html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+  html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+
+  // Bold & italic
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/__(.*?)__/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  html = html.replace(/_(.*?)_/g, '<em>$1</em>');
+
+  // Inline code
+  html = html.replace(/`([^`]+?)`/g, '<code style="background:#f0f4f8;padding:0.15rem 0.35rem;border-radius:4px;font-family:monospace;">$1</code>');
+
+  // List items (convert lines starting with "- " to <li>)
+  html = html.replace(/^\s*-\s+(.*)$/gm, '<li>$1</li>');
+  // Wrap consecutive <li> into <ul>
+  html = html.replace(/(<li>[\s\S]*?<\/li>)+/g, match => `<ul style="padding-left:1.2rem;margin:0.6rem 0;">${match}</ul>`);
+
+  // Convert double newlines into paragraphs (skip lines already starting with HTML tags)
+  html = html.split(/\n\s*\n/).map(block => {
+    if (block.match(/^\s*<(h|ul|pre|blockquote|code|img)/i)) return block;
+    return '<p style="margin:0.8rem 0;">' + block.replace(/\n/g, '<br>') + '</p>';
+  }).join('\n\n');
+
+  return html;
+}
+
 // Display blog carousel
 function displayBlogCarousel() {
   const carousel = document.getElementById('blog-carousel');
   const dotsContainer = document.getElementById('blog-dots');
-  
   if (!carousel || !dotsContainer) return;
-  
+
+  // Remove gap while sliding to avoid layout surprises, restore if you like
+  carousel.style.gap = '0';
+
   carousel.innerHTML = '';
   dotsContainer.innerHTML = '';
-  
+
   blogPosts.forEach((post, index) => {
     const card = createBlogCard(post, index);
     carousel.appendChild(card);
-    
+
     const dot = document.createElement('button');
+    dot.dataset.index = index;
     dot.style.cssText = `
       width: 12px;
       height: 12px;
@@ -998,9 +1073,13 @@ function displayBlogCarousel() {
       cursor: pointer;
       transition: .3s;
     `;
-    dot.onclick = () => goToBlogSlide(index);
+    dot.addEventListener('click', () => goToBlogSlide(index));
     dotsContainer.appendChild(dot);
   });
+
+  // Ensure first slide visible
+  currentBlogIndex = 0;
+  updateBlogCarousel(true);
 }
 
 // Create a blog card
@@ -1008,10 +1087,11 @@ function createBlogCard(post, index) {
   const card = document.createElement('div');
   card.className = 'blog-card';
   card.style.cssText = `
-    flex: 0 0 calc(100% - 0px);
-    transition: transform 0.3s ease;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    margin-right: 0; /* gap managed on outer container if desired */
   `;
-  
+
   let formattedDate = post.date;
   try {
     const dateObj = new Date(post.date + 'T00:00:00Z');
@@ -1021,36 +1101,125 @@ function createBlogCard(post, index) {
       day: 'numeric'
     });
   } catch (e) {}
-  
-  const categoryLabel = post.category.charAt(0).toUpperCase() + post.category.slice(1);
-  const contentEscaped = post.content
-    .replace(/\\/g, '\\\\')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-  
+
+  const categoryLabel = (post.category || 'General').charAt(0).toUpperCase() + (post.category || 'general').slice(1);
+  // store source filename for on-demand fetch
+  const sourceFile = post._file || '';
+
+  // Build card: use a link that references the source file
   card.innerHTML = `
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
-      <h3 style="margin: 0; flex: 1;">${post.title}</h3>
-      <span style="font-size: 0.75rem; background: linear-gradient(135deg, #e5eef7, #dbeafe); padding: 0.3rem 0.6rem; border-radius: 999px; color: #0f2a44; font-weight: 600; white-space: nowrap; flex-shrink: 0;">${categoryLabel}</span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;gap:1rem;">
+      <h3 style="margin:0;flex:1;">${escapeHtml(post.title)}</h3>
+      <span style="font-size:0.75rem;background:linear-gradient(135deg,#e5eef7,#dbeafe);padding:0.3rem 0.6rem;border-radius:999px;color:#0f2a44;font-weight:600;white-space:nowrap;flex-shrink:0;">${escapeHtml(categoryLabel)}</span>
     </div>
-    <p style="font-size: 0.85rem; color: #6b7280; margin: 0.5rem 0;">${formattedDate} • ${post.author}</p>
-    <p>${post.excerpt}</p>
-    <a href="#" onclick="expandBlogPost(event, '${post.title}', \`${contentEscaped}\`); return false;" style="font-weight:600;color:#0f2a44;text-decoration:none;cursor:pointer;">Read full post →</a>
+    <p style="font-size:0.85rem;color:#6b7280;margin:0.5rem 0;">${escapeHtml(formattedDate)} • ${escapeHtml(post.author)}</p>
+    <p>${escapeHtml(post.excerpt)}</p>
+    <a href="#" class="blog-read-link" data-file="${escapeHtml(sourceFile)}" style="font-weight:600;color:#0f2a44;text-decoration:none;cursor:pointer;">Read full post →</a>
   `;
-  
+
+  // Attach click handler: fetch the markdown file on demand and show modal
+  const link = card.querySelector('.blog-read-link');
+  link.addEventListener('click', async function(e) {
+    e.preventDefault();
+
+    const idx = index;
+    const postObj = blogPosts[idx];
+    // prefer stored filename, fallback to data-file attribute
+    const sourceFile = post._file || this.dataset.file || '';
+
+    console.log('Read full clicked:', { index: idx, title: postObj?.title, sourceFile });
+
+    // Show lightweight loading modal
+    const loadingModal = document.createElement('div');
+    loadingModal.className = 'event-modal';
+    loadingModal.style.display = 'flex';
+    loadingModal.style.alignItems = 'center';
+    loadingModal.style.justifyContent = 'center';
+    loadingModal.innerHTML = `
+      <div class="modal-content" style="max-width:600px;padding:2rem;text-align:center;">
+        <p style="margin:0;color:#6b7280">Loading post…</p>
+      </div>
+    `;
+    document.body.appendChild(loadingModal);
+    document.body.style.overflow = 'hidden';
+
+    try {
+      // If content was parsed already, use it (fast)
+      if (postObj && postObj.content && postObj.content.trim().length > 0) {
+        console.log('Using cached content for:', postObj.title);
+        loadingModal.remove();
+        openBlogModal(postObj.title, postObj.content);
+        return;
+      }
+
+      // Fallback: fetch the file directly (try provided filename and data-file)
+      if (!sourceFile) throw new Error('No source filename available for this post');
+
+      // Try direct fetch with provided name
+      console.log('Fetching from _posts/' + sourceFile);
+      let resp = await fetch('_posts/' + sourceFile);
+      if (!resp.ok) {
+        // try decoding the dataset value (if it was encoded or different)
+        const alt = decodeURIComponent(this.dataset.file || '');
+        if (alt && alt !== sourceFile) {
+          console.log('Retrying fetch with alternative path:', alt);
+          resp = await fetch('_posts/' + alt);
+        }
+      }
+      if (!resp.ok) throw new Error('Fetch failed (status ' + resp.status + '). Are you running via file://? Use a local server.');
+
+      const md = await resp.text();
+      const parsed = parseMarkdownPost(md);
+      if (!parsed) throw new Error('Failed to parse markdown/frontmatter');
+
+      // Cache and show
+      postObj.content = parsed.content;
+      postObj.title = parsed.title || postObj.title;
+      loadingModal.remove();
+      openBlogModal(parsed.title, parsed.content);
+
+    } catch (err) {
+      console.error('Error loading full post:', err);
+      loadingModal.innerHTML = `
+        <div class="modal-content" style="max-width:600px;padding:2rem;text-align:center;">
+          <h3 style="margin:0 0 0.5rem 0;color:#c53030">Error loading post</h3>
+          <p style="margin:0 0 1rem 0;color:#6b7280">${escapeHtml(err.message)}</p>
+          <p style="margin:0;color:#6b7280;font-size:0.9rem;">If you're opening files locally (file://), fetch may be blocked. Run a local server (e.g. <code>python -m http.server</code>).</p>
+          <div style="margin-top:1rem;"><button onclick="this.closest('.event-modal').remove(); document.body.style.overflow='auto'" style="padding:0.6rem 1rem;border-radius:8px;border:none;background:#0f2a44;color:#fff;cursor:pointer">Close</button></div>
+        </div>
+      `;
+    }
+  });
+
   return card;
+}
+
+// Update carousel position by scrolling
+function updateBlogCarousel(skipSmooth = false) {
+  const carousel = document.getElementById('blog-carousel');
+  if (!carousel) return;
+
+  const width = carousel.clientWidth;
+  // scrollLeft works reliably with flex children
+  if (skipSmooth) {
+    carousel.scrollLeft = currentBlogIndex * width;
+  } else {
+    carousel.scrollTo({ left: currentBlogIndex * width, behavior: 'smooth' });
+  }
+
+  // Update dots
+  const dots = document.querySelectorAll('#blog-dots button');
+  dots.forEach((dot, index) => {
+    dot.style.background = index === currentBlogIndex ? '#0f2a44' : '#fff';
+  });
 }
 
 // Slide blog posts
 function slideBlogPosts(direction) {
+  if (blogPosts.length === 0) return;
   currentBlogIndex += direction;
-  
-  if (currentBlogIndex < 0) {
-    currentBlogIndex = blogPosts.length - 1;
-  } else if (currentBlogIndex >= blogPosts.length) {
-    currentBlogIndex = 0;
-  }
-  
+  if (currentBlogIndex < 0) currentBlogIndex = blogPosts.length - 1;
+  if (currentBlogIndex >= blogPosts.length) currentBlogIndex = 0;
   updateBlogCarousel();
   resetBlogAutoplay();
 }
@@ -1062,21 +1231,10 @@ function goToBlogSlide(index) {
   resetBlogAutoplay();
 }
 
-// Update carousel position
-function updateBlogCarousel() {
-  const carousel = document.getElementById('blog-carousel');
-  if (!carousel) return;
-  
-  carousel.style.transform = `translateX(-${currentBlogIndex * 100}%)`;
-  
-  const dots = document.querySelectorAll('#blog-dots button');
-  dots.forEach((dot, index) => {
-    dot.style.background = index === currentBlogIndex ? '#0f2a44' : '#fff';
-  });
-}
-
 // Auto-play carousel
 function startBlogAutoplay() {
+  clearInterval(blogAutoplayInterval);
+  if (blogPosts.length <= 1) return;
   blogAutoplayInterval = setInterval(() => {
     currentBlogIndex = (currentBlogIndex + 1) % blogPosts.length;
     updateBlogCarousel();
@@ -1089,33 +1247,25 @@ function resetBlogAutoplay() {
   startBlogAutoplay();
 }
 
-// Expand blog post (modal view)
-function expandBlogPost(event, title, content) {
-  event.preventDefault();
-  
+// Open blog modal using safe content
+function openBlogModal(title, content) {
   const html = markdownToHtml(content);
-  
   const modal = document.createElement('div');
   modal.className = 'event-modal';
   modal.style.display = 'flex';
   modal.style.alignItems = 'center';
   modal.style.justifyContent = 'center';
-  
   modal.innerHTML = `
-    <div class="modal-content" style="max-width: 900px; max-height: 80vh; overflow-y: auto;">
-      <button class="modal-close" onclick="this.closest('.event-modal').remove(); document.body.style.overflow = 'auto';">&times;</button>
-      <div style="padding: 2rem;">
-        <h2 style="color: #0f2a44; margin-bottom: 1rem;">${title}</h2>
-        <div style="line-height: 1.8; color: #4b5563;">
-          ${html}
-        </div>
+    <div class="modal-content" style="max-width:900px; max-height:80vh; overflow-y:auto;">
+      <button class="modal-close" onclick="this.closest('.event-modal').remove(); document.body.style.overflow='auto'">&times;</button>
+      <div style="padding:2rem;">
+        <h2 style="color:#0f2a44; margin-bottom:1rem;">${escapeHtml(title)}</h2>
+        <div style="line-height:1.8; color:#4b5563;">${html}</div>
       </div>
     </div>
   `;
-  
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
-  
   modal.addEventListener('click', function(e) {
     if (e.target === this) {
       this.remove();
@@ -1124,33 +1274,11 @@ function expandBlogPost(event, title, content) {
   });
 }
 
-// Basic markdown to HTML converter
-function markdownToHtml(markdown) {
-  let html = markdown;
-  
-  html = html.replace(/^### (.*?)$/gm, '<h3 style="color: #0f2a44; margin-top: 1.5rem; margin-bottom: 0.8rem;">$1</h3>');
-  html = html.replace(/^## (.*?)$/gm, '<h2 style="color: #0f2a44; margin-top: 2rem; margin-bottom: 1rem;">$1</h2>');
-  
-  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
-  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-  
-  html = html.replace(/`(.*?)`/g, '<code style="background: #f0f4f8; padding: 0.2rem 0.4rem; border-radius: 4px; color: #0f2a44; font-family: monospace;">$1</code>');
-  
-  html = html.replace(/✅/g, '<span style="color: #10b981;">✅</span>');
-  
-  html = html.replace(/^\- (.*?)$/gm, '<li style="margin-bottom: 0.4rem;">$1</li>');
-  html = html.replace(/(<li[^]*<\/li>)/s, '<ul style="padding-left: 1.5rem; margin: 1rem 0;">$1</ul>');
-  
-  const lines = html.split('\n');
-  html = lines.map(line => {
-    if (line.match(/^<[h|l|u|li]/)) return line;
-    if (line.trim() === '') return '';
-    if (!line.match(/^</)) return `<p style="margin: 0.8rem 0;">${line}</p>`;
-    return line;
-  }).join('');
-  
-  return html;
+// Helper: escape HTML for text nodes
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, function(m) {
+    return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' })[m];
+  });
 }
 
 // Initialize everything when page loads
