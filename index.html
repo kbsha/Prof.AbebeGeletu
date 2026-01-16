@@ -326,22 +326,23 @@ section ul{padding-left:1rem;font-size:0.9rem}
 <section id="blog">
   <h2>Research Notes & Insights</h2>
   <p style="max-width:800px">This section highlights concise research-oriented discussions on methods, datasets, algorithms, and theoretical insights arising from ongoing and published work. The aim is to communicate rigorously while remaining accessible to graduate students and fellow researchers.</p>
-  <div class="blog-grid">
-    <article class="blog-card">
-      <h3>Hybrid AI Models for Network Intrusion Detection</h3>
-      <p>A methodological discussion on combining CNNs, transformers, and feature-selection techniques for robust intrusion detection using modern datasets.</p>
-      <a href="#">Read research note →</a>
-    </article>
-    <article class="blog-card">
-      <h3>On the Role of Updated Datasets in AI-Based Security Research</h3>
-      <p>An analytical comparison of legacy intrusion datasets versus recent IoT and real-world traffic datasets, with implications for model generalization.</p>
-      <a href="#">Read research note →</a>
-    </article>
-    <article class="blog-card">
-      <h3>Optimization Perspectives in Model Predictive Control</h3>
-      <p>Insights into numerical optimization challenges and solution strategies in nonlinear MPC for energy and cyber-physical systems.</p>
-      <a href="#">Read research note →</a>
-    </article>
+  
+  <!-- Blog Carousel -->
+  <div style="position: relative; margin-top: 2rem;">
+    <div class="blog-carousel" id="blog-carousel" style="display: flex; gap: 1.5rem; overflow-x: hidden; scroll-behavior: smooth;">
+      <!-- Blog posts will be loaded here -->
+    </div>
+    
+    <!-- Carousel Controls -->
+    <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.5rem;">
+      <button id="blog-prev" class="carousel-nav" onclick="slideBlogPosts(-1)" style="background: linear-gradient(135deg, #0f2a44, #123a5c); color: #fff; border: none; padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: .3s;">← Previous</button>
+      
+      <div id="blog-dots" style="display: flex; gap: 0.5rem; justify-content: center;">
+        <!-- Dots will be added here -->
+      </div>
+      
+      <button id="blog-next" class="carousel-nav" onclick="slideBlogPosts(1)" style="background: linear-gradient(135deg, #0f2a44, #123a5c); color: #fff; border: none; padding: 0.8rem 1.2rem; border-radius: 8px; cursor: pointer; font-weight: 600; transition: .3s;">Next →</button>
+    </div>
   </div>
 </section>
 
@@ -846,11 +847,318 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Blog carousel variables
+let blogPosts = [];
+let currentBlogIndex = 0;
+let blogAutoplayInterval = null;
+
+// AUTO-DETECT ALL BLOG POSTS FROM _posts/ FOLDER
+async function loadBlogPosts() {
+  // Try to fetch all possible posts by checking common naming patterns
+  // We'll check the last 100 days for posts
+  
+  const postsToCheck = [];
+  const today = new Date();
+  
+  // Generate potential post filenames for the last 100 days
+  for (let i = 0; i < 100; i++) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const dateStr = date.toISOString().split('T')[0]; // YYYY-MM-DD format
+    
+    // Common post naming patterns
+    postsToCheck.push(`${dateStr}-post`);
+    postsToCheck.push(`${dateStr}-blog`);
+    postsToCheck.push(`${dateStr}-article`);
+    postsToCheck.push(`${dateStr}-research`);
+    postsToCheck.push(`${dateStr}-note`);
+    postsToCheck.push(`${dateStr}-tutorial`);
+    postsToCheck.push(`${dateStr}-guide`);
+    postsToCheck.push(`${dateStr}-insight`);
+  }
+  
+  // Also add some specific filenames
+  const specificPosts = [
+    '2025-12-28-build-portfolio-website',
+    '2025-12-27-research-insights',
+    '2025-12-26-ai-optimization',
+    '2025-12-25-machine-learning-basics',
+    'latest-post',
+    'first-post'
+  ];
+  
+  postsToCheck.push(...specificPosts);
+  
+  console.log(`Checking ${postsToCheck.length} potential post files...`);
+  
+  for (const postName of postsToCheck) {
+    const postFile = `_posts/${postName}.md`;
+    
+    try {
+      const response = await fetch(postFile);
+      
+      if (response.ok) {
+        const markdown = await response.text();
+        const post = parseMarkdownPost(markdown);
+        
+        if (post) {
+          // Check if post already exists (avoid duplicates)
+          const exists = blogPosts.some(p => p.title === post.title);
+          if (!exists) {
+            console.log(`✓ Loaded: ${post.title}`);
+            blogPosts.push(post);
+          }
+        }
+      }
+    } catch (error) {
+      // Silently continue - file doesn't exist
+    }
+  }
+  
+  // Sort posts by date (newest first)
+  blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  console.log(`Total unique posts found: ${blogPosts.length}`);
+  
+  if (blogPosts.length > 0) {
+    displayBlogCarousel();
+    startBlogAutoplay();
+  } else {
+    const carousel = document.getElementById('blog-carousel');
+    if (carousel) {
+      carousel.innerHTML = '<div class="blog-card" style="flex: 0 0 100%;"><h3>No posts available yet</h3><p>Check back soon for new research insights and articles.</p></div>';
+    }
+  }
+}
+
+// Parse markdown with YAML frontmatter
+function parseMarkdownPost(markdown) {
+  try {
+    const parts = markdown.split('---');
+    
+    if (parts.length < 3) {
+      return null;
+    }
+    
+    const frontmatterText = parts[1];
+    const content = parts.slice(2).join('---').trim();
+    
+    const metadata = {};
+    const lines = frontmatterText.split('\n');
+    
+    lines.forEach(line => {
+      line = line.trim();
+      if (!line) return;
+      
+      const colonIndex = line.indexOf(':');
+      if (colonIndex === -1) return;
+      
+      const key = line.substring(0, colonIndex).trim();
+      let value = line.substring(colonIndex + 1).trim();
+      value = value.replace(/^["']|["']$/g, '');
+      
+      metadata[key] = value;
+    });
+    
+    return {
+      title: metadata.title || 'Untitled',
+      date: metadata.date || new Date().toISOString().split('T')[0],
+      category: metadata.category || 'general',
+      author: metadata.author || 'Author',
+      excerpt: metadata.excerpt || content.substring(0, 150) + '...',
+      content: content
+    };
+    
+  } catch (error) {
+    return null;
+  }
+}
+
+// Display blog carousel
+function displayBlogCarousel() {
+  const carousel = document.getElementById('blog-carousel');
+  const dotsContainer = document.getElementById('blog-dots');
+  
+  if (!carousel || !dotsContainer) return;
+  
+  carousel.innerHTML = '';
+  dotsContainer.innerHTML = '';
+  
+  blogPosts.forEach((post, index) => {
+    const card = createBlogCard(post, index);
+    carousel.appendChild(card);
+    
+    const dot = document.createElement('button');
+    dot.style.cssText = `
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid #0f2a44;
+      background: ${index === 0 ? '#0f2a44' : '#fff'};
+      cursor: pointer;
+      transition: .3s;
+    `;
+    dot.onclick = () => goToBlogSlide(index);
+    dotsContainer.appendChild(dot);
+  });
+}
+
+// Create a blog card
+function createBlogCard(post, index) {
+  const card = document.createElement('div');
+  card.className = 'blog-card';
+  card.style.cssText = `
+    flex: 0 0 calc(100% - 0px);
+    transition: transform 0.3s ease;
+  `;
+  
+  let formattedDate = post.date;
+  try {
+    const dateObj = new Date(post.date + 'T00:00:00Z');
+    formattedDate = dateObj.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  } catch (e) {}
+  
+  const categoryLabel = post.category.charAt(0).toUpperCase() + post.category.slice(1);
+  const contentEscaped = post.content
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+  
+  card.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem;">
+      <h3 style="margin: 0; flex: 1;">${post.title}</h3>
+      <span style="font-size: 0.75rem; background: linear-gradient(135deg, #e5eef7, #dbeafe); padding: 0.3rem 0.6rem; border-radius: 999px; color: #0f2a44; font-weight: 600; white-space: nowrap; flex-shrink: 0;">${categoryLabel}</span>
+    </div>
+    <p style="font-size: 0.85rem; color: #6b7280; margin: 0.5rem 0;">${formattedDate} • ${post.author}</p>
+    <p>${post.excerpt}</p>
+    <a href="#" onclick="expandBlogPost(event, '${post.title}', \`${contentEscaped}\`); return false;" style="font-weight:600;color:#0f2a44;text-decoration:none;cursor:pointer;">Read full post →</a>
+  `;
+  
+  return card;
+}
+
+// Slide blog posts
+function slideBlogPosts(direction) {
+  currentBlogIndex += direction;
+  
+  if (currentBlogIndex < 0) {
+    currentBlogIndex = blogPosts.length - 1;
+  } else if (currentBlogIndex >= blogPosts.length) {
+    currentBlogIndex = 0;
+  }
+  
+  updateBlogCarousel();
+  resetBlogAutoplay();
+}
+
+// Go to specific slide
+function goToBlogSlide(index) {
+  currentBlogIndex = index;
+  updateBlogCarousel();
+  resetBlogAutoplay();
+}
+
+// Update carousel position
+function updateBlogCarousel() {
+  const carousel = document.getElementById('blog-carousel');
+  if (!carousel) return;
+  
+  carousel.style.transform = `translateX(-${currentBlogIndex * 100}%)`;
+  
+  const dots = document.querySelectorAll('#blog-dots button');
+  dots.forEach((dot, index) => {
+    dot.style.background = index === currentBlogIndex ? '#0f2a44' : '#fff';
+  });
+}
+
+// Auto-play carousel
+function startBlogAutoplay() {
+  blogAutoplayInterval = setInterval(() => {
+    currentBlogIndex = (currentBlogIndex + 1) % blogPosts.length;
+    updateBlogCarousel();
+  }, 5000);
+}
+
+// Reset autoplay
+function resetBlogAutoplay() {
+  clearInterval(blogAutoplayInterval);
+  startBlogAutoplay();
+}
+
+// Expand blog post (modal view)
+function expandBlogPost(event, title, content) {
+  event.preventDefault();
+  
+  const html = markdownToHtml(content);
+  
+  const modal = document.createElement('div');
+  modal.className = 'event-modal';
+  modal.style.display = 'flex';
+  modal.style.alignItems = 'center';
+  modal.style.justifyContent = 'center';
+  
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width: 900px; max-height: 80vh; overflow-y: auto;">
+      <button class="modal-close" onclick="this.closest('.event-modal').remove(); document.body.style.overflow = 'auto';">&times;</button>
+      <div style="padding: 2rem;">
+        <h2 style="color: #0f2a44; margin-bottom: 1rem;">${title}</h2>
+        <div style="line-height: 1.8; color: #4b5563;">
+          ${html}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  document.body.style.overflow = 'hidden';
+  
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.remove();
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+// Basic markdown to HTML converter
+function markdownToHtml(markdown) {
+  let html = markdown;
+  
+  html = html.replace(/^### (.*?)$/gm, '<h3 style="color: #0f2a44; margin-top: 1.5rem; margin-bottom: 0.8rem;">$1</h3>');
+  html = html.replace(/^## (.*?)$/gm, '<h2 style="color: #0f2a44; margin-top: 2rem; margin-bottom: 1rem;">$1</h2>');
+  
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+  
+  html = html.replace(/`(.*?)`/g, '<code style="background: #f0f4f8; padding: 0.2rem 0.4rem; border-radius: 4px; color: #0f2a44; font-family: monospace;">$1</code>');
+  
+  html = html.replace(/✅/g, '<span style="color: #10b981;">✅</span>');
+  
+  html = html.replace(/^\- (.*?)$/gm, '<li style="margin-bottom: 0.4rem;">$1</li>');
+  html = html.replace(/(<li[^]*<\/li>)/s, '<ul style="padding-left: 1.5rem; margin: 1rem 0;">$1</ul>');
+  
+  const lines = html.split('\n');
+  html = lines.map(line => {
+    if (line.match(/^<[h|l|u|li]/)) return line;
+    if (line.trim() === '') return '';
+    if (!line.match(/^</)) return `<p style="margin: 0.8rem 0;">${line}</p>`;
+    return line;
+  }).join('');
+  
+  return html;
+}
+
 // Initialize everything when page loads
 window.addEventListener('load', async function() {
-  await detectAndLoadGalleryImages();  // Auto-detect actual image count
-  await autoDetectAndLoadEvents();     // Auto-detect and load all events
-  initializeGalleries();               // Initialize gallery with real counts
+  await detectAndLoadGalleryImages();
+  await autoDetectAndLoadEvents();
+  await loadBlogPosts();
+  initializeGalleries();
 });
 </script>
 
