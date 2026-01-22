@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prof. Dr. D.Sc. Abebe Geletu | Academic Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Base */
+body { font-family:'Inter',sans-serif; margin:0; background:#eef2f7; color:#1f2937; line-height:1.7; }
+a { color:#0f2a44; text-decoration:none; }
+.container { max-width:1100px; margin:auto; padding:2rem; }
+
+/* Header */
+header { background:linear-gradient(135deg,#0f2a44,#123a5c); color:#fff; padding:4rem 1rem; text-align:center; }
+header h1 { font-size:2.8rem; margin-bottom:.5rem; }
+header p { margin:.3rem 0; }
+
+/* Nav */
+nav { background:rgba(255,255,255,.85); backdrop-filter:blur(10px); border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:20; }
+nav ul { list-style:none; display:flex; justify-content:center; gap:1.5rem; padding:.8rem 0; margin:0; }
+nav a { font-weight:600; position:relative; }
+nav a::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:#0f2a44; transition:.4s; }
+nav a:hover::after { width:100%; }
+
+/* Sections */
+section { margin-bottom:4rem; opacity:0; transform:translateY(50px); transition:1s ease; }
+section.show { opacity:1; transform:none; }
+
+/* Grid cards */
+.team-grid, .projects-grid, .news-grid, .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+.team-member, .project-card, .news-card, .blog-card { background:#fff; padding:1.5rem; border-radius:18px; box-shadow:0 15px 40px rgba(0,0,0,0.08); transition:.4s; }
+.team-member:hover, .project-card:hover, .news-card:hover, .blog-card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 25px 50px rgba(0,0,0,0.15); }
+.team-member img, .blog-card img { width:100%; border-radius:12px; margin-bottom:.8rem; }
+.read-more { padding:.5rem 1.2rem; background:linear-gradient(135deg,#0f2a44,#123a5c); color:#fff; border:none; border-radius:12px; cursor:pointer; font-weight:600; transition:.3s; }
+.read-more:hover { transform:translateY(-3px) scale(1.05); }
+
+/* Tags */
+.tag { display:inline-block; background:#dbeafe; padding:.4rem .9rem; border-radius:999px; margin:.3rem; transition:.4s; }
+.tag:hover { transform:translateY(-3px) scale(1.05); }
+
+/* Footer */
+footer { background:linear-gradient(135deg,#0f2a44,#123a5c); color:#fff; text-align:center; padding:3rem 1rem; }
+
+/* Modal & Carousel */
+.modal { display:none; position:fixed; z-index:100; top:0; left:0; width:100%; height:100%; overflow-y:auto; background:rgba(0,0,0,0.75); }
+.modal-content { background:#fff; margin:5% auto; padding:2rem; border-radius:20px; max-width:900px; box-shadow:0 20px 60px rgba(0,0,0,0.25); position:relative; }
+.close { position:absolute; top:1rem; right:1rem; font-size:1.8rem; cursor:pointer; color:#0f2a44; }
+.carousel { position:relative; margin-top:1rem; }
+.slides .slide { display:none; text-align:center; border-radius:12px; }
+.slides .slide.active { display:block; }
+.slides img, .slides video { width:100%; max-height:400px; object-fit:cover; margin-bottom:.5rem; border-radius:12px; }
+.prev, .next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(15,42,68,0.6); color:#fff; border:none; border-radius:50%; padding:.5rem 1rem; font-size:1.5rem; cursor:pointer; }
+.prev { left:10px; } .next { right:10px; }
+.thumbnails { display:flex; justify-content:center; gap:.5rem; margin-top:.5rem; flex-wrap:wrap; }
+.thumbnails img, .thumbnails video { width:60px; height:40px; object-fit:cover; cursor:pointer; border:2px solid transparent; border-radius:8px; }
+.thumbnails img.active, .thumbnails video.active { border-color:#0f2a44; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Prof. Dr. D.Sc. Abebe Geletu</h1>
+  <p>German Research Chair | AIMS–RIC</p>
+  <p>Autonomous Systems, Optimization, AI & Intelligent Control</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#lab">Lab</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+<section id="about">
+  <h2>About</h2>
+  <p>Prof. Dr. D.Sc. Abebe Geletu leads cutting-edge research in AI, autonomous systems, and optimization at AIMS–RIC. His work combines rigorous theory with real-world applications to solve complex engineering problems across Africa and globally.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>B.Sc. Mathematics – Addis Ababa University, Ethiopia</li>
+    <li>M.Sc. Applied Mathematics – Addis Ababa University, Ethiopia</li>
+    <li>Ph.D. Numerical Optimization – Technical University of Ilmenau, Germany</li>
+    <li>D.Sc. Systems Optimization – Technical University of Ilmenau, Germany</li>
+  </ul>
+</section>
+
+<section id="research">
+  <h2>Research Interests</h2>
+  <span class="tag">Mathematical Optimization</span>
+  <span class="tag">Model Predictive Control</span>
+  <span class="tag">Machine Learning</span>
+  <span class="tag">AI for Sustainability</span>
+  <span class="tag">Computer Vision</span>
+</section>
+
+<!-- Autonomous Systems Lab -->
+<section id="lab">
+  <h2>Autonomous Systems Lab | AIMS–RIC</h2>
+  <p>The lab focuses on hybrid AI, autonomous vehicles, intelligent control, cyber-physical systems, and sustainable energy systems.</p>
+
+  <h3>Team</h3>
+  <div class="team-grid">
+    <div class="team-member">
+      <img src="https://via.placeholder.com/300x300.png?text=Prof+Abebe" alt="Prof. Abebe Geletu">
+      <h4>Prof. Dr. D.Sc. Abebe Geletu</h4>
+      <p>Lab Director & German Research Chair</p>
+      <button class="read-more" data-modal="modal-abebe">Read More</button>
+    </div>
+    <div class="team-member">
+      <img src="https://via.placeholder.com/300x300.png?text=Kibremoges" alt="Kibremoges Fenta">
+      <h4>Mr. Kibremoges Fenta</h4>
+      <p>Ph.D. Candidate – Intelligent MPC</p>
+      <button class="read-more" data-modal="modal-kibremoges">Read More</button>
+    </div>
+  </div>
+
+  <h3>Projects</h3>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h4>Intelligent MPC for Autonomous Vehicles</h4>
+      <p>Predictive control with adaptive path planning and obstacle avoidance.</p>
+      <button class="read-more" data-modal="modal-mpc">Read More</button>
+    </div>
+  </div>
+
+  <!-- Modal with slidable gallery -->
+  <div id="modal-abebe" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h4>Prof. Dr. D.Sc. Abebe Geletu</h4>
+      <div class="carousel">
+        <div class="slides">
+          <div class="slide active"><img src="https://via.placeholder.com/800x400.png?text=Lecture+1" alt=""><p>Prof. Abebe presenting at AI conference.</p></div>
+          <div class="slide"><img src="https://via.placeholder.com/800x400.png?text=Lab+Work" alt=""><p>Hands-on lab session.</p></div>
+          <div class="slide"><video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video><p>Keynote lecture.</p></div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="thumbnails">
+          <img src="https://via.placeholder.com/150x100.png?text=Lecture+1" class="thumb active">
+          <img src="https://via.placeholder.com/150x100.png?text=Lab+Work" class="thumb">
+          <video src="https://www.w3schools.com/html/mov_bbb.mp4" class="thumb"></video>
+        </div>
+      </div>
+      <p>Full biography, publications, ORCID, Google Scholar, and downloadable CV.</p>
+    </div>
+  </div>
+
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+  <ul>
+    <li>SIAM Journal on Optimization, 2017</li>
+    <li>ESAIM: COCV, 2020</li>
+    <li>European Journal of Operational Research, 2004</li>
+  </ul>
+</section>
+
+<section id="events">
+  <h2>Events & Media</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <h4>International AI Conference 2025</h4>
+      <p>Keynote on trustworthy AI & autonomous systems.</p>
+      <img src="https://via.placeholder.com/400x200.png?text=Event+1" alt="">
+    </div>
+    <div class="news-card">
+      <h4>New Research Grant Awarded</h4>
+      <p>AI-based intrusion detection in IoT.</p>
+      <img src="https://via.placeholder.com/400x200.png?text=Grant" alt="">
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Research Insights</h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <h4>Hybrid AI Models for Intrusion Detection</h4>
+      <p>Combining CNNs and Transformers for IoT security.</p>
+      <img src="https://via.placeholder.com/400x200.png?text=Blog+1" alt="">
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>AIMS–RIC, Kigali, Rwanda</p>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 Prof. Dr. D.Sc. Abebe Geletu | AIMS–RIC</p>
+</footer>
+
+<script>
+// Scroll reveal
+const sections = document.querySelectorAll('section');
+function reveal() { sections.forEach(s => { const r = s.getBoundingClientRect(); if(r.top < window.innerHeight-80) s.classList.add('show'); }); }
+window.addEventListener('scroll', reveal); reveal();
+
+// Modal & carousel
+const buttons = document.querySelectorAll('.read-more');
+const modals = document.querySelectorAll('.modal');
+const closes = document.querySelectorAll('.close');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const modal = document.getElementById(btn.dataset.modal);
+    modal.style.display = 'block';
+    const slides = modal.querySelectorAll('.slide');
+    let index = 0; slides.forEach(s => s.classList.remove('active')); slides[index].classList.add('active');
+    const prev = modal.querySelector('.prev');
+    const next = modal.querySelector('.next');
+    const thumbs = modal.querySelectorAll('.thumbnails img, .thumbnails video');
+    function showSlide(i) { slides.forEach(s=>s.classList.remove('active')); slides[i].classList.add('active'); thumbs.forEach(t=>t.classList.remove('active')); if(thumbs[i]) thumbs[i].classList.add('active'); index=i; }
+    prev.onclick=()=>showSlide((index-1+slides.length)%slides.length);
+    next.onclick=()=>showSlide((index+1)%slides.length);
+    thumbs.forEach((t,i)=>t.onclick=()=>showSlide(i));
+  });
+});
+closes.forEach(span=>{ span.addEventListener('click',()=>{ span.parentElement.parentElement.style.display='none'; }); });
+window.addEventListener('click',e=>{ modals.forEach(modal=>{ if(e.target===modal) modal.style.display='none'; }); });
+</script>
+
+</body>
+</html>

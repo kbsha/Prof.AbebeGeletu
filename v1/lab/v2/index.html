@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================
+       BASIC META
+  ========================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Official academic profile of Prof. Dr. D.Sc. Abebe Geletu – Autonomous Systems, Optimization, AI, and Intelligent Control." />
+  <meta name="author" content="Prof. Dr. D.Sc. Abebe Geletu" />
+
+  <title>Prof. Dr. D.Sc. Abebe Geletu | Academic Profile</title>
+
+  <!-- =========================
+       FONTS
+  ========================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- =========================
+       GLOBAL STYLES
+  ========================== -->
+  <style>
+    :root{
+      --primary:#0f2a44;
+      --secondary:#123a5c;
+      --accent:#2563eb;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(180deg,var(--bg),#eef2f7);
+      color:var(--text);
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+
+    img{max-width:100%;display:block}
+    h1,h2,h3{line-height:1.3;color:var(--white)}
+
+    /* =========================
+       HEADER / HERO
+    ========================== */
+    header{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:#fff;
+      padding:5rem 1rem 4rem;
+      position:relative;
+      overflow:hidden;
+    }
+
+    header::after{
+      content:'';
+      position:absolute;
+      inset:-50%;
+      background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.12),transparent 40%);
+      animation:float 16s linear infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(60px)}
+      100%{transform:translateY(0)}
+    }
+
+    .hero{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:3rem;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero h1{font-size:2.8rem;margin-bottom:.5rem;animation:fadeDown 1s ease}
+    .hero p{margin:.3rem 0;animation:fadeUp 1.2s ease}
+
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1}}
+
+    .hero-photo img{
+      width:260px;
+      height:260px;
+      object-fit:cover;
+      border-radius:50%;
+      margin:auto;
+      box-shadow:0 30px 60px rgba(0,0,0,.35);
+      transition:.6s;
+    }
+
+    .hero-photo img:hover{
+      transform:rotateY(10deg) rotateX(5deg) scale(1.05);
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+    nav{
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #e5e7eb;
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    nav ul{
+      max-width:1200px;
+      margin:auto;
+      padding:.9rem 1rem;
+      list-style:none;
+      display:flex;
+      gap:1.6rem;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      text-decoration:none;
+      font-weight:600;
+      color:var(--primary);
+      position:relative;
+    }
+
+    nav a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:var(--primary);
+      transition:.35s;
+    }
+
+    nav a:hover::after{width:100%}
+
+    /* =========================
+       LAYOUT
+    ========================== */
+    .container{
+      max-width:1100px;
+      margin:auto;
+      padding:3.5rem 1rem;
+    }
+
+    section{
+      margin-bottom:4.5rem;
+      opacity:0;
+      transform:translateY(50px);
+      transition:1s ease;
+    }
+
+    section.show{opacity:1;transform:none}
+
+    /* =========================
+       CARDS / GRIDS
+    ========================== */
+    .news-grid,.blog-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:2rem;
+      margin-top:2rem;
+    }
+
+    .card{
+      background:var(--card);
+      padding:2rem;
+      border-radius:var(--radius);
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+      transition:.45s;
+    }
+
+    .card:hover{transform:translateY(-10px) scale(1.03)}
+
+    .card span{font-size:.9rem;color:var(--muted)}
+
+    /* =========================
+       STATS
+    ========================== */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1.8rem;
+      margin:4rem 0;
+    }
+
+    .stat{
+      background:#fff;
+      padding:2.2rem;
+      border-radius:var(--radius);
+      text-align:center;
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+      transition:.4s;
+    }
+
+    .stat:hover{transform:translateY(-10px) scale(1.03)}
+
+    .stat h3{font-size:2.6rem;margin:0;color:var(--primary)}
+
+    /* =========================
+       TAGS
+    ========================== */
+    .tag{
+      display:inline-block;
+      background:linear-gradient(135deg,#e5eef7,#dbeafe);
+      padding:.45rem .95rem;
+      border-radius:999px;
+      margin:.35rem;
+      font-size:.95rem;
+      transition:.35s;
+    }
+
+    .tag:hover{transform:translateY(-5px) scale(1.08)}
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:#fff;
+      padding:3.5rem 1rem;
+    }
+
+    footer p{margin:.4rem 0}
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;text-align:center}
+      .hero-photo img{margin-top:2rem}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero">
+    <div>
+      <h1>Prof. Dr. D.Sc. Abebe Geletu</h1>
+      <p><strong>German Research Chair</strong></p>
+      <p>AIMS Research & Innovation Center (AIMS–RIC), Kigali</p>
+      <p>Autonomous Systems · Optimization · AI · Intelligent Control</p>
+    </div>
+    <div class="hero-photo">
+      <img src="cover.jpg" alt="Profile photo of Prof. Abebe Geletu">
+    </div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#students">Supervision</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="lab.html">LAB</a></li>
+    <li><a href="#events">Events</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+  <section id="news">
+    <h2>Latest News & Announcements</h2>
+    <div class="news-grid">
+      <article class="card">
+        <h3>Keynote Speaker – International AI Conference 2025</h3>
+        <p>Invited keynote on trustworthy AI and cyber-physical systems.</p>
+        <span>January 2025</span>
+      </article>
+      <article class="card">
+        <h3>New Research Grant Awarded</h3>
+        <p>Funded project on AI-based intrusion detection for IoT environments.</p>
+        <span>December 2024</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><h3 data-count="25">0</h3><p>Years of Research</p></div>
+    <div class="stat"><h3 data-count="120">0</h3><p>Publications</p></div>
+    <div class="stat"><h3 data-count="30">0</h3><p>PhD & MSc Supervised</p></div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <p><strong>Prof. Dr. D.Sc. Abebe Geletu</strong> is the German Research Chair at the <strong>African Institute for Mathematical Sciences (AIMS) Rwanda</strong> and a senior academic leader at the <strong>AIMS Research & Innovation Center (AIMS–RIC)</strong>.</p>
+    <p>His work lies at the intersection of <strong>mathematical optimization, autonomous systems, artificial intelligence, and intelligent control</strong>, with a strong focus on translating rigorous theory into practical, real‑world impact.</p>
+    <p>He is particularly interested in developing scalable, data‑driven, and optimization‑based methodologies for complex cyber‑physical systems, energy systems, and sustainable infrastructures, with relevance to both African and global challenges.</p>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul>
+      <li>B.Sc. Mathematics – Addis Ababa University</li>
+      <li>M.Sc. Applied Mathematics – Addis Ababa University</li>
+      <li>Ph.D. Numerical Optimization – TU Ilmenau, Germany</li>
+      <li>D.Sc. (Habilitation) Systems Optimization – TU Ilmenau, Germany</li>
+    </ul>
+  </section>
+
+  <section id="research">
+    <h2>Research Agenda</h2>
+    <p>My research agenda aims to advance the theory and practice of <strong>optimization‑driven intelligent systems</strong> that operate reliably under uncertainty, limited resources, and real‑world constraints.</p>
+    <h3>Core Themes</h3>
+    <ul>
+      <li>Optimization methods for large‑scale, nonlinear, and stochastic systems</li>
+      <li>Model Predictive Control (MPC) for autonomous and cyber‑physical systems</li>
+      <li>Hybrid AI models combining learning and optimization</li>
+      <li>Data‑driven decision‑making for sustainable energy and infrastructure systems</li>
+    </ul>
+    <h3>Methodological Focus</h3>
+    <p>The work integrates numerical optimization, control theory, machine learning, and system identification, with emphasis on interpretability, robustness, and deployability.</p>
+    <h3>Impact & Vision</h3>
+    <p>A central goal is to contribute tools and methodologies that support sustainable development, resilient infrastructure, and intelligent automation, particularly in emerging and resource‑constrained environments.</p>
+    <div>
+      <span class="tag">Mathematical Optimization</span>
+      <span class="tag">Model Predictive Control</span>
+      <span class="tag">Artificial Intelligence</span>
+      <span class="tag">Autonomous Systems</span>
+      <span class="tag">Sustainable Energy</span>
+      <span class="tag">Cyber‑Physical Systems</span>
+    </div>
+  </section>
+
+  <section id="students">
+    <h2>Supervision & Opportunities</h2>
+    <p>I supervise <strong>PhD, Postdoctoral, and MSc students</strong> in areas related to optimization, control, artificial intelligence, and autonomous systems. My supervision philosophy emphasizes strong theoretical foundations, practical relevance, and international research exposure.</p>
+
+    <h3>Current Supervision</h3>
+    <ul>
+      <li>PhD and Postdoctoral researchers at <strong>AIMS Rwanda (AIMS–RIC)</strong> in intelligent control, optimization, and sustainable systems</li>
+      <li>PhD and MSc students at <strong>Addis Ababa University</strong> in applied mathematics, optimization, and data-driven modeling</li>
+    </ul>
+
+    <h3>Prospective Students & Researchers</h3>
+    <p>I am regularly interested in motivated candidates with backgrounds in:</p>
+    <ul>
+      <li>Applied mathematics, optimization, or control theory</li>
+      <li>Machine learning and data-driven systems</li>
+      <li>Engineering applications in energy, cyber-physical, or autonomous systems</li>
+    </ul>
+    <p>Prospective candidates are encouraged to contact me with a concise research statement and CV.</p>
+  </section>
+
+
+  <!-- Events Section -->
+  <section id="events">
+    <h2>Events & Academic Engagement</h2>
+    <p>Selected invited talks, workshops, and leadership activities with supporting media.</p>
+
+    <h3>Invited Talks & Keynotes</h3>
+    <ul>
+      <li>AI-Based Intrusion Detection: From Benchmarks to Deployment — <strong>Invited Speaker</strong>, International Conference on AI Security, 2025</li>
+      <li>Hybrid Learning Models for Secure Intelligent Systems — <strong>Keynote</strong>, Workshop on Intelligent Control, 2025</li>
+    </ul>
+
+    <h3>Workshops & Academic Leadership</h3>
+    <ul>
+      <li>Summer School on AI for Cybersecurity — <strong>Co-Organizer</strong>, African Institute for Mathematical Sciences, 2024</li>
+    </ul>
+
+    <h3>Panels & Policy Engagement</h3>
+    <ul>
+      <li>AI Security and Infrastructure Resilience — <strong>Panelist</strong>, Policy Forum, 2024</li>
+    </ul>
+
+    <h3>Event Photos</h3>
+    <div class="event-gallery" >
+      <figure>
+        <img src="287A1046.jpg" alt="Keynote at AI Security 2025">
+        <figcaption>Keynote, International Conference on AI, 2025</figcaption>
+      </figure>
+      <figure>
+        <img src="5.JPG" alt="Optimization Workshop 2025">
+        <figcaption>Workshop, 2024</figcaption>
+      </figure>
+    </div>
+
+    <h3>Event Videos</h3>
+    <div class="event-video">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Keynote on AI-Based Intrusion Detection" frameborder="0" allowfullscreen></iframe>
+      <p>Keynote Speaker, International AI Security Conference, 2025</p>
+    </div>
+  </section>
+
+  <section id="talks">
+    <h2>Talks, Service & Leadership</h2>
+    <p>This section highlights selected academic leadership activities, invited talks, and professional service contributing to the international research community.</p>
+
+    <h3>Invited & Keynote Talks</h3>
+    <ul>
+      <li>Keynote Speaker, International Conference on Artificial Intelligence and Cyber-Physical Systems, 2025</li>
+      <li>Invited Speaker, Workshop on Optimization and Intelligent Control, Europe</li>
+      <li>Seminar Speaker, Autonomous and Sustainable Systems Series</li>
+    </ul>
+
+    <h3>Editorial & Professional Service</h3>
+    <ul>
+      <li>Reviewer for leading international journals in optimization, control, and artificial intelligence</li>
+      <li>Program committee member for international conferences in applied mathematics and AI</li>
+      <li>External reviewer for doctoral and postdoctoral research proposals</li>
+    </ul>
+
+    <h3>Leadership & Community Engagement</h3>
+    <ul>
+      <li>Research leadership at AIMS Research & Innovation Center (AIMS–RIC)</li>
+      <li>Mentorship of early-career researchers and graduate students</li>
+      <li>Promotion of interdisciplinary and Africa-focused research collaborations</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <p>Selected peer‑reviewed publications in leading international journals and conferences. A complete and up‑to‑date list is available via Google Scholar.</p>
+    <ul>
+      <li><strong>SIAM Journal on Optimization</strong> – Optimization theory and algorithms for constrained systems</li>
+      <li><strong>ESAIM: Control, Optimisation and Calculus of Variations</strong> – Control and variational methods</li>
+      <li><strong>European Journal of Operational Research</strong> – Applied optimization and decision sciences</li>
+    </ul>
+    <p><em>Full publication list, preprints, and citation metrics will be provided via external academic profiles.</em></p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact & Academic Profiles</h2>
+    <p><strong>Affiliation:</strong> AIMS Rwanda, Kigali</p>
+    <p><strong>Email:</strong> via institutional contact</p>
+
+    <p><strong>Academic Profiles:</strong></p>
+    <ul>
+      <li><a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a> (publication list & citations)</li>
+      <li><a href="https://orcid.org" target="_blank" rel="noopener">ORCID</a> (persistent researcher identifier)</li>
+      <li><a href="https://www.researchgate.net" target="_blank" rel="noopener">ResearchGate</a></li>
+    </ul>
+
+    <p><strong>Curriculum Vitae:</strong></p>
+    <p><a href="assets/cv/Abebe_Geletu_CV.pdf" target="_blank" rel="noopener">Download Academic CV (PDF)</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Prof. Dr. D.Sc. Abebe Geletu</p>
+    <p>AIMS Research & Innovation Center</p>
+  </div>
+</footer>
+
+<script>
+  /* Scroll reveal */
+  const sections = document.querySelectorAll('section');
+  const reveal = () => {
+    sections.forEach(s => {
+      const r = s.getBoundingClientRect();
+      if (r.top < window.innerHeight - 80) s.classList.add('show');
+    });
+  };
+  window.addEventListener('scroll', reveal);
+  reveal();
+
+  /* Animated counters */
+  document.querySelectorAll('[data-count]').forEach(counter => {
+    let n = 0;
+    const target = +counter.dataset.count;
+    const step = Math.ceil(target / 80);
+    const interval = setInterval(() => {
+      n += step;
+      if (n >= target) {
+        counter.textContent = target;
+        clearInterval(interval);
+      } else {
+        counter.textContent = n;
+      }
+    }, 25);
+  });
+</script>
+
+</body>
+</html>
