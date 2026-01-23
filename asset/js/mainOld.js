@@ -1069,13 +1069,6 @@ function escapeHtml(text) {
   });
 }
 
-// Initialize everything when page loads
-window.addEventListener('load', async function() {
-  await detectAndLoadGalleryImages();
-  await autoDetectAndLoadEvents();
-  await loadBlogPosts();
-  initializeGalleries();
-});
 
 
 // document.addEventListener('DOMContentLoaded', async () => {
@@ -1183,6 +1176,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startAutoplay();
 });
+
+
+
+
+// Initialize everything when page loads
+window.addEventListener('load', async function() {
+  await detectAndLoadGalleryImages();
+  await autoDetectAndLoadEvents();
+  await loadBlogPosts();
+  initializeGalleries();
+});
+
 
 
 
