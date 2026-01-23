@@ -520,7 +520,7 @@ async function scanPostCandidates(days = 60) {
 // Try to read a directory listing from the server (if enabled). Returns array of filenames (including .md)
 async function fetchPostsFromDirListing() {
   try {
-    const resp = await fetch('./_posts/index.json');
+    const resp = await fetch('_posts/');
     if (!resp.ok) {
       console.warn('Directory listing not available (_posts/ returned ' + resp.status + ')');
       return [];
@@ -980,3 +980,85 @@ document.addEventListener('DOMContentLoaded', async () => {
 //     container.appendChild(card);
 //   });
 // }
+
+
+
+
+
+// to fetch news to index from news html
+
+let newsIndex = 0;
+let newsItems = [];
+
+async function loadNewsFromHtml() {
+  try {
+    const resp = await fetch('news.html');
+    if (!resp.ok) throw new Error('Failed to fetch news.html');
+
+    const html = await resp.text();
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+
+    newsItems = Array.from(
+      temp.querySelectorAll('#news-source .news-item')
+    ).slice(0, 5); // 👈 limit to latest 5
+
+    renderNewsSlider();
+    startNewsAutoplay();
+  } catch (err) {
+    console.error('News load error:', err);
+  }
+}
+
+function renderNewsSlider() {
+  const track = document.getElementById('news-track');
+  const dots = document.getElementById('news-dots');
+  if (!track || !dots) return;
+
+  track.innerHTML = '';
+  dots.innerHTML = '';
+
+  newsItems.forEach((item, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'news-slide';
+    slide.innerHTML = item.innerHTML;
+    track.appendChild(slide);
+
+    const dot = document.createElement('button');
+    dot.className = i === 0 ? 'active' : '';
+    dot.onclick = () => goToNews(i);
+    dots.appendChild(dot);
+  });
+
+  updateNewsPosition(true);
+}
+
+function updateNewsPosition(skipAnim = false) {
+  const track = document.getElementById('news-track');
+  const width = track.parentElement.clientWidth;
+
+  if (skipAnim) {
+    track.style.transform = `translateX(-${newsIndex * width}px)`;
+  } else {
+    track.style.transition = 'transform 0.5s ease';
+    track.style.transform = `translateX(-${newsIndex * width}px)`;
+  }
+
+  document.querySelectorAll('.news-dots button').forEach((d, i) => {
+    d.classList.toggle('active', i === newsIndex);
+  });
+}
+
+function goToNews(i) {
+  newsIndex = i;
+  updateNewsPosition();
+}
+
+function startNewsAutoplay() {
+  setInterval(() => {
+    newsIndex = (newsIndex + 1) % newsItems.length;
+    updateNewsPosition();
+  }, 5000);
+}
+
+window.addEventListener('load', loadNewsFromHtml);
