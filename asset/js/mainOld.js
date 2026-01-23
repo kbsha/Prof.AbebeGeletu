@@ -1070,22 +1070,24 @@ function escapeHtml(text) {
 }
 
 // Initialize everything when page loads
-// window.addEventListener('load', async function() {
-//   await detectAndLoadGalleryImages();
-//   await autoDetectAndLoadEvents();
-//   await loadBlogPosts();
-//   initializeGalleries();
-// });
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    await loadBlogPosts();
-    await autoDetectAndLoadEvents();
-    await detectAndLoadGalleryImages();
-    initializeGalleries();
-  } catch (e) {
-    console.error('Init error:', e);
-  }
+window.addEventListener('load', async function() {
+  await detectAndLoadGalleryImages();
+  await autoDetectAndLoadEvents();
+  await loadBlogPosts();
+  initializeGalleries();
 });
+
+
+// document.addEventListener('DOMContentLoaded', async () => {
+//   try {
+//     await loadBlogPosts();
+//     await autoDetectAndLoadEvents();
+//     await detectAndLoadGalleryImages();
+//     initializeGalleries();
+//   } catch (e) {
+//     console.error('Init error:', e);
+//   }
+// });
 
 
 
