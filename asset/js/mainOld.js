@@ -1140,4 +1140,49 @@ window.addEventListener('load', async function() {
 // }
 
 
+// partners slider 
+
+// Fade-in on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // fade in only once
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Auto-slide & navigation (existing code, unchanged)
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('partnersSlider');
+  const prev = document.querySelector('.partners-nav.prev');
+  const next = document.querySelector('.partners-nav.next');
+
+  if (!slider) return;
+
+  const slideAmount = 220;
+  let autoplay;
+
+  function slideNext() {
+    slider.scrollBy({ left: slideAmount, behavior: 'smooth' });
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
+      setTimeout(() => slider.scrollTo({ left: 0, behavior: 'smooth' }), 800);
+    }
+  }
+
+  function startAutoplay() { autoplay = setInterval(slideNext, 3500); }
+  function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
+
+  prev.addEventListener('click', () => { slider.scrollBy({ left: -slideAmount, behavior: 'smooth' }); resetAutoplay(); });
+  next.addEventListener('click', () => { slideNext(); resetAutoplay(); });
+
+  slider.addEventListener('mouseenter', () => clearInterval(autoplay));
+  slider.addEventListener('mouseleave', startAutoplay);
+
+  startAutoplay();
+});
+
+
 
