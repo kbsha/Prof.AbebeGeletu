@@ -520,7 +520,7 @@ async function scanPostCandidates(days = 60) {
 // Try to read a directory listing from the server (if enabled). Returns array of filenames (including .md)
 async function fetchPostsFromDirListing() {
   try {
-    const resp = await fetch('_posts/index.json');
+    const resp = await fetch('./_posts/index.json');
     if (!resp.ok) {
       console.warn('Directory listing not available (_posts/ returned ' + resp.status + ')');
       return [];
