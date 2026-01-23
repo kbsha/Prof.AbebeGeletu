@@ -1,5 +1,72 @@
 
 // slide the hero with photos 
+// window.addEventListener('DOMContentLoaded', () => {
+//   const slides = document.querySelectorAll('.hero-slide');
+//   const dots = document.querySelector('.hero-dots');
+//   const prev = document.querySelector('.hero-prev');
+//   const next = document.querySelector('.hero-next');
+
+//   let current = 0;
+
+//   slides.forEach((_, idx) => {
+//     const dot = document.createElement('button');
+//     dot.addEventListener('click', () => setSlide(idx));
+//     dots.appendChild(dot);
+//   });
+
+//   const dotButtons = dots.querySelectorAll('button');
+
+//   function setSlide(index) {
+//     slides[current].classList.remove('active');
+//     dotButtons[current].classList.remove('active');
+
+//     current = index;
+
+//     slides[current].classList.add('active');
+//     dotButtons[current].classList.add('active');
+//   }
+
+//   next.addEventListener('click', () => setSlide((current + 1) % slides.length));
+//   prev.addEventListener('click', () => setSlide((current - 1 + slides.length) % slides.length));
+
+//   setSlide(0);
+// });
+
+
+//   //sidable hero slider
+  
+//   const slides = document.querySelectorAll('.hero-slide');
+//   const dots = document.querySelector('.hero-dots');
+//   const prev = document.querySelector('.hero-prev');
+//   const next = document.querySelector('.hero-next');
+
+//   let current = 0;
+
+//   // Create dots
+//   slides.forEach((_, idx) => {
+//     const dot = document.createElement('button');
+//     dot.addEventListener('click', () => setSlide(idx));
+//     dots.appendChild(dot);
+//   });
+
+//   const dotButtons = dots.querySelectorAll('button');
+
+//   function setSlide(index) {
+//     slides[current].classList.remove('active');
+//     dotButtons[current].classList.remove('active');
+
+//     current = index;
+
+//     slides[current].classList.add('active');
+//     dotButtons[current].classList.add('active');
+//   }
+
+//   next.addEventListener('click', () => setSlide((current + 1) % slides.length));
+//   prev.addEventListener('click', () => setSlide((current - 1 + slides.length) % slides.length));
+
+//   // initialize
+//   setSlide(0);
+
 window.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelector('.hero-dots');
@@ -7,65 +74,71 @@ window.addEventListener('DOMContentLoaded', () => {
   const next = document.querySelector('.hero-next');
 
   let current = 0;
+  let autoplay = null;
+  const INTERVAL = 5000; // 5 seconds
 
-  slides.forEach((_, idx) => {
-    const dot = document.createElement('button');
-    dot.addEventListener('click', () => setSlide(idx));
-    dots.appendChild(dot);
-  });
-
-  const dotButtons = dots.querySelectorAll('button');
-
-  function setSlide(index) {
-    slides[current].classList.remove('active');
-    dotButtons[current].classList.remove('active');
-
-    current = index;
-
-    slides[current].classList.add('active');
-    dotButtons[current].classList.add('active');
-  }
-
-  next.addEventListener('click', () => setSlide((current + 1) % slides.length));
-  prev.addEventListener('click', () => setSlide((current - 1 + slides.length) % slides.length));
-
-  setSlide(0);
-});
-
-
-  //sidable hero slider
-  
-  const slides = document.querySelectorAll('.hero-slide');
-  const dots = document.querySelector('.hero-dots');
-  const prev = document.querySelector('.hero-prev');
-  const next = document.querySelector('.hero-next');
-
-  let current = 0;
+  if (!slides.length) return;
 
   // Create dots
   slides.forEach((_, idx) => {
     const dot = document.createElement('button');
-    dot.addEventListener('click', () => setSlide(idx));
+    dot.addEventListener('click', () => {
+      setSlide(idx);
+      restartAutoplay();
+    });
     dots.appendChild(dot);
   });
 
   const dotButtons = dots.querySelectorAll('button');
 
   function setSlide(index) {
-    slides[current].classList.remove('active');
-    dotButtons[current].classList.remove('active');
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+
+    dotButtons.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
 
     current = index;
-
-    slides[current].classList.add('active');
-    dotButtons[current].classList.add('active');
   }
 
-  next.addEventListener('click', () => setSlide((current + 1) % slides.length));
-  prev.addEventListener('click', () => setSlide((current - 1 + slides.length) % slides.length));
+  function nextSlide() {
+    setSlide((current + 1) % slides.length);
+  }
 
-  // initialize
+  function prevSlide() {
+    setSlide((current - 1 + slides.length) % slides.length);
+  }
+
+  function startAutoplay() {
+    autoplay = setInterval(nextSlide, INTERVAL);
+  }
+
+  function restartAutoplay() {
+    clearInterval(autoplay);
+    startAutoplay();
+  }
+
+  // Controls
+  next?.addEventListener('click', () => {
+    nextSlide();
+    restartAutoplay();
+  });
+
+  prev?.addEventListener('click', () => {
+    prevSlide();
+    restartAutoplay();
+  });
+
+  // Init
   setSlide(0);
+  startAutoplay();
+});
+
+
+
+  
  
 // mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');
