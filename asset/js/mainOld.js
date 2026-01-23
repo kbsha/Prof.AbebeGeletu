@@ -520,7 +520,7 @@ async function scanPostCandidates(days = 60) {
 // Try to read a directory listing from the server (if enabled). Returns array of filenames (including .md)
 async function fetchPostsFromDirListing() {
   try {
-    const resp = await fetch('_posts/');
+    const resp = await fetch('_posts/index.json');
     if (!resp.ok) {
       console.warn('Directory listing not available (_posts/ returned ' + resp.status + ')');
       return [];
@@ -914,12 +914,23 @@ function escapeHtml(text) {
 }
 
 // Initialize everything when page loads
-window.addEventListener('load', async function() {
-  await detectAndLoadGalleryImages();
-  await autoDetectAndLoadEvents();
-  await loadBlogPosts();
-  initializeGalleries();
+// window.addEventListener('load', async function() {
+//   await detectAndLoadGalleryImages();
+//   await autoDetectAndLoadEvents();
+//   await loadBlogPosts();
+//   initializeGalleries();
+// });
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadBlogPosts();
+    await autoDetectAndLoadEvents();
+    await detectAndLoadGalleryImages();
+    initializeGalleries();
+  } catch (e) {
+    console.error('Init error:', e);
+  }
 });
+
 
 
 
