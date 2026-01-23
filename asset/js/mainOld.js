@@ -275,7 +275,7 @@ async function detectAndLoadGalleryImages() {
   const eventFolders = [
     { id: 'event1', folder: 'AI_confrence' },
     { id: 'event2', folder: 'AI_workshop' },
-    { id: 'event3', folder: 'Lab-Demo1' }
+    { id: 'event3', folder: 'Lab-Demo' }
   ];
   
   for (const event of eventFolders) {
@@ -347,10 +347,10 @@ const galleryDataOld = {
     { type: 'image', src: 'asset/events/AI_workshop/4.JPG', caption: 'Group work and collaborative problem solving' }
   ],
   event3: [
-    { type: 'image', src: 'asset/events/Lab-Demo1/1.jpg', caption: 'Opening ceremony - Sustainable AI Conference' },
-    { type: 'image', src: 'asset/events/Lab-Demo1/2.jpg', caption: 'Panel discussion on renewable energy optimization' },
-    { type: 'image', src: 'asset/events/Lab-Demo1/3.jpg', caption: 'Live demonstration of AI energy systems' },
-    { type: 'image', src: 'asset/events/Lab-Demo1/4.jpg', caption: 'Networking session with international experts' }
+    { type: 'image', src: 'asset/events/Lab-Demo/1.jpg', caption: 'Opening ceremony - Sustainable AI Conference' },
+    { type: 'image', src: 'asset/events/Lab-Demo/2.jpg', caption: 'Panel discussion on renewable energy optimization' },
+    { type: 'image', src: 'asset/events/Lab-Demo/3.jpg', caption: 'Live demonstration of AI energy systems' },
+    { type: 'image', src: 'asset/events/Lab-Demo/4.jpg', caption: 'Networking session with international experts' }
   ]
 };
 
@@ -358,7 +358,7 @@ let galleryIndexOld = { event1: 0, event2: 0, event3: 0 };
 
 // AUTO-DETECT EVENT FILES AND LOAD EVERYTHING FROM THEM
 async function autoDetectAndLoadEvents() {
-  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo1'];
+  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo'];
   let eventIndex = 1;
   
   for (const folderName of eventFiles) {
@@ -445,7 +445,7 @@ function createEventCard(event) {
 
 // Load full event content from events/ files
 async function loadEventContent(eventId) {
-  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo1'];
+  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo'];
   const fileIndex = parseInt(eventId.replace('event', '')) - 1;
   
   if (fileIndex < 0 || fileIndex >= eventFiles.length) return;
@@ -604,7 +604,7 @@ document.addEventListener('click', function(e) {
 
 // Auto-generate modals for detected events
 document.addEventListener('DOMContentLoaded', function() {
-  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo1'];
+  const eventFiles = ['AI_confrence', 'AI_workshop', 'Lab-Demo'];
   const container = document.body;
   
   eventFiles.forEach((file, index) => {
