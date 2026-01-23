@@ -1188,6 +1188,24 @@ window.addEventListener('load', async function() {
   initializeGalleries();
 });
 
+// for hero background
+
+function applyHeroBackgrounds() {
+  document.querySelectorAll('.hero-slide').forEach(slide => {
+    const bg = slide.dataset.bg;
+    if (bg) {
+      slide.style.backgroundImage = `url('${bg}')`;
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  applyHeroBackgrounds();
+  initHeroSlider();
+  initNavToggle();
+  initScrollReveal();
+  initCounters();
+});
 
 
 
