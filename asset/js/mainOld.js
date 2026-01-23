@@ -924,48 +924,48 @@ window.addEventListener('load', async function() {
 
 
 
-async function loadNewsCards() {
-  try {
-    const response = await fetch('news.html');
-    if (!response.ok) throw new Error('Failed to fetch news.html');
+// async function loadNewsCards() {
+//   try {
+//     const response = await fetch('news.html');
+//     if (!response.ok) throw new Error('Failed to fetch news.html');
 
-    const html = await response.text();
+//     const html = await response.text();
 
-    // Create a temporary container to parse the HTML
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = html;
+//     // Create a temporary container to parse the HTML
+//     const tempDiv = document.createElement('div');
+//     tempDiv.innerHTML = html;
 
-    // Select individual news items (assuming they have a class like .news-item)
-    const newsItems = tempDiv.querySelectorAll('.news-item');
+//     // Select individual news items (assuming they have a class like .news-item)
+//     const newsItems = tempDiv.querySelectorAll('.news-item');
 
-    const newsData = Array.from(newsItems).map(item => ({
-      title: item.querySelector('.news-title')?.textContent || 'Untitled',
-      date: item.querySelector('.news-date')?.textContent || '',
-      excerpt: item.querySelector('.news-excerpt')?.textContent || '',
-      link: item.querySelector('a')?.href || '#'
-    }));
+//     const newsData = Array.from(newsItems).map(item => ({
+//       title: item.querySelector('.news-title')?.textContent || 'Untitled',
+//       date: item.querySelector('.news-date')?.textContent || '',
+//       excerpt: item.querySelector('.news-excerpt')?.textContent || '',
+//       link: item.querySelector('a')?.href || '#'
+//     }));
 
-    displayNewsCards(newsData);
+//     displayNewsCards(newsData);
 
-  } catch (error) {
-    console.error('Error loading news:', error);
-  }
-}
+//   } catch (error) {
+//     console.error('Error loading news:', error);
+//   }
+// }
 
 
-function displayNewsCards(newsData) {
-  const container = document.getElementById('blog-carousel');
-  container.innerHTML = '';
+// function displayNewsCards(newsData) {
+//   const container = document.getElementById('blog-carousel');
+//   container.innerHTML = '';
 
-  newsData.forEach(news => {
-    const card = document.createElement('div');
-    card.className = 'blog-card';
-    card.innerHTML = `
-      <h3>${news.title}</h3>
-      <p>${news.excerpt}</p>
-      <span>${news.date}</span>
-      <a href="${news.link}" class="btn-details">Read more</a>
-    `;
-    container.appendChild(card);
-  });
-}
+//   newsData.forEach(news => {
+//     const card = document.createElement('div');
+//     card.className = 'blog-card';
+//     card.innerHTML = `
+//       <h3>${news.title}</h3>
+//       <p>${news.excerpt}</p>
+//       <span>${news.date}</span>
+//       <a href="${news.link}" class="btn-details">Read more</a>
+//     `;
+//     container.appendChild(card);
+//   });
+// }
