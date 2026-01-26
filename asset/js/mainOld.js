@@ -1286,4 +1286,5 @@ document.addEventListener("DOMContentLoaded", () => {
   render();
 });
 
+// hide bar during scroll
 
