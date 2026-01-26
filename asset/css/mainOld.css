@@ -1879,7 +1879,7 @@ h2 {
   top: 45%;
   width: 52px;
   height: 52px;
-  background: #2563eb;
+  background: #5e4425;
   color: #fff;
   font-size: 1.5rem;
   border-radius: 50%;
@@ -1903,7 +1903,7 @@ h2 {
   top: 100px;
   width: 320px;
   height: 70vh;
-  background: #ffffff;
+  background: wheat;
   border-radius: 18px 0 0 18px;
   box-shadow: -20px 0 50px rgba(0,0,0,0.18);
   z-index: 1000;
@@ -1974,7 +1974,7 @@ h2 {
 .event .year {
   font-weight: 700;
   font-size: 0.85rem;
-  color: #2563eb;
+  color: #5e4425;
 }
 
 /* Mobile: hide completely */
@@ -2005,7 +2005,7 @@ h2 {
 }
 
 .timeline-filters button.active {
-  background: #2563eb;
+  background: #5e4425;
   color: #fff;
 }
 
