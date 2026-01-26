@@ -1209,3 +1209,81 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
+// for floating canalnder 
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("timelineToggle");
+    const panel = document.getElementById("timelinePanel");
+    const closeBtn = document.getElementById("closeTimeline");
+
+    if (!toggle || !panel || !closeBtn) {
+      console.error("Timeline elements not found");
+      return;
+    }
+
+    toggle.addEventListener("click", () => {
+      panel.classList.toggle("open");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      panel.classList.remove("open");
+    });
+  });
+
+
+// floating with group and autoenerat jeson and 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.getElementById("timelineBody");
+  const filterButtons = document.querySelectorAll(".timeline-filters button");
+
+  function isDeadlineSoon(dateStr) {
+    if (!dateStr) return false;
+    const now = new Date();
+    const deadline = new Date(dateStr);
+    const diffDays = (deadline - now) / (1000 * 60 * 60 * 24);
+    return diffDays <= 60 && diffDays >= 0;
+  }
+
+  function render(filter = "all") {
+    body.innerHTML = "";
+
+    timelineData
+      .filter(item => filter === "all" || item.type === filter)
+      .forEach((item, i) => {
+
+        const div = document.createElement("div");
+        div.className = `event ${item.status}`;
+
+        if (isDeadlineSoon(item.deadline)) {
+          div.classList.add("deadline");
+        }
+
+        div.innerHTML = `
+          <span class="year">${item.year}</span>
+          <p>
+            <a href="${item.link}">
+              <strong>${item.title}</strong>
+            </a>
+            ${item.deadline ? `<br><small>Grant Deadline: ${item.deadline}</small>` : ""}
+          </p>
+        `;
+
+        body.appendChild(div);
+
+        setTimeout(() => div.classList.add("visible"), i * 80);
+      });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      render(btn.dataset.filter);
+    });
+  });
+
+  render();
+});
+
+

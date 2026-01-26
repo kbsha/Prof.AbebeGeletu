@@ -120,6 +120,230 @@
   <a href="news.html" class="view-all-news">View all news & read more →</a>
 </section>
 
+<!-- ================= PROJECTS SECTION ================= -->
+
+
+<section class="projects-section" id="projects">
+  <div class="section-header">
+    <h2>Projects & Funding</h2>
+    <p>
+      A selection of research, innovation, and applied engineering projects.
+      Each project includes objectives, outcomes, and funding status.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Project Card -->
+    <article class="project-card">
+      <div class="project-image">
+        <img src="asset/photos/8.JPG" alt="AI-based Intrusion Detection">
+        <span class="funding funded">Funded</span>
+      </div>
+      <div class="project-content">
+        <h3>AI-Based Cyber Intrusion Detection System</h3>
+        <p class="project-desc">
+          A hybrid AI framework combining CNNs and Transformers for real-time detection of cyber attacks.
+        </p>
+        <ul class="project-notes">
+          <li><strong>Role:</strong> Lead Researcher & System Architect</li>
+          <li><strong>Funding:</strong> University Research Grant</li>
+          <li><strong>Duration:</strong> 2024 – Present</li>
+          <li><strong>Outcome:</strong> Journal publication + prototype IDS</li>
+        </ul>
+        <div class="project-tags">
+          <span>AI</span>
+          <span>Cybersecurity</span>
+          <span>Deep Learning</span>
+        </div>
+                <button class="read-more-btn" data-modal="modal1">Read More</button>
+
+      </div>
+    </article>
+
+    <!-- Project Card -->
+    <article class="project-card">
+      <div class="project-image">
+        <img src="asset/photos/Last day (29).JPG" alt="Autonomous Robotics">
+        <span class="funding seeking">Seeking Funding</span>
+      </div>
+      <div class="project-content">
+        <h3>Autonomous Robot Navigation with MPC & RL</h3>
+        <p class="project-desc">
+          Intelligent hybrid controller combining Nonlinear MPC and Model-Based RL for off-road autonomous robots.
+        </p>
+        <ul class="project-notes">
+          <li><strong>Role:</strong> Principal Investigator</li>
+          <li><strong>Funding Needed:</strong> Hardware & Field Testing</li>
+          <li><strong>Status:</strong> Prototype Simulation Complete</li>
+          <li><strong>Impact:</strong> Agriculture & logistics automation</li>
+        </ul>
+        <div class="project-tags">
+          <span>Robotics</span>
+          <span>MPC</span>
+          <span>Reinforcement Learning</span>
+        </div>
+                <button class="read-more-btn" data-modal="modal2">Read More</button>
+
+      </div>
+    </article>
+
+    <!-- Project Card -->
+    <article class="project-card">
+      <div class="project-image">
+        <img src="asset/photos/Last day (24).JPG" alt="IoT Security">
+        <span class="funding funded">Funded</span>
+      </div>
+      <div class="project-content">
+        <h3>IoT & Smart Infrastructure Security Platform</h3>
+        <p class="project-desc">
+          Secure monitoring and anomaly detection system for IoT-based smart infrastructure using edge AI.
+        </p>
+        <ul class="project-notes">
+          <li><strong>Partners:</strong> Industry & Academic Labs</li>
+          <li><strong>Funding:</strong> Innovation & Technology Grant</li>
+          <li><strong>Deployment:</strong> Pilot Testing Phase</li>
+          <li><strong>Deliverables:</strong> Dashboard + Edge AI Model</li>
+        </ul>
+        <div class="project-tags">
+          <span>IoT</span>
+          <span>Edge AI</span>
+          <span>Security</span>
+        </div>
+                <button class="read-more-btn" data-modal="modal3">Read More</button>
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= MODALS ================= -->
+<div class="modal" id="modal1">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>AI-Based Cyber Intrusion Detection System</h3>
+    <p>Full details about this project including methodology, datasets, and prototypes.</p>
+    <ul>
+      <li>Role: Lead Researcher & System Architect</li>
+      <li>Funding: University Research Grant</li>
+      <li>Duration: 2024 – Present</li>
+      <li>Outcome: Journal publication + prototype IDS</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal" id="modal2">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Autonomous Robot Navigation with MPC & RL</h3>
+    <p>Full project description including hardware setup, simulation results, and field applications.</p>
+    <ul>
+      <li>Role: Principal Investigator</li>
+      <li>Funding Needed: Hardware & Field Testing</li>
+      <li>Status: Prototype Simulation Complete</li>
+      <li>Impact: Agriculture & logistics automation</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal" id="modal3">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>IoT & Smart Infrastructure Security Platform</h3>
+    <p>Full details about the IoT security platform, edge AI analytics, and deployment phases.</p>
+    <ul>
+      <li>Partners: Industry & Academic Labs</li>
+      <li>Funding: Innovation & Technology Grant</li>
+      <li>Deployment: Pilot Testing Phase</li>
+      <li>Deliverables: Dashboard + Edge AI Model</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+/* ---------- PROJECT CARDS ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: 2rem;
+}
+.project-card {
+  background: wheat;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+}
+.project-card:hover { transform: translateY(-5px); }
+.project-image { position: relative; }
+.project-image img { width: 100%; display: block; }
+.funding { position: absolute; top:10px; left:10px; padding:0.3rem 0.6rem; border-radius:6px; font-weight:600; font-size:0.8rem; color:#fff;}
+.funding.funded{ background:#5e4425; }
+.funding.seeking{ background:#ffc107; color:#111; }
+.read-more-btn {
+  position: absolute;
+  bottom:10px; right:10px;
+  padding:0.5rem 0.8rem;
+  background: rgba(0,0,0,0.7);
+  color:#fff; border:none; border-radius:5px; cursor:pointer;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+  display:none;
+  position: fixed;
+  z-index:1000;
+  left:0; top:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  overflow:auto;
+  padding:2rem 1rem;
+}
+.modal-content {
+  background:#fff;
+  margin: 3rem auto;
+  padding:2rem;
+  border-radius:12px;
+  max-width:600px;
+  position: relative;
+  animation: slideDown 0.4s ease;
+}
+.close {
+  position:absolute;
+  top:10px; right:15px;
+  font-size:1.5rem;
+  cursor:pointer;
+  font-weight:bold;
+}
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity:0; }
+  to { transform: translateY(0); opacity:1; }
+}
+</style>
+
+<script>
+// Open modal
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const modalId = btn.getAttribute('data-modal');
+    document.getElementById(modalId).style.display = 'block';
+  });
+});
+
+// Close modal
+document.querySelectorAll('.close').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.modal').style.display = 'none';
+  });
+});
+
+// Close modal on outside click
+window.addEventListener('click', e => {
+  if(e.target.classList.contains('modal')) e.target.style.display='none';
+});
+</script>
+
 
 <!-- ADD THIS SECTION - Events Section with Cards -->
 <section id="events">
@@ -137,83 +361,505 @@
   <div class="stat"><h3 data-count="30">0</h3><p>PhD & MSc Supervised</p></div>
 </div>
 
-<section id="about">
-  <h2>About</h2>
-  <p><strong>Prof. Dr. D.Sc. Abebe Geletu</strong> is the German Research Chair at <strong>AIMS Rwanda</strong>, based in Kigali, Rwanda, and a senior academic leader within the <strong>AIMS Research & Innovation Center (RIC)</strong>, contributing to research on <strong>Autonomous and Intelligent Systems</strong>.</p>
-  <p>His current research focuses on systems optimization for sustainable resource utilization in Africa, multidisciplinary research and development for addressing complex engineering problems, and AI- and data-driven approaches for large-scale, uncertain, and real-world systems.</p>
-  <p>Prior to joining AIMS in September 2021, he served as academic staff and senior research scientist in applied mathematics, numerical optimization, stochastic optimization, control engineering, data-driven optimization, machine learning, image processing, and computer vision, with engineering applications at the <strong>Technical University of Ilmenau, Germany</strong>.</p>
+  <div class="about-section">
+    <h3>Research Focus Areas</h3>
+    <div class="focus-areas">
+      <div class="focus-item">
+        <strong>⚙ Systems & Numerical Optimization</strong>
+        <p>Large-scale optimization under uncertainty</p>
+      </div>
+      <div class="focus-item">
+        <strong>🤖 Autonomous & Intelligent Systems</strong>
+        <p>Robotics, control, and decision-making</p>
+      </div>
+      <div class="focus-item">
+        <strong>🌱 AI for Sustainability</strong>
+        <p>Energy, resources, and infrastructure optimization</p>
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li><strong>B.Sc. Mathematics</strong> – Addis Ababa University, Ethiopia</li>
-    <li><strong>M.Sc. Applied Mathematics</strong> – Addis Ababa University, Ethiopia</li>
-    <li><strong>Ph.D. Numerical Optimization</strong> – Technical University of Ilmenau, Faculty of Mathematics and Natural Sciences, Germany</li>
-    <li><strong>D.Sc. (Habilitation) Systems Optimization</strong> – Technical University of Ilmenau, Faculty of Computer Science and Automation, Germany</li>
-  </ul>
-</section>
 
-<section id="research">
-  <h2>Research Interests</h2>
-  <div>
-    <span class="tag">Mathematical Optimization</span>
-    <span class="tag">Model Predictive Control</span>
-    <span class="tag">Machine Learning</span>
-    <span class="tag">AI for Sustainability</span>
-    <span class="tag">Renewable Energy</span>
-    <span class="tag">Computer Vision</span>
+
+
+
+<!-- ================= ABOUT / PROFILE SECTION ================= -->
+<section id="about" class="section light">
+  <div class="container about-container">
+
+    <!-- Profile Photo -->
+    <div class="about-photo">
+      <img src="asset/photos/cover.jpg" alt="Prof. Dr. Abebe Geletu">
+    </div>
+
+    <!-- About Content -->
+    <div class="about-content">
+      <h1>ABOUT</h1>
+      <h2>Prof. Dr. D.Sc. Abebe Geletu</h2>
+      <p class="role">German Research Chair · AIMS Rwanda · Systems Optimization & AI</p>
+
+      <p>
+        Prof. Dr. D.Sc. Abebe Geletu is a senior academic and researcher specializing in
+        autonomous and intelligent systems, systems optimization, and AI-driven decision-making
+        for large-scale, uncertain real-world systems.
+      </p>
+
+      <ul class="about-highlights">
+        <li>📌 10+ funded research projects</li>
+        <li>📌 Principal Investigator (PI)</li>
+        <li>📌 International collaborations</li>
+      </ul>
+
+      <!-- Research Focus -->
+      <div class="about-highlight">
+        <h4>Research Focus</h4>
+        <ul>
+          <li>Systems & Numerical Optimization</li>
+          <li>Autonomous & Intelligent Systems</li>
+          <li>AI for Sustainable Engineering</li>
+          <li>Data-Driven Control & Decision Making</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="students">
-  <h2>Ph.D., Postdoctoral & M.Sc. Supervision</h2>
-  <h3>Addis Ababa University, Ethiopia</h3>
-  <ul>
-    <li><strong>Mr. Muhammad Sani</strong> – Stochastic optimization of elliptic PDE systems under chance constraints (PhD, in progress)</li>
-    <li><strong>Mr. Agegnehu Tesfaye Janka</strong> – Chance-constrained nonlinear mixed-integer optimization and applications (PhD, in progress)</li>
-    <li><strong>Mr. Daniel Tadesse</strong> – Data-driven optimization for sustainable energy systems (M.Sc., completed 2023)</li>
-    <li><strong>Ms. Eyerusalem Teshome</strong> – Deep learning for medical image analysis (M.Sc., completed 2022)</li> 
-  </ul>
 
-  <h3>AIMS Rwanda (PhD & Postdoctoral)</h3>
-  <ul>
-    <li><strong>Miss Marcy Audrey Demafo Nangmo</strong> – Real-time MPC of microgrid-based sustainable energy systems (PhD, since 2022)</li>
-    <li><strong>Mr. Michel Murwanashyaka</strong> – Intelligent predictive control for water distribution networks (PhD, since 2022)</li>
-    <li><strong>Mr. Mugenga Ineza Remy</strong> – Distributed MPC for coordinated multi-microgrid operation (PhD, since 2022)</li>
-    <li><strong>Dr. Peguy Kameni Nteuste</strong> – Systems optimization for sustainable resource utilization (Postdoc, since 2022)</li>
-  </ul>
 
-  <h3>AIMS Rwanda (M.Sc.)</h3>
-  <ul>
-    <li>Tensor decomposition for hyperspectral image analysis</li>
-    <li>Deep learning for traffic speed estimation and vehicle detection</li>
-    <li>Deep learning for text-to-speech in Ethiopian Geez language</li>
-    <li>Deep learning for weather prediction</li>
-    <li>Deep learning for medical facial image analysis</li>
-  </ul>
-  <h3>AIMS-RIC</h3>
-  <ul>
-    <li>Autonomous Systems</li>
-    <li><strong>Mr. Kibremoges Fenta</strong> Intellegent MPC for Autonomous System Self-Driving Vehicle</li>
-    <li>Deep learning for weather prediction</li>
-    <li>Deep learning for medical facial image analysis</li>
-  </ul>
+
+
+<!-- ================= EDUCATION TIMELINE ================= -->
+<section id="education" class="section light">
+  <div class="container">
+    <h2>Education</h2>
+    <ul class="timeline">
+      <li><span class="year">B.Sc.</span>
+        <div><strong>Mathematics</strong><br>Addis Ababa University, Ethiopia</div>
+      </li>
+      <li><span class="year">M.Sc.</span>
+        <div><strong>Applied Mathematics</strong><br>Addis Ababa University, Ethiopia</div>
+      </li>
+      <li><span class="year">Ph.D.</span>
+        <div><strong>Numerical Optimization</strong><br>Technical University of Ilmenau, Germany</div>
+      </li>
+      <li><span class="year">D.Sc.</span>
+        <div><strong>Systems Optimization (Habilitation)</strong><br>Technical University of Ilmenau, Germany</div>
+      </li>
+    </ul>
+  </div>
 </section>
 
-<section id="publications">
-  <h2>Selected Publications</h2>
-  <ul>
-    <li>SIAM Journal on Optimization, 2017</li>
-    <li>ESAIM: COCV, 2020</li>
-    <li>European Journal of Operational Research, 2004</li>
-  </ul>
+<!-- ================= RESEARCH INTERESTS ================= -->
+<section id="research" class="section">
+  <div class="container">
+    <h2>Research Interests</h2>
+    <div class="tags">
+      <span>Mathematical Optimization</span>
+      <span>Model Predictive Control</span>
+      <span>Machine Learning</span>
+      <span>Autonomous Systems</span>
+      <span>AI for Sustainability</span>
+      <span>Renewable Energy</span>
+      <span>Computer Vision</span>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>AIMS Rwanda, Kigali</p>
+<!-- ================= STUDENT SUPERVISION ================= -->
+<section id="students" class="section light">
+  <div class="container">
+    <h2>Ph.D., Postdoctoral & M.Sc. Supervision</h2>
+    <div class="cards">
+
+      <div class="card">
+        <h3>Addis Ababa University</h3>
+        <ul>
+          <li><strong>Muhammad Sani</strong> – Stochastic optimization of elliptic PDEs (PhD)</li>
+          <li><strong>Agegnehu Tesfaye Janka</strong> – Chance-constrained optimization (PhD)</li>
+          <li><strong>Daniel Tadesse</strong> – Data-driven energy optimization (M.Sc.)</li>
+          <li><strong>Eyerusalem Teshome</strong> – Medical image analysis (M.Sc.)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>AIMS Rwanda (PhD & Postdoc)</h3>
+        <ul>
+          <li><strong>Marcy A. D. Nangmo</strong> – Real-time MPC for microgrids</li>
+          <li><strong>Michel Murwanashyaka</strong> – Predictive control of water networks</li>
+          <li><strong>Mugenga Ineza Remy</strong> – Distributed MPC for microgrids</li>
+          <li><strong>Peguy K. Nteuste</strong> – Systems optimization (Postdoc)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>AIMS-RIC & M.Sc. Topics</h3>
+        <ul>
+          <li>Autonomous Systems</li>
+          <li><strong>Kibremoges Fenta</strong> – Intelligent MPC for self-driving vehicles</li>
+          <li>Deep learning for weather prediction</li>
+          <li>Medical facial image analysis</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications" class="section light">
+  <div class="container">
+    <h2>Selected Publications</h2>
+
+    <div class="pub-grid">
+      <!-- Publication Card -->
+      <div class="pub-card">
+        <h3>SIAM Journal on Optimization</h3>
+        <p class="pub-meta">2017 | Volume 27, Issue 4</p>
+        <p class="pub-desc">Focuses on numerical optimization and algorithm development for large-scale uncertain systems.</p>
+        <a href="#" class="pub-link">🔗 View Paper</a>
+      </div>
+
+      <div class="pub-card">
+        <h3>ESAIM: Control, Optimisation and Calculus of Variations</h3>
+        <p class="pub-meta">2020 | Volume 26</p>
+        <p class="pub-desc">Explores stochastic optimization and advanced control techniques applied to engineering systems.</p>
+        <a href="#" class="pub-link">🔗 View Paper</a>
+      </div>
+
+      <div class="pub-card">
+        <h3>European Journal of Operational Research</h3>
+        <p class="pub-meta">2004 | Volume 156</p>
+        <p class="pub-desc">Investigates decision-making frameworks and applied optimization methods for industrial applications.</p>
+        <a href="#" class="pub-link">🔗 View Paper</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ---------- PUBLICATIONS ---------- */
+.pub-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.pub-card {
+  flex:1;
+  min-width:250px;
+  max-width:350px;
+  background:#f1eae2;
+  padding:1.5rem;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  display:flex;
+  flex-direction:column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.pub-card:hover {
+  transform: translateY(-5px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+.pub-card h3 {
+  margin:0 0 0.3rem 0;
+  font-size:1.05rem;
+  font-weight:600;
+  color:#5e4425;
+}
+.pub-meta {
+  font-size:0.85rem;
+  color:#5e4425;
+  margin-bottom:0.7rem;
+}
+.pub-desc {
+  flex:1;
+  font-size:0.9rem;
+  color:#5e4425;
+  margin-bottom:1rem;
+}
+.pub-link {
+  text-decoration:none;
+  color:#5e4425;
+  font-weight:600;
+  transition:0.3s;
+}
+.pub-link:hover { text-decoration:underline; color:#1d4ed8; }
+
+@media(max-width:900px){
+  .pub-grid { flex-direction:column; align-items:center; }
+}
+</style>
+
+
+
+
+<!-- ================= STYLES ================= -->
+<style>
+  /* ---------- GLOBAL ---------- */
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height:1.7; margin:0; color:#1f2937; }
+  h2,h3,h4 { margin:0.5rem 0; font-weight:600; }
+  .section { padding:3rem 1rem; }
+  .section.light { background:rgb(244, 232, 211); }
+  .section.dark { background:wheat; color:#5e4425; }
+  .container { max-width:1100px; margin:auto; padding:1rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about-container { display:flex; flex-wrap:wrap; gap:2rem; align-items:flex-start; }
+  .about-photo img { width:220px; height:220px; object-fit:cover; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.15); }
+  .about-content { flex:1; min-width:250px; }
+  .role { color:#5e4425; font-weight:500; margin-bottom:1rem; }
+  .about-highlights { list-style:none; padding:0; margin-top:1rem; }
+  .about-highlights li { margin-bottom:0.5rem; }
+  .about-highlight { margin-top:1.5rem; padding:1rem; border-radius:12px; background:#f1eae2; }
+  .about-highlight ul { list-style:disc; padding-left:1.2rem; }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline { list-style:none; padding:0; max-width:750px; }
+  .timeline li { display:grid; grid-template-columns:70px 1fr; gap:1rem; padding:1rem 0; border-bottom:1px solid #e5e7eb; }
+  .timeline li:last-child { border-bottom:none; }
+  .year { font-weight:700; color:#5e4425; font-size:0.95rem; }
+
+  /* ---------- TAGS ---------- */
+  .tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; }
+  .tags span { background:#f1eae2; padding:0.45rem 0.9rem; border-radius:999px; font-size:0.82rem; font-weight:600; transition:0.2s; }
+  .tags span:hover { background:#5e4425; transform:translateY(-2px); }
+
+  /* ---------- CARDS ---------- */
+  .cards { display:flex; flex-wrap:wrap; gap:1.5rem; margin-top:1rem; }
+  .card { background:#f1eae2; padding:1rem 1.2rem; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); flex:1; min-width:250px; }
+
+  /* ---------- PUBLICATIONS ---------- */
+  .clean-list { list-style:none; padding:0; }
+  .clean-list li { margin-bottom:0.5rem; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){ .about-container { flex-direction:column; align-items:center; text-align:center; } }
+</style>
+
+
+
+<style>
+/* ---------- COLLABORATIONS ---------- */
+.collab-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+.collab-card {
+  background:#f1eae2;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  flex:1;
+  min-width:200px;
+  max-width:250px;
+  text-align:center;
+  padding:1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.collab-card img {
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  margin-bottom:0.8rem;
+}
+.collab-card:hover {
+  transform: translateY(-5px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+.collab-card p {
+  margin:0;
+  font-size:0.9rem;
+  line-height:1.3;
+}
+@media(max-width:900px){ .collab-cards { flex-direction:column; align-items:center; } }
+</style>
+
+
+
+<!-- ================= COLLABORATIONS ================= -->
+<section id="collaborations" class="section light">
+  <div class="container">
+    <h2>International Collaborations</h2>
+    <p>
+      Prof. Dr. D.Sc. Abebe Geletu has ongoing research collaborations with leading institutions
+      and researchers worldwide, contributing to AI, optimization, and autonomous systems research.
+    </p>
+
+    <div class="collab-grid">
+
+      <!-- Collaboration Card -->
+      <article class="collab-card">
+        <div class="collab-image">
+          <img src="asset/photos/287A1075.jpg" alt="ETH Zurich">
+        </div>
+        <div class="collab-content">
+          <h3>ETH Zurich</h3>
+          <p>Optimization & Control Engineering</p>
+        </div>
+        <section>           <button class="read-more-btn" data-modal="collab1">Read More</button>
+</section>
+      </article>
+
+      <article class="collab-card">
+        <div class="collab-image">
+          <img src="asset/photos/8.JPG" alt="MIT">
+        </div>
+        <div class="collab-content">
+          <h3>MIT</h3>
+          <p>AI & Robotics Research</p>
+        </div>
+        <section>           <button class="read-more-btn" data-modal="collab2">Read More</button>
+</section>
+      </article>
+
+      <article class="collab-card">
+        <div class="collab-image">
+          <img src="asset/photos/287A1075.jpg" alt="University of Cape Town">
+        </div>
+        <div class="collab-content">
+          <h3>University of Cape Town</h3>
+          <p>Renewable Energy & Sustainability</p>
+        </div>
+        <section>           <button class="read-more-btn" data-modal="collab3">Read More</button>
+</section>
+
+      </article>
+
+      <article class="collab-card">
+        <div class="collab-image">
+          <img src="asset/photos/aau.png" alt="Addis Ababa University">
+        </div>
+        <div class="collab-content">
+          <h3>Addis Ababa University</h3>
+          <p>Mathematics & Applied Sciences</p>
+        </div>
+        <section>           <button class="read-more-btn" data-modal="collab4">Read More</button>
+</section>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= COLLABORATION MODALS ================= -->
+<div class="modal" id="collab1">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>ETH Zurich</h3>
+    <p>Prof. Geletu collaborates with ETH Zurich on advanced optimization and control engineering projects. This includes research on large-scale numerical optimization, autonomous systems, and sustainable engineering solutions.</p>
+  </div>
+</div>
+
+<div class="modal" id="collab2">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>MIT</h3>
+    <p>Collaboration with MIT focuses on AI-driven robotics research, model predictive control, and autonomous navigation systems for complex, real-world environments.</p>
+  </div>
+</div>
+
+<div class="modal" id="collab3">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>University of Cape Town</h3>
+    <p>This partnership addresses renewable energy optimization, AI-based climate solutions, and sustainability research for African regions.</p>
+  </div>
+</div>
+
+<div class="modal" id="collab4">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Addis Ababa University</h3>
+    <p>Collaboration in mathematics and applied sciences, including stochastic optimization, data-driven control, and applied AI research projects.</p>
+  </div>
+</div>
+
+<style>
+/* ---------- COLLABORATION GRID ---------- */
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 2rem;
+}
+.collab-card {
+  background: wheat;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+}
+.collab-card:hover { transform: translateY(-5px); }
+.collab-image { position: relative; }
+.collab-image img { width: 100%; display: block; }
+.collab-content { padding: 1rem; text-align:center; }
+.read-more-btn {
+  position: absolute;
+  bottom:10px; right:10px;
+  padding:0.5rem 0.8rem;
+  background: #5e4425;
+  color:#fff; border:none; border-radius:5px; cursor:pointer;
+  font-size:0.9rem;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+  display:none;
+  position: fixed;
+  z-index:1000;
+  left:0; top:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  overflow:auto;
+  padding:2rem 1rem;
+}
+.modal-content {
+  background:wheat;
+  margin: 3rem auto;
+  padding:2rem;
+  border-radius:12px;
+  max-width:500px;
+  position: relative;
+  animation: slideDown 0.4s ease;
+}
+.close {
+  position:absolute;
+  top:10px; right:15px;
+  font-size:1.5rem;
+  cursor:pointer;
+  font-weight:bold;
+}
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity:0; }
+  to { transform: translateY(0); opacity:1; }
+}
+</style>
+
+<script>
+// Open modal
+document.querySelectorAll('.collab-card .read-more-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const modalId = btn.getAttribute('data-modal');
+    document.getElementById(modalId).style.display = 'block';
+  });
+});
+
+// Close modal
+document.querySelectorAll('.modal .close').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.modal').style.display = 'none';
+  });
+});
+
+// Close modal on outside click
+window.addEventListener('click', e => {
+  if(e.target.classList.contains('modal')) e.target.style.display='none';
+});
+</script>
 
 </main>
 
@@ -272,21 +918,272 @@
 </section>
 
 
-<footer>
-  <div class="container">
-    <p>© 2026 Prof. Dr. D.Sc. Abebe Geletu</p>
-    <p>AIMS RIC – African Institute for Mathematical Sciences Research and Inovation Center</p>
+
+  <!-- ================= CONTACT ================= -->
+<section id="contact" class="section dark">
+  <div class="container contact-container">
+    <h2>Contact</h2>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <img src="asset/photos/cover.jpg" alt="Prof. Dr. Abebe Geletu" class="contact-photo">
+        <p>🏛 AIMS Rwanda, Kigali, Rwanda</p>
+        <p>📧 <a href="mailto:abebe.geletu@aims.ac.rw" style="color:#fff; text-decoration:underline;">abebe.geletu@aims.ac.rw</a></p>
+        <p>📞 +250 78 000 0000</p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form id="contactForm" action="https://formspree.io/f/xbdoyyab" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+  
+  <!-- Simple CAPTCHA -->
+  <label>Solve: 3 + 4 = ?</label>
+  <input type="text" name="captcha" placeholder="Enter result" required>
+  
+  <button type="submit">Send Message</button>
+</form>
+
+      </div>
+    </div>
+
+    <!-- Google Map -->
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.421235182166!2d30.060504215158433!3d-1.9536189372904337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca8c5eb3444fb%3A0x307824338fff2b2a!2sAIMS%20Rwanda!5e0!3m2!1sen!2srw!4v1699999999999!5m2!1sen!2srw"
+        width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- CONTACT SECTION ---------- */
+  .contact-container { max-width:1100px; margin:auto; padding:2rem 1rem; display:flex; flex-direction:column; gap:2rem; background: #f3e4d3;}
+  .contact-grid { display:flex; gap:2rem; flex-wrap:wrap; }
+  .contact-info { flex:1; min-width:250px; color:#5e4425; text-align:center; }
+  .contact-info .contact-photo { width:180px; height:180px; object-fit:cover; border-radius:50%; margin-bottom:1rem; box-shadow:0 8px 25px rgba(139, 71, 71, 0.3); }
+  .contact-info a { color:#5e4425; text-decoration:underline; }
+  .contact-form { flex:1; min-width:250px; }
+  .contact-form form { display:flex; flex-direction:column; gap:1rem; }
+  .contact-form input, .contact-form textarea {
+    padding:0.8rem 1rem;
+    border-radius:8px;
+    border:none;
+    font-size:0.95rem;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { outline:none; box-shadow:0 0 0 2px #2563eb; }
+  .contact-form button {
+    padding:0.9rem 1rem;
+    background:#5e4425;
+    color:#fff;
+    font-weight:600;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+  }
+  .contact-form button:hover { background:#1d4ed8; }
+  .map-container { margin-top:2rem; border-radius:12px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.2); }
+
+  @media(max-width:900px){
+    .contact-grid { flex-direction:column; align-items:center; }
+    .contact-info, .contact-form { text-align:center; }
+  }
+</style>
+
+  
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="footer-container">
+
+   <!-- Logo & Description -->
+    <div class="footer-brand">
+      <img src="asset/photos/cover.jpg" alt="Prof.Dr.AbebeGeletu-Logo" class="footer-logo">
+      <h3>Prof.Dr.AbebGeletu</h3>
+      <p>
+        mathematics is, in its way, the poetry of logical ideas. A.E.
+      </p>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com" target="_blank" class="social-link linkedin">
+          <img src="asset/photos/LinkedIn.png" alt="LinkedIn">
+        </a>
+         <a href="https://www.youtube.com" target="_blank" class="social-link youtube">
+          <img src="asset/photos/yotube.png" alt="YouTube">
+        </a>
+        <!--
+        <a href="https://twitter.com" target="_blank" class="social-link twitter">
+          <img src="asset/photos/twitter.jpg" alt="X/Twitter">
+        </a>
+        <a href="https://t.me" target="_blank" class="social-link telegram">
+          <img src="asset/photos/telegram.jpg" alt="Telegram">
+        </a> -->
+        <a href="https://wa.me/0000000000" target="_blank" class="social-link whatsapp">
+          <img src="asset/photos/whatssup.jpg" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+
+      <!-- Contact Info -->
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Email: <a href="abebe.geletu@aims.ac.rw">abebe.geletu@aims.ac.rw</a></p>
+      <p>Phone: +000------</p>
+      <p>Address: Kigali Rwanda</p>
+    </div>
+
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>
+      <a href="#">Terms and Conditions</a> | 
+      <a href="#">Privacy Policy</a> | 
+      <a href="#contact">Contact</a>
+    </p>
+    <p>&copy; 2026 Prof.Dr.AbebeGeletu. All Rights Reserved.</p>
   </div>
 </footer>
 
+<style>
+/* ---------- FOOTER ---------- */
+.site-footer {
+  background:wheat;
+  color:#5e4425;
+  padding:3rem 1rem 1rem 1rem;
+  font-family:Arial, sans-serif;
+}
+.footer-container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  max-width:1200px;
+  margin:auto;
+  justify-content:space-between;
+}
+.footer-brand, .footer-social, .footer-contact { flex:1; min-width:250px; text-align:center; }
+.footer-logo { width:100px; height:auto; margin-bottom:0.5rem; }
+.footer-brand h3 { margin:0.2rem 0; font-size:1.2rem; }
+.footer-brand p { font-size:0.9rem; line-height:1.5; }
 
+.footer-social h4, .footer-contact h4 { margin-bottom:0.8rem; font-size:1rem; }
 
+/* Social icons */
+.social-icons { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+.social-link img {
+  width:40px;
+  height:40px;
+  transition: transform 0.3s, filter 0.3s;
+  filter: grayscale(10%); /* default: grayscale */
+}
+.social-link.linkedin img:hover { filter: grayscale(0%) drop-shadow(0 0 4px #0A66C2); transform:scale(1.2);}
+.social-link.youtube img:hover { filter: grayscale(0%) drop-shadow(0 0 4px #FF0000); transform:scale(1.2);}
+.social-link.twitter img:hover { filter: grayscale(0%) drop-shadow(0 0 4px #1DA1F2); transform:scale(1.2);}
+.social-link.telegram img:hover { filter: grayscale(0%) drop-shadow(0 0 4px #26A5E4); transform:scale(1.2);}
+.social-link.whatsapp img:hover { filter: grayscale(0%) drop-shadow(0 0 4px #25D366); transform:scale(1.2); }
 
+.footer-contact p { font-size:0.9rem; margin:0.3rem 0; }
+.footer-contact a { color:#5e4425; text-decoration:underline; }
 
+.footer-bottom { text-align:center; font-size:0.8rem; margin-top:2rem; border-top:1px solid #374151; padding-top:1rem; }
+.footer-bottom a { color:#5e4425; text-decoration:underline; margin:0 0.3rem; }
+
+@media(max-width:900px){
+  .footer-container { flex-direction:column; align-items:center; text-align:center; }
+  .social-icons { justify-content:center; }
+}
+</style>
 
     
 <!-- Scripts -->
 <script  src="asset/js/mainOld.js"></script> 
+<script src="asset/js/timeline-data.js"></script>
+
+<!-- Floating Timeline Toggle Button -->
+<div class="timeline-toggle" id="timelineToggle" title="Research Timeline">
+  📅
+</div>
+
+<!-- Floating Timeline Panel -->
+<!-- <div class="timeline-panel" id="timelinePanel">
+
+  <div class="timeline-header">
+    <h4>Research Timeline</h4>
+    <button class="close-btn" id="closeTimeline">×</button>
+  </div>
+
+  <div class="timeline-body">
+
+    <div class="event funded">
+      <span class="year">2025</span>
+      <p>
+        <strong>AI-Based Intrusion Detection</strong><br>
+        Funded – University Research Grant
+      </p>
+    </div>
+
+    <div class="event">
+      <span class="year">2024</span>
+      <p>
+        <strong>Autonomous Robot MPC & RL</strong><br>
+        Prototype & Simulation Phase
+      </p>
+    </div>
+
+    <div class="event funded">
+      <span class="year">2023</span>
+      <p>
+        <strong>IoT Smart Infrastructure Security</strong><br>
+        Innovation & Industry Grant
+      </p>
+    </div>
+
+    <div class="event">
+      <span class="year">2022</span>
+      <p>
+        <strong>PhD & Postdoctoral Supervision</strong><br>
+        AIMS Rwanda
+      </p>
+    </div>
+
+    <div class="event">
+      <span class="year">2021</span>
+      <p>
+        <strong>Appointment as German Research Chair</strong><br>
+        AIMS Rwanda
+      </p>
+    </div>
+
+  </div>
+</div> -->
+
+<div class="timeline-panel" id="timelinePanel">
+
+  <div class="timeline-header">
+    <h4>Research Timeline</h4>
+    <button class="close-btn" id="closeTimeline">×</button>
+  </div>
+
+  <div class="timeline-filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="funding">Funding</button>
+    <button data-filter="project">Projects</button>
+    <button data-filter="supervision">Supervision</button>
+  </div>
+
+  <div class="timeline-body" id="timelineBody"></div>
+
+</div>
 
 </body>
 
