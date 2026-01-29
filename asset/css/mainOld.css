@@ -289,7 +289,7 @@ header{padding:3rem 1rem}
 header h1{font-size:2.2rem}
 header p{font-size:1rem}
 nav ul{gap:1.2rem}
-nav a{font-size:1rem}
+nav a{font-size:0.7rem}
 section{margin-bottom:3.5rem}
 section h2{font-size:2rem}
 section h3{font-size:1.4rem}
@@ -1038,9 +1038,9 @@ section ul{padding-left:1rem;font-size:0.9rem}
   align-items: center;
   gap: 0.8rem;
   list-style: none;
-  padding: 10px 14px;
+  padding: 0px 0px;
 
-  background: rgba(255, 255, 255, 0.35); /* 65% visible */
+  background: rgba(255, 255, 255, 0.1); /* 65% visible */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
@@ -1051,13 +1051,16 @@ section ul{padding-left:1rem;font-size:0.9rem}
   display:contents; /* desktop hidden */
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 1rem ;
+  padding: 0px 0px ;
+  
+  
   
 }
 
 .nav-title {
   font-weight: 700;
   color: var(--primary);
+  
 }
 
 .nav-toggle {
@@ -1066,6 +1069,7 @@ section ul{padding-left:1rem;font-size:0.9rem}
   border: none;
   cursor: pointer;
   color: var(--primary);
+  
 }
 
 /* Desktop nav */
@@ -1076,7 +1080,8 @@ section ul{padding-left:1rem;font-size:0.9rem}
   gap: 0.6rem;
   list-style: none;
   margin: 0;
-  padding: 0.6rem 1rem;
+    padding: 0px 0px;
+
 }
 @media (min-width: 769px) {
   .nav-toggle {
@@ -1367,15 +1372,17 @@ section ul{padding-left:1rem;font-size:0.9rem}
   gap: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.9rem;
   list-style: none;
-  padding: 10px 14px;
+  padding: 0px 0px;
 
   background: rgba(255, 255, 255, 0.1); /* 65% visible */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
-  border-radius: 999px;
+  border-radius: 25px;
+    padding: 0px 0px;
+
 }
 
 /* ===== LOGO (small circular) ===== */
@@ -1383,9 +1390,11 @@ section ul{padding-left:1rem;font-size:0.9rem}
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 40px;
+  width: 60px;
+  height: 5px;
   margin-right: auto;
+    padding: 0px 0px;
+
 }
   .nav-logomob {
    display: flex;
@@ -1398,18 +1407,18 @@ section ul{padding-left:1rem;font-size:0.9rem}
 
 .nav-logo img {
   width: 80px;
-  height: 50px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
 }
   .nav-logomob img {
  width: 80px;
-  height: 50px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   }
 
-/* ===== DESKTOP NAV LINKS ===== */
+/* ===== DESKTOP NAV LINKS =====  working right now kb*/
 .nav-links {
   display: flex;
   align-items: center;
@@ -1423,17 +1432,17 @@ section ul{padding-left:1rem;font-size:0.9rem}
   align-items: center;
   gap: 0.8rem;
   list-style: none;
-  padding: 10px 14px;
+  padding: 0px 0px;
 
-  background: rgba(255, 255, 255, 0.65); /* 65% visible */
+  background: rgba(255, 255, 255, 0.1); /* 65% visible */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
-  border-radius: 999px;
+  border-radius: 1px;
 }
 
 .nav-links li a {
-  padding: 0.5rem 0.8rem;
+  padding: 0px 0px;
   text-decoration: none;
   color: var(--primary);
   font-weight: 600;
@@ -1441,15 +1450,15 @@ section ul{padding-left:1rem;font-size:0.9rem}
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
   list-style: none;
-  padding: 10px 14px;
+  padding: 3px 20px;
 
-  background: rgba(255, 255, 255, 0.65); /* 65% visible */
+  background: rgba(255, 255, 255, 0.5); /* 65% visible */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
-  border-radius: 999px;
+  border-radius: 60px;
 }
 
 /* ===== HAMBURGER ONLY ON MOBILE ===== */
