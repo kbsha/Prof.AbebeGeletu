@@ -1288,3 +1288,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // hide bar during scroll
 
+// Hide/show navbar on mobile
+
+

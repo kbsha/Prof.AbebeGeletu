@@ -14,29 +14,458 @@
 </head>
 
 <body>
+  
+
+<section class="hero-slider" >
+
+  <div class="slide active" style="background-image:url('asset/photos/Last\ day\ \(29\).JPG'); height: 150%;">
+    <div class="slide-content">
+      <p class="role">German Research Chair</p>
+      <h1>Prof. Dr. Abebe Geletu</h1>
+      <p class="desc">
+        African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
+      </p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('asset/photos/cover.jpg');height: 150%">
+    <div class="slide-content">
+      <p class="role">Research Focus</p>
+      <h1>Autonomous & Intelligent Systems</h1>
+      <p class="desc">
+        Autonomous Systems, Optimization, AI & Intelligent Control
+      </p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('asset/photos/8.JPG') ; height: 100%">
+    <div class="slide-content">
+      <p class="role">Opportunities</p>
+      <h1>Join Our Research Team</h1>
+      <p class="desc">
+        PhD, MSc & Research Collaboration Opportunities
+      </p>
+      <a href="#contact" class="btn primary">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="nav-arrow left" aria-label="Previous slide">&#10094;</button>
+  <button class="nav-arrow right" aria-label="Next slide">&#10095;</button>
+
+  <!-- Dots -->
+  <div class="nav-dots"></div>
+
+</section>
+<style>
+  .nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.nav-arrow:hover {
+  background:  rgba(79, 42, 2, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow.left { left: 1.5rem; }
+.nav-arrow.right { right: 1.5rem; }
+
+/* Dots */
+.nav-dots {
+  position: absolute;
+  bottom: 1.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.nav-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.nav-dots span.active {
+  background: #513b1f;
+  transform: scale(1.3);
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .nav-arrow {
+    font-size: 1.6rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+</style>
+<script>
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.querySelector(".nav-dots");
+const prevBtn = document.querySelector(".nav-arrow.left");
+const nextBtn = document.querySelector(".nav-arrow.right");
+
+let current = 0;
+let interval;
+
+/* Create dots */
+slides.forEach((_, i) => {
+  const dot = document.createElement("span");
+  dot.addEventListener("click", () => showSlide(i));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.querySelectorAll("span");
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  dots.forEach(d => d.classList.remove("active"));
+
+  current = index;
+  slides[current].classList.add("active");
+  dots[current].classList.add("active");
+
+  resetAutoSlide();
+}
+
+function nextSlide() {
+  showSlide((current + 1) % slides.length);
+}
+
+function prevSlide() {
+  showSlide((current - 1 + slides.length) % slides.length);
+}
+
+/* Auto slide */
+function startAutoSlide() {
+  interval = setInterval(nextSlide, 6000);
+}
+
+function resetAutoSlide() {
+  clearInterval(interval);
+  startAutoSlide();
+}
+
+/* Event listeners */
+nextBtn.addEventListener("click", nextSlide);
+prevBtn.addEventListener("click", prevSlide);
+
+/* Init */
+showSlide(0);
+startAutoSlide();
+</script>
 
 
+<style>
+  .hero-slider {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55); /* text visibility */
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide-content {
+  position: relative;
+  max-width: 720px;
+  padding: 4rem 8%;
+  color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.role {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.slide-content h1 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+}
+
+.desc {
+  font-size: 1.2rem;
+  opacity: 0.95;
+}
+
+.btn.primary {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: 0.7rem 1.6rem;
+  background: #513b1f;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+</style>
+<script>
+const slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+}
+
+setInterval(() => {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}, 5000);
+</script>
+
+<!-- <P>kb</P> -->
 <!--Original Hero Section */
   --> 
+<section class="hero" >
+  <div class="hero-content">
+    <p class="hero-role">Professor of Matmatics, Artificial Intelligence & Robotics</p>
+    <h1>Prof. Dr. Abebe Geletu</h1>
+    <p class="hero-tagline">
+      <!-- Advancing intelligent systems for optimization, robotics, and cyber-physical security. -->
+    </p>
+    <div class="hero-dynamic">
+  <span class="static-text">Prof. Dr. Abebe Geletu <br> German Research Chair</span>
+  <span class="dynamic-text"></span>
+</div>
+
+    <div class="hero-tags">
+      <span>AI</span>
+      <span>Robotics</span>
+      <span>Optimization</span>
+      <span>Cybersecurity</span>
+      <span>Control Systems</span>
+    </div>
+
+    <div class="hero-buttons">
+      <a href="#research" class="btn primary">Research</a>
+      <a href="#publications" class="btn secondary">Publications</a>
+      <a href="#contact" class="btn outline">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="asset/photos/cover.jpg" alt="Professor Portrait">
+  </div>
+  
+
+</section>
+
+<style>
+  .hero-dynamic {
+  margin-top: 0.8rem;
+  font-size: 1.05rem;
+  color: #5e4425;
+  min-height: 1.5em;
+  overflow: hidden;
+}
+
+.dynamic-text {
+  display: inline-block;
+  animation: fadeSlide 2.5s ease-in-out;
+}
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+  .hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  min-height: 90vh;
+  padding: 4rem 8%;
+  /* background: linear-gradient(120deg, #0b132b, #1c2541); */
+  background: wheat;
+  color: #5e4425;
+}
+
+.hero-role {
+  letter-spacing: 1px;
+  color: #5e4425;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin: 0.5rem 0;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 520px;
+}
+
+.hero-tags span {
+  display: inline-block;
+  margin: 0.4rem 0.4rem 0 0;
+  padding: 0.4rem 0.7rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.hero-buttons {
+  margin-top: 1.8rem;
+}
+
+.btn {
+  padding: 0.7rem 1.4rem;
+  margin-right: 0.6rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.primary { background: #513b1f; color: #000; }
+.secondary { background: #fff; color: #000; }
+.outline {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 3rem 6%;
+  }
+
+  .hero-image {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    margin: auto;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+</style>
+<script>
+const texts = [
+
+  "African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)",
+  "Advancing intelligent systems for optimization, robotics",
+  "Autonomous Systems, Optimization, AI & Intelligent Control",
+  "Join Our Research Team"
+];
+
+let index = 0;
+const dynamicText = document.querySelector(".dynamic-text");
+
+function rotateText() {
+  dynamicText.textContent = texts[index];
+  dynamicText.style.animation = "none";
+  dynamicText.offsetHeight; // reflow
+  dynamicText.style.animation = "fadeSlide 2.5s ease-in-out";
+
+  index = (index + 1) % texts.length;
+}
+
+rotateText();
+setInterval(rotateText, 3000);
+</script>
 
 
-<header class="site-hero">
+<!-- <header class="site-hero">
   <div class="hero-slider container">
+        <h2 style="position:sticky;">Prof. Dr. D.Sc. Abebe Geletu</h2>
 
-    <div class="hero-slide active" data-bg="asset/background/1.jpg">
+    <div class="hero-slide active" data-bg="delasset/background/1.jpg">
       <div class="hero-text">
-        <h1>Prof. Dr. D.Sc. Abebe Geletu</h1>
+        <!- <h1>Prof. Dr. D.Sc. Abebe Geletu</h1> --
         <p>German Research Chair</p>
         <p><strong>African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)</strong></p>
         <p>Autonomous Systems, Optimization, AI & Intelligent Control</p>
+        
       </div>
+      
       <div class="hero-photo">
         <img src="asset/photos/cover.jpg" alt="Professor Profile Photo">
       </div>
     </div>
 
-    <div class="hero-slide" data-bg="asset/background/2.jpg">
+    <div class="hero-slide" data-bg="delasset/background/2.jpg">
       <div class="hero-text">
         <h1>Research Focus</h1>
         <p>Autonomous systems, optimization & intelligent control.</p>
@@ -47,7 +476,7 @@
       </div>
     </div>
 
-    <div class="hero-slide" data-bg="asset/background/3.jpg">
+    <div class="hero-slide" data-bg="delasset/background/3.jpg">
       <div class="hero-text">
         <h1>Join Our Team</h1>
         <p>PhD and postdoc opportunities available.</p>
@@ -58,15 +487,16 @@
       </div>
     </div>
 
-    <!-- Slider Controls -->
+    <!- Slider Controls --
     <button class="hero-prev" aria-label="Previous slide">‹</button>
     <button class="hero-next" aria-label="Next slide">›</button>
 
-    <!-- Dots -->
+    <!- Dots --
     <div class="hero-dots"></div>
 
   </div>
 </header>
+ -->
 
 <nav class="main-nav">
   
@@ -84,14 +514,16 @@
       ☰
     </button>
     
+    
   <ul class="nav-links">
      <!-- LOGO -->
     <a href="index.html" class="nav-logomob">
       <img src="asset/photos/cover2.png" alt="Logo">
     </a> 
+
     <li><a href="#about">About</a></li>
     <!-- <li><a href="#education">Education</a></li> -->
-    <li><a href="#research">Research</a></li>
+    <!-- <li><a href="#research">Research</a></li>
     <li><a href="#projects">projects&Fundings</a></li>
         <li><a href="#collaborations">collaborations</a></li>
     <li><a href="#events">Events</a></li>
@@ -102,12 +534,222 @@
 
     <li><a href="#contact">Contact</a></li>
     <li><a href="create-post.html" class="nav-create-btn">✎ Create Post</a></li>
-  </ul>
+  </ul> -->
+
+
+
+<!--   
+<ul class="nav-links">
+
+  <li><a href="#about">About</a></li> -->
+
+  <!-- Research with submenu -->
+  <li class="has-submenu">
+    <a href="#research">Research ▾</a>
+    <ul class="submenu">
+      <li><a href="#projects">Projects & Funding </a>
+</li>
+      <li><a href="#collaborations">International Collaborations</a></li>
+     
+    </ul>
+  </li>
+  
+  <li><a href="#publications">Publications</a></li>
+  <li><a href="#events">Events</a></li>
+
+  <!-- Projects -->
+  <!-- <li class="has-submenu">
+    <a href="#projects">Projects & Funding ▾</a>
+    <ul class="submenu">
+      <li><a href="#ongoing">Ongoing Projects</a></li>
+      <li><a href="#completed">Completed Projects</a></li>
+      <li><a href="#funding">Funded Research</a></li>
+    </ul>
+  </li> -->
+
+  <!-- Lab -->
+  <li class="has-submenu">
+    <a href="lab.html">Lab ▾</a>
+    <ul class="submenu">
+      <li><a href="lab.html">Team</a></li>
+      <li><a href="lab.html">Join the Lab</a></li>
+      <li><a href="lab.html">Facilities</a></li>
+    </ul>
+  </li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="create-post.html" class="nav-create-btn">✎ Create Post</a></li>
+
+
+</ul>
 
   </div>
+  
 </nav>
 
+
+<style>
+  
+  .nav-links li {
+  position: relative;
+}
+
+/* Submenu box */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: rgba(236, 236, 238, 0.8);
+  list-style: none;
+  padding: 0.6rem 0;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+
+/* Show on hover (desktop) */
+.has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu li a {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  color: wheat;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-size: 1.05rem;          /* was ~0.9 */
+  font-weight: 600;            /* stronger */
+  color: #513b1f;              /* brighter text */
+  letter-spacing: 0.3px;
+}
+
+.submenu li a:hover {
+  background: wheat;
+  color: #513b1f;
+}
+@media (max-width: 768px) {
+  .submenu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 1rem;
+    display: none;
+  }
+
+  .has-submenu.open .submenu {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .submenu-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .submenu-toggle {
+    background: none;
+    border: none;
+    color: #e8eeff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .submenu {
+    display: none;
+    padding-left: 1.2rem;
+  }
+
+  .has-submenu.open .submenu {
+    display: block;
+  }
+}
+
+</style>
+<script>
+document.querySelectorAll(".has-submenu > a").forEach(link => {
+  link.addEventListener("click", e => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      link.parentElement.classList.toggle("open");
+    }
+  });
+});
+
+
+
+</script>
+
+
+
 <main class="container">
+
+
+
+
+
+  
+<!-- ================= ABOUT / PROFILE SECTION ================= -->
+<section id="about" class="section light">
+  <div class="container about-container">
+
+    <!-- Profile Photo -->
+    <div class="about-photo">
+      <img src="asset/photos/cover.jpg" alt="Prof. Dr. Abebe Geletu">
+    </div>
+
+    <!-- About Content -->
+    <div class="about-content">
+      <!-- <h1>ABOUT</h1> -->
+      <!-- <h2>Prof. Dr. D.Sc. Abebe Geletu</h2> -->
+      <p class="role">German Research Chair · AIMS Rwanda · Systems Optimization & AI</p>
+
+      <p>
+        Prof. Dr. D.Sc. Abebe Geletu is a senior academic and researcher specializing in
+        autonomous and intelligent systems, systems optimization, and AI-driven decision-making
+        for large-scale, uncertain real-world systems.
+      </p>
+
+      <ul class="about-highlights">
+        <li>📌 10+ funded research projects</li>
+        <li>📌 Principal Investigator (PI)</li>
+        <li>📌 International collaborations</li>
+      </ul>
+
+      <!-- Research Focus -->
+      <div class="about-highlight">
+        <h4>Research Focus</h4>
+        <ul>
+          <li>Systems & Numerical Optimization</li>
+          <li>Autonomous & Intelligent Systems</li>
+          <li>AI for Sustainable Engineering</li>
+          <li>Data-Driven Control & Decision Making</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 
 
@@ -393,46 +1035,6 @@ window.addEventListener('click', e => {
 
 
 
-<!-- ================= ABOUT / PROFILE SECTION ================= -->
-<section id="about" class="section light">
-  <div class="container about-container">
-
-    <!-- Profile Photo -->
-    <div class="about-photo">
-      <img src="asset/photos/cover.jpg" alt="Prof. Dr. Abebe Geletu">
-    </div>
-
-    <!-- About Content -->
-    <div class="about-content">
-      <h1>ABOUT</h1>
-      <h2>Prof. Dr. D.Sc. Abebe Geletu</h2>
-      <p class="role">German Research Chair · AIMS Rwanda · Systems Optimization & AI</p>
-
-      <p>
-        Prof. Dr. D.Sc. Abebe Geletu is a senior academic and researcher specializing in
-        autonomous and intelligent systems, systems optimization, and AI-driven decision-making
-        for large-scale, uncertain real-world systems.
-      </p>
-
-      <ul class="about-highlights">
-        <li>📌 10+ funded research projects</li>
-        <li>📌 Principal Investigator (PI)</li>
-        <li>📌 International collaborations</li>
-      </ul>
-
-      <!-- Research Focus -->
-      <div class="about-highlight">
-        <h4>Research Focus</h4>
-        <ul>
-          <li>Systems & Numerical Optimization</li>
-          <li>Autonomous & Intelligent Systems</li>
-          <li>AI for Sustainable Engineering</li>
-          <li>Data-Driven Control & Decision Making</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -894,8 +1496,8 @@ window.addEventListener('click', e => {
           </a>
         </div>
         <div class="partner-item fade-in">
-          <a href="https://partner3.com" target="_blank" rel="noopener">
-            <img src="asset/partners/partner3.jpeg" alt="Partner 3">
+          <a href="https://aimsric.org" target="_blank" rel="noopener">
+            <img src="asset/partners/partner3.jpeg" alt="aimsric.org">
           </a>
         </div>
         <div class="partner-item fade-in">

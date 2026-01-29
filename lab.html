@@ -63,14 +63,14 @@ footer p { margin:0.5rem 0; }
   <link rel="stylesheet" href="asset/css/mainOld.css">-->
 
   <link rel="stylesheet" href="asset/css/mainOld.css">
-
+<!-- 
 <nav class="main-nav">
   
   <div class="nav-bar containers">
 
     
 
-        <!-- LOGO -->
+        <!- LOGO --
     <a href="index.html" class="nav-logo">
       <img src="asset/photos/cover2.png" alt="Logo">
     </a> 
@@ -81,12 +81,12 @@ footer p { margin:0.5rem 0; }
     </button>
     
   <ul class="nav-links">
-     <!-- LOGO -->
+     <!- LOGO --
     <a href="index.html" class="nav-logomob">
       <img src="asset/photos/cover2.png" alt="Logo">
     </a> 
     <li><a href="index.html">About</a></li>
-    <!-- <li><a href="#education">Education</a></li> -->
+    <!- <li><a href="#education">Education</a></li> --
     <li><a href="index.html">Research</a></li>
     <li><a href="index.html">projects&Fundings</a></li>
         <li><a href="index.html">collaborations</a></li>
@@ -101,9 +101,215 @@ footer p { margin:0.5rem 0; }
   </ul>
 
   </div>
+</nav> -->
+
+
+
+
+
+<nav class="main-nav">
+  
+  <div class="nav-bar containerr">
+
+    
+
+        <!-- LOGO -->
+    <a href="index.html" class="nav-logo">
+      <img src="asset/photos/cover2.png" alt="Logo">
+    </a> 
+    <small>mathematics is, in its way, the poetry of logical ideas. A.E</small> 
+
+    <button class="nav-toggle" aria-label="Open menu">
+      ☰
+    </button>
+    
+    
+  <ul class="nav-links">
+     <!-- LOGO -->
+    <a href="index.html" class="nav-logomob">
+      <img src="asset/photos/cover2.png" alt="Logo">
+    </a> 
+
+    <li><a href="index.html">About</a></li>
+    <!-- <li><a href="#education">Education</a></li> -->
+    <!-- <li><a href="#research">Research</a></li>
+    <li><a href="#projects">projects&Fundings</a></li>
+        <li><a href="#collaborations">collaborations</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#students">Supervision</a></li>
+    <li><a href="#publications">Publications</a></li>
+            <li><a href="lab.html
+">Lab</a></li>
+
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="create-post.html" class="nav-create-btn">✎ Create Post</a></li>
+  </ul> -->
+
+
+
+<!--   
+<ul class="nav-links">
+
+  <li><a href="#about">About</a></li> -->
+
+  <!-- Research with submenu -->
+  <li class="has-submenu">
+    <a href="index.html">Research ▾</a>
+    <ul class="submenu">
+      <li><a href="index.html">Projects & Funding </a>
+</li>
+      <li><a href="index.html">International Collaborations</a></li>
+     
+    </ul>
+  </li>
+  
+  <li><a href="index.html">Publications</a></li>
+  <li><a href="index.html">Events</a></li>
+
+  <!-- Projects -->
+  <!-- <li class="has-submenu">
+    <a href="#projects">Projects & Funding ▾</a>
+    <ul class="submenu">
+      <li><a href="#ongoing">Ongoing Projects</a></li>
+      <li><a href="#completed">Completed Projects</a></li>
+      <li><a href="#funding">Funded Research</a></li>
+    </ul>
+  </li> -->
+
+  <!-- Lab -->
+  <li class="has-submenu">
+    <a href="lab.html">Lab ▾</a>
+    <ul class="submenu">
+      <li><a href="lab.html">Team</a></li>
+      <li><a href="lab.html">Join the Lab</a></li>
+      <li><a href="lab.html">Facilities</a></li>
+    </ul>
+  </li>
+  <li><a href="index.html">Contact</a></li>
+  <li><a href="create-post.html" class="nav-create-btn">✎ Create Post</a></li>
+
+
+</ul>
+
+  </div>
+  
 </nav>
 
+
+<style>
+  
+  .nav-links li {
+  position: relative;
+}
+
+/* Submenu box */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: rgba(236, 236, 238, 0.8);
+  list-style: none;
+  padding: 0.6rem 0;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+
+/* Show on hover (desktop) */
+.has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.submenu li a {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  color: wheat;
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-size: 1.05rem;          /* was ~0.9 */
+  font-weight: 600;            /* stronger */
+  color: #513b1f;              /* brighter text */
+  letter-spacing: 0.3px;
+}
+
+.submenu li a:hover {
+  background: wheat;
+  color: #513b1f;
+}
+@media (max-width: 768px) {
+  .submenu {
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding-left: 1rem;
+    display: none;
+  }
+
+  .has-submenu.open .submenu {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .submenu-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .submenu-toggle {
+    background: none;
+    border: none;
+    color: #e8eeff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .submenu {
+    display: none;
+    padding-left: 1.2rem;
+  }
+
+  .has-submenu.open .submenu {
+    display: block;
+  }
+}
+
+</style>
+<script>
+document.querySelectorAll(".has-submenu > a").forEach(link => {
+  link.addEventListener("click", e => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      link.parentElement.classList.toggle("open");
+    }
+  });
+});
+
+
+
+</script>
+
+
 </head>
+
 <body>
 
 <!-- Header -->
