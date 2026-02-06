@@ -1291,3 +1291,19 @@ document.addEventListener("DOMContentLoaded", () => {
 // Hide/show navbar on mobile
 
 
+
+// to hide the nav bar during scrolling 
+  let lastScroll = 0;
+  const navbar = document.getElementById("navbar");
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      navbar.style.transform = "translateY(-100%)"; // hide
+    } else {
+      navbar.style.transform = "translateY(0)";     // show
+    }
+
+    lastScroll = currentScroll;
+  });
