@@ -376,7 +376,7 @@ section ul{padding-left:1rem;font-size:0.9rem}
 
 .event-image img {
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: cover;
 }
 
@@ -1729,7 +1729,7 @@ section ul{padding-left:1rem;font-size:0.9rem}
 
 .project-image img {
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: cover;
 }
 
@@ -1890,7 +1890,7 @@ h2 {
 .timeline-toggle {
   position: fixed;
   right: 18px;
-  top: 45%;
+  top: 65%;
   width: 52px;
   height: 52px;
   background: #5e4425;
@@ -2160,6 +2160,8 @@ h4 {
   transform: translateY(-2px);
   background: #dbeafe;
 }
+
+
 
 /* ---------- RESPONSIVE (TABLET & MOBILE) ---------- */
 @media (max-width: 900px) {

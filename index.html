@@ -264,7 +264,7 @@ startAutoSlide();
 <style>
   .hero-slider {
   position: relative;
-  height: 95vh;
+  height: 90vh;
   overflow: hidden;
   justify-content: center;
   
@@ -520,9 +520,8 @@ setInterval(() => {
 const texts = [
 
   "African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)",
-  "Advancing intelligent systems for optimization, robotics",
-  "Autonomous Systems, Optimization, AI & Intelligent Control",
-  "Join Our Research Team"
+  "Advancing intelligent systems for optimization, robotics, drones, nano-satelite",
+  "Autonomous Systems, Optimization, AI & Intelligent Control"
 ];
 
 let index = 0;
@@ -1273,9 +1272,9 @@ document.querySelectorAll(".has-submenu > a").forEach(link => {
 .project-card:hover { transform: translateY(-5px); }
 .project-image { position: relative; }
 .project-image img { width: 100%; display: block; }
-.funding { position: absolute; top:10px; left:10px; padding:0.3rem 0.6rem; border-radius:6px; font-weight:600; font-size:0.8rem; color:#fff;}
+/* .funding { position: absolute; top:10px; left:10px; padding:0.3rem 0.6rem; border-radius:6px; font-weight:600; font-size:0.8rem; color:#fff;}
 .funding.funded{ background:#5e4425; }
-.funding.seeking{ background:#ffc107; color:#5e4425; }
+.funding.seeking{ background:#ffc107; color:#5e4425; } */
 .read-more-btn {
   position: absolute;
   bottom:10px; right:10px;
@@ -1283,6 +1282,8 @@ document.querySelectorAll(".has-submenu > a").forEach(link => {
   background: rgba(0,0,0,0.7);
   color:#fff; border:none; border-radius:5px; cursor:pointer;
 }
+
+
 
 /* ---------- MODAL ---------- */
 .modal {
@@ -1945,7 +1946,8 @@ window.addEventListener('click', e => {
 
    <!-- Logo & Description -->
     <div class="footer-brand">
-      <img src="asset/photos/cover.jpg" alt="Prof.Dr.AbebeGeletu-Logo" class="footer-logo">
+      <img src="asset/photos/cover.jpg" alt="Prof.Dr.AbebeGeletu-Logo" class="footer-logo" style="border-radius: 50%;">
+      
       <h3>Prof.Dr.AbebGeletu</h3>
       <p>
         mathematics is, in its way, the poetry of logical ideas. A.E.
@@ -1957,10 +1959,10 @@ window.addEventListener('click', e => {
       <h4></h4>
       <div class="social-icons">
         <a href="https://www.linkedin.com" target="_blank" class="social-link linkedin">
-          <img src="asset/photos/LinkedIn.png" alt="LinkedIn">
+          <img src="asset/photos/LinkedIn.png" alt="LinkedIn" style="border-radius:30%;">
         </a>
          <a href="https://www.youtube.com" target="_blank" class="social-link youtube">
-          <img src="asset/photos/yotube.png" alt="YouTube">
+          <img src="asset/photos/yotube.png " alt="YouTube " style="border-radius:30%;">
         </a>
         <!--
         <a href="https://twitter.com" target="_blank" class="social-link twitter">
@@ -1970,7 +1972,8 @@ window.addEventListener('click', e => {
           <img src="asset/photos/telegram.jpg" alt="Telegram">
         </a> -->
         <a href="https://wa.me/0000000000" target="_blank" class="social-link whatsapp">
-          <img src="asset/photos/whatssup.jpg" alt="WhatsApp">
+          <img src="asset/photos/whatssup.jpg" alt="WhatsApp" style="border-radius:30%;">
+          
         </a>
       </div>
     </div>
@@ -2043,6 +2046,8 @@ window.addEventListener('click', e => {
   .footer-container { flex-direction:column; align-items:center; text-align:center; }
   .social-icons { justify-content:center; }
 }
+ 
+
 </style>
 
     
