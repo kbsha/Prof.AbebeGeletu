@@ -376,7 +376,7 @@ section ul{padding-left:1rem;font-size:0.9rem}
 
 .event-image img {
   width: 100%;
-  height: 120%;
+  height: 122%;
   object-fit: cover;
 }
 
@@ -1391,9 +1391,11 @@ section ul{padding-left:1rem;font-size:0.9rem}
   align-items: center;
   justify-content: center;
   width: 60px;
-  height: 5px;
+  height: 8px;
   margin-right: auto;
     padding: 0px 0px;
+      padding-left: 4%;
+
 
 }
   .nav-logomob {
@@ -1401,14 +1403,14 @@ section ul{padding-left:1rem;font-size:0.9rem}
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 40px;
+  height: 60px;
   margin: auto;
   }
 
 .nav-logo img {
-  width: 80px;
-  height: 35px;
-  border-radius: 50%;
+  width: 85px;
+  height: 45px;
+  border-radius: 45%;
   object-fit: cover;
 }
   .nav-logomob img {
@@ -1439,6 +1441,8 @@ section ul{padding-left:1rem;font-size:0.9rem}
   -webkit-backdrop-filter: blur(8px);
 
   border-radius: 1px;
+  
+  
 }
 
 .nav-links li a {
@@ -1456,7 +1460,7 @@ section ul{padding-left:1rem;font-size:0.9rem}
   align-items: center;
   gap: 1.5rem;
   list-style: none;
-  padding: 15px 50px;
+  padding: 14px 50px;
 
   background: rgba(255, 255, 255, 0.5); /* 65% visible */
   backdrop-filter: blur(8px);
@@ -1724,12 +1728,12 @@ section ul{padding-left:1rem;font-size:0.9rem}
 
 .project-image {
   position: relative;
-  height: 210px;
+  height: 229px;
 }
 
 .project-image img {
   width: 100%;
-  height: 120%;
+  height: 125%;
   object-fit: cover;
 }
 

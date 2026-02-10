@@ -18,6 +18,24 @@
 
 <section class="hero-slider" >
 
+
+
+
+
+  <div class="slide" style="background-image:url('asset/photos/hero.png') ; height: 100%">
+  
+
+    <div class="slide-content">
+      <p class="role">German Research Chair</p>
+      <h1>Prof. Dr. Abebe Geletu</h1>
+      <p class="desc">
+        African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
+      </p>
+      <a href="#hero" class="btn primary">Learn More</a>
+    </div>
+  </div>
+
+
   
   <div class="slide" style="background-image:url('asset/videos/art\ design\ GIF\ by\ bigblueboo.gif') ; height: 100%">
   
@@ -28,7 +46,7 @@
       <p class="desc">
         African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
   <div class="slide" style="background-image:url('asset/videos/High\ Tech\ Internet\ GIF\ by\ Matthew\ Butler.gif') ; height: 100%">
@@ -40,9 +58,11 @@
       <p class="desc">
         Autonomous Systems, Optimization, AI & Intelligent Control
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
+
+  
     <div class="slide" style="background-image:url('asset/videos/Internet\ Streaming\ GIF\ by\ Butlerm.gif') ; height: 100%">
   
 
@@ -52,11 +72,11 @@
       <p class="desc">
         African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
-      <div class="slide" style="background-image:url('asset/videos/Art\ Halloween\ GIF.gif') ; height: 100%">
+      <div class="slide" style="background-image:url('asset/photos/hero.png') ; height: 100%">
   
 
     <div class="slide-content">
@@ -65,7 +85,7 @@
       <p class="desc">
         Autonomous Systems, Optimization, AI & Intelligent Control
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
@@ -78,7 +98,7 @@
       <p class="desc">
         African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
@@ -91,7 +111,7 @@
       <p class="desc">
         African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
@@ -105,7 +125,7 @@
       <p class="desc">
         Autonomous Systems, Optimization, AI & Intelligent Control
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
@@ -119,7 +139,7 @@
       <p class="desc">
         African Institute for Mathematical Sciences Research & Innovation Center (AIMS–RIC)
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
@@ -132,7 +152,7 @@
       <p class="desc">
         Autonomous Systems, Optimization, AI & Intelligent Control
       </p>
-      <a href="#contact" class="btn primary">Contact</a>
+      <a href="#hero" class="btn primary">Learn More</a>
     </div>
   </div>
 
@@ -147,6 +167,7 @@
 
 </section>
 <style>
+  
   .nav-arrow {
   position: absolute;
   top: 50%;
@@ -200,6 +221,68 @@
   .nav-arrow {
     font-size: 1.6rem;
     padding: 0.3rem 0.7rem;
+  }
+}
+
+
+
+
+.slide-content {
+  max-width: 700px;       /* limit width on large screens */
+  margin: 0 auto;          /* center horizontally */
+  text-align: center;      /* center the text */
+  padding: 1rem;           /* spacing inside container */
+}
+
+.slide-content .role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f0d4af;
+  margin-bottom: 0.5rem;
+}
+
+.slide-content h1 {
+  font-size: 2.8rem;       /* large on desktop */
+  line-height: 1.2;        /* spacing between lines */
+  word-wrap: break-word;   /* allow breaking long text */
+  margin-bottom: 1rem;
+}
+
+.slide-content .desc {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #f0d4af;
+  margin-bottom: 1.5rem;
+  word-wrap: break-word;   /* wrap long institute names */
+}
+
+.slide-content .btn.primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #513b1f;
+  background-color: #e8d1b3;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.slide-content .btn.primary:hover {
+  background-color: #513b1f;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slide-content h1 {
+    font-size: 2rem;
+  }
+  .slide-content .desc {
+    font-size: 1rem;
+  }
+  .slide-content .btn.primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -264,9 +347,17 @@ startAutoSlide();
 <style>
   .hero-slider {
   position: relative;
-  height: 90vh;
+  height: 85vh;
   overflow: hidden;
   justify-content: center;
+  margin-top: 5%;
+   height: 90vh;                 /* full viewport height */
+  width: 100%;                   /* full width */
+  background-image: url('path/to/your/image.jpg');
+  background-size: contain;      /* zoom out to fit entire image */
+  background-repeat: no-repeat;  /* don’t repeat */
+  background-position: center;   /* center the image */
+  
   
 }
 
@@ -277,6 +368,9 @@ startAutoSlide();
   background-position: center;
   opacity: 0;
   transition: opacity 1.2s ease;
+  
+
+  
 }
 
 .slide::before {
@@ -328,6 +422,68 @@ startAutoSlide();
   text-decoration: none;
 }
 
+
+.slide-content {
+  max-width: 700px;       /* limit width on large screens */
+  margin: 0 auto;          /* center horizontally */
+  text-align: center;      /* center the text */
+  padding: 1rem;           /* spacing inside container */
+}
+
+.slide-content .role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #eed1ab;
+  margin-bottom: 0.5rem;
+}
+
+.slide-content h1 {
+  font-size: 2.8rem;       /* large on desktop */
+  line-height: 1.2;        /* spacing between lines */
+  word-wrap: break-word;   /* allow breaking long text */
+  margin-bottom: 1rem;
+}
+
+.slide-content .desc {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #e0b274;
+  margin-bottom: 1.5rem;
+  word-wrap: break-word;   /* wrap long institute names */
+}
+
+.slide-content .btn.primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+  background-color: #e0b274;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.slide-content .btn.primary:hover {
+  background-color: #513b1f;
+    color: white;
+
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slide-content h1 {
+    font-size: 2rem;
+  }
+  .slide-content .desc {
+    font-size: 1rem;
+  }
+  .slide-content .btn.primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
 </style>
 <script>
 const slides = document.querySelectorAll(".slide");
@@ -341,7 +497,7 @@ function showSlide(index) {
 setInterval(() => {
   current = (current + 1) % slides.length;
   showSlide(current);
-}, 50000000);
+}, 20000);
 
 
 
@@ -351,7 +507,7 @@ setInterval(() => {
 <!-- <P>kb</P> -->
 <!--Original Hero Section */
   --> 
-<section class="hero" >
+<section id="hero" class="hero" >
   <div class="hero-content">
     <p class="hero-role">Professor of Matmatics, Artificial Intelligence & Robotics</p>
     <h1>Prof. Dr. Abebe Geletu</h1>
@@ -372,8 +528,8 @@ setInterval(() => {
     </div>
 
     <div class="hero-buttons">
-      <a href="#research" class="btn primary">Research</a>
-      <a href="#publications" class="btn secondary">Publications</a>
+      <a href="#about" class="btn outline">Research</a>
+      <a href="#publications" class="btn outline">Publications</a>
       <a href="#contact" class="btn outline">Contact</a>
     </div>
   </div>
@@ -452,6 +608,8 @@ setInterval(() => {
   background: rgba(255,255,255,0.1);
   border-radius: 20px;
   font-size: 0.85rem;
+    border: 1px solid #feb75a;
+
 }
 
 .hero-buttons {
@@ -469,10 +627,14 @@ setInterval(() => {
 .primary { background: #513b1f; color: #000; }
 .secondary { background: #fff; color: #000; }
 .outline {
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #feb75a;
+  color: #513b1f;
 }
+.btn.outline:hover {
+  background-color: #513b1f;
+    color: white;
 
+}
 .hero-image img {
   max-width: 100%;
   border-radius: 20px;
@@ -597,13 +759,50 @@ setInterval(rotateText, 3000);
   
   <div class="nav-bar containerr">
 
-    
-
         <!-- LOGO -->
     <a href="index.html" class="nav-logo">
-      <img src="asset/photos/cover2.png" alt="Logo">
+      <img src="asset/photos/hero.png" alt="Logo">
     </a> 
-    <small>mathematics is, in its way, the poetry of logical ideas. A.E</small> 
+    <!-- <small>mathematics is, in its way, the poetry of logical ideas. A.E</small>  -->
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
     <button class="nav-toggle" aria-label="Open menu">
       ☰
@@ -613,31 +812,11 @@ setInterval(rotateText, 3000);
   <ul class="nav-links">
      <!-- LOGO -->
     <a href="index.html" class="nav-logomob">
-      <img src="asset/photos/cover2.png" alt="Logo">
+      <img src="asset/photos/hero.png" alt="Logo">
     </a> 
+    <li><a href="index.html">Home</a></li>
 
     <li><a href="#about">About</a></li>
-    <!-- <li><a href="#education">Education</a></li> -->
-    <!-- <li><a href="#research">Research</a></li>
-    <li><a href="#projects">projects&Fundings</a></li>
-        <li><a href="#collaborations">collaborations</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#students">Supervision</a></li>
-    <li><a href="#publications">Publications</a></li>
-            <li><a href="lab.html
-">Lab</a></li>
-
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="create-post.html" class="nav-create-btn">✎ Create Post</a></li>
-  </ul> -->
-
-
-
-<!--   
-<ul class="nav-links">
-
-  <li><a href="#about">About</a></li> -->
-
   <!-- Research with submenu -->
   <li class="has-submenu">
     <a href="#research">Research ▾</a>
@@ -847,6 +1026,73 @@ document.querySelectorAll(".has-submenu > a").forEach(link => {
   
   
 </section>
+
+
+<style>
+
+/* Container Flex */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;         /* stack on small screens */
+  align-items: flex-start; /* align items at top */
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;         /* important: consistent horizontal padding */
+}
+
+/* About Content */
+.about-content {
+  flex: 1 1 400px;
+  max-width: 700px;
+  width: 100%;             /* ensures it fills container on mobile */
+  box-sizing: border-box;  /* include padding in width */
+  padding-left: 0;         /* remove extra indentation */
+}
+
+/* About Photo */
+.about-photo {
+  flex: 0 0 300px;
+  text-align: center;
+  width: 100%;             /* scales down on mobile */
+  max-width: 300px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;   /* stack photo and content */
+    align-items: center;      /* center horizontally */
+    gap: 2rem;
+  }
+
+  .about-content {
+    max-width: 90%;           /* make text align with container edges */
+    text-align: left;         /* ensure text starts at same point */
+    padding-left: 0;          /* remove extra spacing */
+  }
+
+  .about-photo {
+    max-width: 90%;           /* scale image down slightly */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content .role {
+    font-size: 1rem;
+  }
+
+  .about-highlight h4 {
+    font-size: 1.1rem;
+  }
+}
+
+
+</style>
+
+
+
 <div class="about-section">
     <h3>Research Focus Areas</h3>
     <div class="focus-areas">
@@ -1273,7 +1519,7 @@ document.querySelectorAll(".has-submenu > a").forEach(link => {
 }
 .project-card:hover { transform: translateY(-5px); }
 .project-image { position: relative; }
-.project-image img { width: 100%; display: block; }
+.project-image img { width: 100%;height: 100%; display: block; }
 /* .funding { position: absolute; top:10px; left:10px; padding:0.3rem 0.6rem; border-radius:6px; font-weight:600; font-size:0.8rem; color:#fff;}
 .funding.funded{ background:#5e4425; }
 .funding.seeking{ background:#ffc107; color:#5e4425; } */
